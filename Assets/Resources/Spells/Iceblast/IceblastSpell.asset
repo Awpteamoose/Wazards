@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2960a40f4b5ce7d4f9cf0f7d7e0ecb89, type: 3}
+  m_Name: IceblastSpell
+  m_EditorClassIdentifier: 
+  spellName: Iceblast
+  description: 
+  icon: {fileID: 2800000, guid: 4406d5ceacd30d0468b4dfa00b4a68cb, type: 3}
+  prefab: {fileID: 400000, guid: 2167575d67a0f2c41869b2baea1279d1, type: 2}
+  secondsToCharge: 1.20000005
+  secondsMinCharge: .300000012
+  manacost: 24
+  secondsCooldown: 1.25
+  damage: 6
+  damageCharged: 8
+  speed: 10
+  speedCharged: 13
+  size: 1.5
+  sizeCharged: 2.3499999
+  t_duration: 1
+  t_durationCharged: 1.5

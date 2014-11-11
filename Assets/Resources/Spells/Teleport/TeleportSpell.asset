@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072e0ad1675286c4a81c4953b9e552b0, type: 3}
+  m_Name: TeleportSpell
+  m_EditorClassIdentifier: 
+  spellName: Teleport
+  description: 
+  icon: {fileID: 2800000, guid: b949ea438815aa94aa53a42a004c16b2, type: 3}
+  prefab: {fileID: 400000, guid: f8f6eb0060db48541abdbc0e67049efa, type: 2}
+  secondsToCharge: 1.25
+  secondsMinCharge: 0
+  manacost: 25
+  secondsCooldown: .200000003
+  minDistance: 6

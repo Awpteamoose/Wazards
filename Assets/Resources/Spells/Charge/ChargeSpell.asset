@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a486707b3f5aa40a588e4e86ac9142, type: 3}
+  m_Name: ChargeSpell
+  m_EditorClassIdentifier: 
+  spellName: Charge
+  description: 
+  icon: {fileID: 2800000, guid: a3b372abfb0b67b4a9584f24fde7ca79, type: 3}
+  prefab: {fileID: 400000, guid: c5478a1968b0d3541b59890d9ccfcea0, type: 2}
+  secondsToCharge: .600000024
+  secondsMinCharge: 0
+  manacost: 22
+  secondsCooldown: 1.75
+  distance: 6
+  speed: .5
+  damageMod: 1.5
+  size: 1.25
+  minDamage: 5
+  maxDamage: 20

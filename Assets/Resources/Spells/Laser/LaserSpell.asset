@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddf5945d2b599b448fbae9f14d91b2a, type: 3}
+  m_Name: LaserSpell
+  m_EditorClassIdentifier: 
+  spellName: Laser
+  description: 
+  icon: {fileID: 2800000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
+  prefab: {fileID: 400000, guid: 1bcfbbf756a62a64eba18001a0911831, type: 2}
+  secondsToCharge: .800000012
+  secondsMinCharge: .200000003
+  manacost: 30
+  secondsCooldown: 3
+  damage: 20
+  chargedDamage: 25
+  width: .200000003
+  chargedWidth: .800000012
+  t_delay: .600000024
+  t_chargedDelay: .300000012
+  t_active: 1.5
+  t_chargedActive: 2
+  t_tick: .100000001
+  knockbackScale: .5

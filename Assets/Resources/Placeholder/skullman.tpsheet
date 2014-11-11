@@ -1,0 +1,15 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: 1.png (256 x 1024)
+# $TexturePacker:SmartUpdate:596fa19ac170fb04786f0fd75e8ec67f:86c4c6def42956a5239ceee21cd0f27a:19f892353c8167f3bbcb014a83959a03$
+#
+
+skull-animation;2;482;222;187;0.5765765765765766;0.3796791443850267
+skull-animation1;2;671;225;180;0.5688888888888889;0.38888888888888884
+skull-animation2;2;853;227;169;0.5638766519823789;0.4201183431952663
+skull;2;287;217;193;0.5898617511520737;0.3575129533678757
+skullman;2;92;217;193;0.5898617511520737;0.3575129533678757
