@@ -32,18 +32,15 @@ public class PlayerControl: MonoBehaviour
 
     private bool stopChant = false;
     private bool chanting = false;
-    private float t_chanting = 0;
+    private int lastRandom;
     public void StartChant()
     {
         if (castComponent.spellBook.get() != SpellList.normalAttack)
         {
             Random.seed = castComponent.spellBook.get().spellName.GetHashCode();
-            audio.clip = words[Random.Range(0, words.Length)];
-            //audio.time = Random.Range(0, audio.clip.length);
+            lastRandom = Random.Range(0, words.Length);
             chanting = true;
-            t_chanting = 0;
             stopChant = false;
-            audio.Play();
         }
     }
 
@@ -133,7 +130,6 @@ public class PlayerControl: MonoBehaviour
 
         if (chanting)
         {
-            t_chanting += Time.deltaTime;
             if (!audio.isPlaying)
             {
                 if (stopChant)
@@ -142,14 +138,12 @@ public class PlayerControl: MonoBehaviour
                 }
                 else
                 {
-                    audio.clip = words[Random.Range(0, words.Length)];
+                    audio.clip = words[lastRandom];
+                    Random.seed = lastRandom;
+                    lastRandom = Random.Range(0, words.Length);
                     audio.Play();
                 }
             }
-            /*if (stopChant && t_chanting > 0.6f)
-            {
-                audio.Stop();
-            }*/
         }
 
 		sm.Update ();
