@@ -38,7 +38,7 @@ public class PlayerControl: MonoBehaviour
         if (castComponent.spellBook.get() != SpellList.normalAttack)
         {
             Random.seed = castComponent.spellBook.get().spellName.GetHashCode();
-            lastRandom = Random.Range(0, words.Length);
+            lastRandom = Random.Range(-214748364, 214748364);
             chanting = true;
             stopChant = false;
         }
@@ -138,9 +138,9 @@ public class PlayerControl: MonoBehaviour
                 }
                 else
                 {
-                    audio.clip = words[lastRandom];
                     Random.seed = lastRandom;
-                    lastRandom = Random.Range(0, words.Length);
+                    lastRandom = Random.Range(-214748364, 214748364);
+                    audio.clip = words[Random.Range(0, words.Length)];
                     audio.Play();
                 }
             }
