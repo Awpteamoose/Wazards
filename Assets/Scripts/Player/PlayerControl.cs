@@ -39,6 +39,7 @@ public class PlayerControl: MonoBehaviour
         {
             Random.seed = castComponent.spellBook.get().spellName.GetHashCode();
             lastRandom = Random.Range(-214748364, 214748364);
+            Random.seed = Mathf.RoundToInt(Time.time*100f);
             chanting = true;
             stopChant = false;
         }
@@ -141,6 +142,7 @@ public class PlayerControl: MonoBehaviour
                     Random.seed = lastRandom;
                     lastRandom = Random.Range(-214748364, 214748364);
                     audio.clip = words[Random.Range(0, words.Length)];
+                    Random.seed = Mathf.RoundToInt(Time.time * 100f);
                     audio.Play();
                 }
             }
