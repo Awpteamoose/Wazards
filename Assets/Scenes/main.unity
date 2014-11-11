@@ -1162,6 +1162,38 @@ MonoBehaviour:
   spellIconShadows: []
   spellIconManaShadows: []
   player: Player 2
+  words:
+  - {fileID: 8300000, guid: 0a56f13eaab4d1648bd54fe1c381fadf, type: 3}
+  - {fileID: 8300000, guid: 10e5fbdb91dc85446bd9056605c7e270, type: 3}
+  - {fileID: 8300000, guid: 1b3be3dd77221054d89ab77ca5484f44, type: 3}
+  - {fileID: 8300000, guid: 272a7178311b0f9438db8cd3593ee2f8, type: 3}
+  - {fileID: 8300000, guid: 39ba301c402274d45b702b333272f5ff, type: 3}
+  - {fileID: 8300000, guid: 3ff75a17c91ba574bb958c307c116fab, type: 3}
+  - {fileID: 8300000, guid: 4654fa978c5fff544a2e539ce9685f62, type: 3}
+  - {fileID: 8300000, guid: 4f44cd760997c1c44bfcde40a9616214, type: 3}
+  - {fileID: 8300000, guid: 59237d0a7fdd8eb4f849200be9c9dc25, type: 3}
+  - {fileID: 8300000, guid: 59f749e19c108374eb24a762d63ba362, type: 3}
+  - {fileID: 8300000, guid: 5ccf54ccc219e4f459d12ed5c1726dca, type: 3}
+  - {fileID: 8300000, guid: 696bd9dc8074e444aa5dc72d79b00a7b, type: 3}
+  - {fileID: 8300000, guid: 6c677878545cb0d41b2d0ec89b0a0c2a, type: 3}
+  - {fileID: 8300000, guid: 6d8e8395623b0c54c80d6a88d3a183af, type: 3}
+  - {fileID: 8300000, guid: 708d4b64cc4da4a4182c90ba1ca62f1f, type: 3}
+  - {fileID: 8300000, guid: 7225b25711b315f4c9593f739641cacd, type: 3}
+  - {fileID: 8300000, guid: 772d53730051ce542b64d1692a69c2a6, type: 3}
+  - {fileID: 8300000, guid: 7e2231b624c973d489ca191885857aad, type: 3}
+  - {fileID: 8300000, guid: 85a9c9e539d1c1d44b381bbeb0637d09, type: 3}
+  - {fileID: 8300000, guid: 90db6a4d66418a045b0ea5a6e6b8173c, type: 3}
+  - {fileID: 8300000, guid: ae5182ad385d80e4d9fe54d5f6802511, type: 3}
+  - {fileID: 8300000, guid: afaa5943a0587a54787e5993332ac04c, type: 3}
+  - {fileID: 8300000, guid: b738352ec0607654eb79b4240e736132, type: 3}
+  - {fileID: 8300000, guid: ba0ac57387f983f43820a224ddb80eac, type: 3}
+  - {fileID: 8300000, guid: bee0aabb6c396174d9f9d0fce6088153, type: 3}
+  - {fileID: 8300000, guid: c83b3ee005faf0e4aa06b1df7552b5bf, type: 3}
+  - {fileID: 8300000, guid: cf9c6790006af634b94f8f9068608337, type: 3}
+  - {fileID: 8300000, guid: d066827516009c64ca83fae82ed3d5e3, type: 3}
+  - {fileID: 8300000, guid: d99430ffde405004bbddf9164fe98c30, type: 3}
+  - {fileID: 8300000, guid: ec44553c7605cd44993975f34344fd75, type: 3}
+  - {fileID: 8300000, guid: ee7a7d3222f92384cabd08fab470d136, type: 3}
 --- !u!61 &783976498
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1251,7 +1283,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -2065,6 +2097,38 @@ MonoBehaviour:
   spellIconShadows: []
   spellIconManaShadows: []
   player: Player 1
+  words:
+  - {fileID: 8300000, guid: 0a56f13eaab4d1648bd54fe1c381fadf, type: 3}
+  - {fileID: 8300000, guid: 10e5fbdb91dc85446bd9056605c7e270, type: 3}
+  - {fileID: 8300000, guid: 1b3be3dd77221054d89ab77ca5484f44, type: 3}
+  - {fileID: 8300000, guid: 272a7178311b0f9438db8cd3593ee2f8, type: 3}
+  - {fileID: 8300000, guid: 39ba301c402274d45b702b333272f5ff, type: 3}
+  - {fileID: 8300000, guid: 3ff75a17c91ba574bb958c307c116fab, type: 3}
+  - {fileID: 8300000, guid: 4654fa978c5fff544a2e539ce9685f62, type: 3}
+  - {fileID: 8300000, guid: 4f44cd760997c1c44bfcde40a9616214, type: 3}
+  - {fileID: 8300000, guid: 59237d0a7fdd8eb4f849200be9c9dc25, type: 3}
+  - {fileID: 8300000, guid: 59f749e19c108374eb24a762d63ba362, type: 3}
+  - {fileID: 8300000, guid: 5ccf54ccc219e4f459d12ed5c1726dca, type: 3}
+  - {fileID: 8300000, guid: 696bd9dc8074e444aa5dc72d79b00a7b, type: 3}
+  - {fileID: 8300000, guid: 6c677878545cb0d41b2d0ec89b0a0c2a, type: 3}
+  - {fileID: 8300000, guid: 6d8e8395623b0c54c80d6a88d3a183af, type: 3}
+  - {fileID: 8300000, guid: 708d4b64cc4da4a4182c90ba1ca62f1f, type: 3}
+  - {fileID: 8300000, guid: 7225b25711b315f4c9593f739641cacd, type: 3}
+  - {fileID: 8300000, guid: 772d53730051ce542b64d1692a69c2a6, type: 3}
+  - {fileID: 8300000, guid: 7e2231b624c973d489ca191885857aad, type: 3}
+  - {fileID: 8300000, guid: 85a9c9e539d1c1d44b381bbeb0637d09, type: 3}
+  - {fileID: 8300000, guid: 90db6a4d66418a045b0ea5a6e6b8173c, type: 3}
+  - {fileID: 8300000, guid: ae5182ad385d80e4d9fe54d5f6802511, type: 3}
+  - {fileID: 8300000, guid: afaa5943a0587a54787e5993332ac04c, type: 3}
+  - {fileID: 8300000, guid: b738352ec0607654eb79b4240e736132, type: 3}
+  - {fileID: 8300000, guid: ba0ac57387f983f43820a224ddb80eac, type: 3}
+  - {fileID: 8300000, guid: bee0aabb6c396174d9f9d0fce6088153, type: 3}
+  - {fileID: 8300000, guid: c83b3ee005faf0e4aa06b1df7552b5bf, type: 3}
+  - {fileID: 8300000, guid: cf9c6790006af634b94f8f9068608337, type: 3}
+  - {fileID: 8300000, guid: d066827516009c64ca83fae82ed3d5e3, type: 3}
+  - {fileID: 8300000, guid: d99430ffde405004bbddf9164fe98c30, type: 3}
+  - {fileID: 8300000, guid: ec44553c7605cd44993975f34344fd75, type: 3}
+  - {fileID: 8300000, guid: ee7a7d3222f92384cabd08fab470d136, type: 3}
 --- !u!61 &1216444107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2111,7 +2175,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ab8c75a2adb8ef0468940b1178cd4c8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95a4ad307a3b0a648ab2f93e35e1b86d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1216444110
 Transform:
@@ -2206,7 +2270,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
