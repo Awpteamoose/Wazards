@@ -15,6 +15,9 @@ public class PlayerControl: MonoBehaviour
 	public GameObject bgHealthBar {get; set;}
 	public GameObject fgHealthBar {get; set;}
 
+    public GameObject arrow;
+    public SpriteRenderer spriteRenderer;
+
 	public List<GameObject> spellIcons;
 	public List<GameObject> spellIconShadows;
 	public List<GameObject> spellIconManaShadows;
@@ -56,6 +59,7 @@ public class PlayerControl: MonoBehaviour
 		castComponent = GetComponent<CastComponent>();
 		healthComponent = GetComponent<PlayerHealthComponent>();
 		inputComponent = GetComponent<PlayerInputComponent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 		inputComponent.playername = player;
 
 		for (int i = 0; i<3; i++)
@@ -147,9 +151,18 @@ public class PlayerControl: MonoBehaviour
                 }
             }
         }
-
 		sm.Update ();
 	}
+
+    void OnBecameInvisible()
+    {
+        arrow.SetActive(true);
+    }
+
+    void OnBecameVisible()
+    {
+        arrow.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
