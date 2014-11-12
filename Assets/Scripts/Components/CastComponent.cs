@@ -44,7 +44,7 @@ public class CastComponent: MonoBehaviour
 		}
 		public Spell set(Spell spell, int number)
 		{
-			spells[number] = spell;
+            spells[number] = Object.Instantiate(spell) as Spell;
 			return spell;
 		}
 	}

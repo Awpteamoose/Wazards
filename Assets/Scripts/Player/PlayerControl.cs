@@ -35,7 +35,7 @@ public class PlayerControl: MonoBehaviour
     private int lastRandom;
     public void StartChant()
     {
-        if (castComponent.spellBook.get() != SpellList.normalAttack)
+        if (castComponent.spellBook.active != 3)
         {
             Random.seed = castComponent.spellBook.get().spellName.GetHashCode();
             lastRandom = Random.Range(-214748364, 214748364);

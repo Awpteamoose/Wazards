@@ -1240,7 +1240,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 88e0e5d75508f004fb17722596db5559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95a4ad307a3b0a648ab2f93e35e1b86d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &783976501
 MonoBehaviour:
@@ -1286,7 +1286,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 7.5
   MaxDistance: 500
   Pan2D: 0
@@ -2175,7 +2175,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95a4ad307a3b0a648ab2f93e35e1b86d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab8c75a2adb8ef0468940b1178cd4c8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1216444110
 Transform:
@@ -2273,7 +2273,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 7.5
   MaxDistance: 500
   Pan2D: 0

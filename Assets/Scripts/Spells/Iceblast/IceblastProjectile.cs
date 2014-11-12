@@ -65,6 +65,7 @@ public class IceblastProjectile : Projectile {
                 audio.clip = freezeSound;
 				audio.Play ();
                 particleSystem.enableEmission = false;
+                this.transform.localScale = new Vector3(3f, 3f, 0);
                 return;
 			}
             HealthComponent hc = collider.gameObject.GetComponent<HealthComponent>();
