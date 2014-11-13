@@ -5,16 +5,16 @@ public class PauseMenu : MonoBehaviour
 {
     public GUISkin skin;
 
-    bool ToggleBTN = false;
-
-    private bool paused = false;
     private const float pauseMenuWidth = 350f;
     private const float pauseMenuHeight = 510f;
     private Rect pauseMenuRect = new Rect(Screen.width / 2f - pauseMenuWidth / 2f, Screen.height / 2f - pauseMenuHeight / 2f, pauseMenuWidth, pauseMenuHeight);
 
+    private bool paused = false;
+
     void Start ()
     {
-        //GUI.skin = skin;
+        //Screen.showCursor = false;
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
     }
 
     void testWindow (int windowID)
@@ -24,24 +24,39 @@ public class PauseMenu : MonoBehaviour
         WaxSeal(pauseMenuRect.width, pauseMenuRect.height);
 
         GUILayout.BeginVertical();
-        /*GUILayout.Space(8);
-        GUILayout.Label("", "Divider");//-------------------------------- custom
-        GUILayout.Label("Standard Label");
-        GUILayout.Label("Short Label", "ShortLabel");//-------------------------------- custom
-        GUILayout.Label("", "Divider");//-------------------------------- custom
-        if (GUILayout.Button("Standard Button"))
-            Debug.Log("Clickyclick");
-        GUILayout.Button("Short Button", "ShortButton");//-------------------------------- custom
-        GUILayout.Label("", "Divider");//-------------------------------- custom
-        ToggleBTN = GUILayout.Toggle(ToggleBTN, "This is a Toggle Button");
-        GUILayout.Label("", "Divider");//-------------------------------- custom
-        GUILayout.Box("This is a textbox\n this can be expanded by using \\n");
-        GUILayout.TextField("This is a textfield\n You cant see this text!!");
-        GUILayout.TextArea("This is a textArea\n this can be expanded by using \\n");*/
-        GUILayout.Label("", "Divider");
-        if (GUILayout.Button("Exit"))
         {
-            Application.Quit();
+            /*GUILayout.Space(8);
+            GUILayout.Label("", "Divider");//-------------------------------- custom
+            GUILayout.Label("Standard Label");
+            GUILayout.Label("Short Label", "ShortLabel");//-------------------------------- custom
+            GUILayout.Label("", "Divider");//-------------------------------- custom
+            if (GUILayout.Button("Standard Button"))
+                Debug.Log("Clickyclick");
+            GUILayout.Button("Short Button", "ShortButton");//-------------------------------- custom
+            GUILayout.Label("", "Divider");//-------------------------------- custom
+            ToggleBTN = GUILayout.Toggle(ToggleBTN, "This is a Toggle Button");
+            GUILayout.Label("", "Divider");//-------------------------------- custom
+            GUILayout.Box("This is a textbox\n this can be expanded by using \\n");
+            GUILayout.TextField("This is a textfield\n You cant see this text!!");
+            GUILayout.TextArea("This is a textArea\n this can be expanded by using \\n");*/
+            GUILayout.Label("", "Divider");
+            GUILayout.BeginHorizontal(GUILayout.Height(1f));
+            {
+                GUILayout.Label("Volume", "ShortLabel");
+                GUILayout.BeginVertical();
+                {
+                    GUILayout.FlexibleSpace();
+                    AudioListener.volume = GUILayout.HorizontalSlider(AudioListener.volume, 0, 2f);
+                    GUILayout.FlexibleSpace();
+                }
+                GUILayout.EndVertical();
+            }
+            GUILayout.EndHorizontal();
+            if (GUILayout.Button("Exit"))
+            {
+                PlayerPrefs.SetFloat("Volume", AudioListener.volume);
+                Application.Quit();
+            }
         }
         GUILayout.EndVertical();
     }
