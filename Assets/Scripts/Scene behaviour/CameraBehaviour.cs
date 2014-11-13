@@ -8,11 +8,13 @@ public class CameraBehaviour : MonoBehaviour {
 	private PlayerControl[] players;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		players = FindObjectsOfType(typeof(PlayerControl)) as PlayerControl[];
 	}
 
-	void Update () {
+	void Update ()
+    {
 		camera.orthographicSize = minSize;
 		foreach (PlayerControl player in players) {
 			if (Mathf.Abs(player.transform.position.x - 0f)+3f > camera.aspect*camera.orthographicSize || Mathf.Abs(player.transform.position.y - 0f)+3f > camera.orthographicSize)

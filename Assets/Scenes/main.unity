@@ -3054,6 +3054,8 @@ GameObject:
   - 124: {fileID: 1435105965}
   - 81: {fileID: 1435105964}
   - 114: {fileID: 1435105969}
+  - 114: {fileID: 1435105970}
+  - 114: {fileID: 1435105971}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3139,6 +3141,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSize: 7.5
   maxSize: 17.5
+--- !u!114 &1435105970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435105963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1845345fdfac4245b58ef668c0edb9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
+--- !u!114 &1435105971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435105963}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29c3055cd5591a40a316a83128634e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doWindow0: 1
+  doWindow1: 1
+  doWindow2: 1
+  doWindow3: 1
+  doWindow4: 1
+  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!1 &1464087700
 GameObject:
   m_ObjectHideFlags: 0

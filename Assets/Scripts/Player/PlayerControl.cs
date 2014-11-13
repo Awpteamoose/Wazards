@@ -119,11 +119,6 @@ public class PlayerControl: MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			Application.Quit();
-		}
-
         if ((Input.GetKeyDown(KeyCode.F4) && player == "Player 1") || (Input.GetKeyDown(KeyCode.F9) && player == "Player 2"))
         {
             castComponent.aimMode++;
