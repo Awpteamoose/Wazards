@@ -59,7 +59,6 @@ public class PlayerControl: MonoBehaviour
 		castComponent = GetComponent<CastComponent>();
 		healthComponent = GetComponent<PlayerHealthComponent>();
 		inputComponent = GetComponent<PlayerInputComponent>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 		inputComponent.playername = player;
 
 		for (int i = 0; i<3; i++)
