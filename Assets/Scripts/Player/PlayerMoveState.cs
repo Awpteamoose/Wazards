@@ -33,12 +33,17 @@ public class PlayerMoveState: StateMachine.State
 	{
 		if (pc.inputComponent.getHorizontal() != 0 || pc.inputComponent.getVertical() != 0 )
 		{
+            pc.animator.SetBool("Moving", true);
 			moveComponent.direction.vector = new Vector3 (pc.inputComponent.getHorizontal(), pc.inputComponent.getVertical());
 			//moveComponent.direction = moveComponent.direction.normalized;
 			//moveComponent.targetAngle = Mathf.Round(Mathf.Atan2(moveComponent.direction.y, moveComponent.direction.x) * Mathf.Rad2Deg - 90.0f);
 			
 			pc.rigidbody2D.AddForce (moveComponent.direction.vector * moveComponent.speed);
 		}
+        else
+        {
+            pc.animator.SetBool("Moving", false);
+        }
 		
 		float angle = Mathf.Round (pc.rigidbody2D.rotation);
 		float difference = Mathf.Round(Mathf.Rad2Deg * Mathf.Atan2 (Mathf.Sin (Mathf.Deg2Rad * moveComponent.direction.angle - Mathf.Deg2Rad * angle), Mathf.Cos (Mathf.Deg2Rad * moveComponent.direction.angle - Mathf.Deg2Rad * angle)));

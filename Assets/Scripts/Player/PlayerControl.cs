@@ -9,6 +9,7 @@ public class PlayerControl: MonoBehaviour
 	public CastComponent castComponent {get; set;}
 	public HealthComponent healthComponent {get; set;}
 	public PlayerInputComponent inputComponent {get; set;}
+    public Animator animator {get; set;}
 
 	private GameObject fgManaBar {get; set;}
 	private GameObject bgManaBar {get; set;}
@@ -60,6 +61,7 @@ public class PlayerControl: MonoBehaviour
 		healthComponent = GetComponent<PlayerHealthComponent>();
 		inputComponent = GetComponent<PlayerInputComponent>();
 		inputComponent.playername = player;
+        animator = GetComponent<Animator>();
 
 		for (int i = 0; i<3; i++)
 		{

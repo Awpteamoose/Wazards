@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
+  m_PVSData:
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -79,7 +79,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -104,7 +104,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -226,7 +226,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -237,8 +237,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 1567074118}
     vertices:
@@ -289,7 +289,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -539,7 +539,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -600,7 +600,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -625,7 +625,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -686,7 +686,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -700,7 +700,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -725,7 +725,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -736,8 +736,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 1397725592}
     vertices:
@@ -764,7 +764,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -841,7 +841,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -987,7 +987,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -1005,8 +1005,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c818adf0856d69a40be328c2ac80feb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   transform: {fileID: 0}
   parent: {fileID: 783976494}
   parentImage: {fileID: 1881242194}
@@ -1114,7 +1114,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -1128,7 +1128,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -1223,8 +1223,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c2b44098a8a5946a7d73d7f49467a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   shrinkSpeed: .100000001
   minScaleFactor: .330000013
 --- !u!58 &714682779
@@ -1251,7 +1251,7 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: cc7f1eefde467f24c90c232ac11d4afe, type: 2}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -1282,7 +1282,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -1293,8 +1293,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 2027767885}
     vertices:
@@ -1357,7 +1357,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -1415,8 +1415,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5226231629b166040996aa7a98dbde58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   reticle_distance: 3
   reticle_minimumDistance: 1
   reticle_speed: 3
@@ -1438,8 +1438,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dd08a1be22bd3647938dbc70d054579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   speed: 25
   rotation_factor: 1
 --- !u!114 &783976497
@@ -1451,8 +1451,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d587e9d5aba2a2948b8620d3cb5985e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   arrow: {fileID: 594978163}
   spriteRenderer: {fileID: 783976500}
   spellIcons: []
@@ -1530,7 +1530,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -1548,8 +1548,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbe2bd0969aa5bf4ba0c949a20b66c72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   health: 100
   maxHealth: 100
   killAt: 50
@@ -1564,10 +1564,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f472b637275c2d24a83f3cfb44d97f7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _active: 1
-  playername: 
+  playername:
 --- !u!82 &783976503
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1663,8 +1663,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 930fd9a851b27cc408714ee24ae19e84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &804114214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1717,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -1883,7 +1883,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -1944,7 +1944,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -2005,7 +2005,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2157,7 +2157,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2237,7 +2237,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -2255,8 +2255,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c818adf0856d69a40be328c2ac80feb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   transform: {fileID: 0}
   parent: {fileID: 1216444110}
   parentImage: {fileID: 14704563}
@@ -2265,7 +2265,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2317,7 +2317,7 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 1396262745}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -2352,8 +2352,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdac3dfc9c265c24e8464b9276464565, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   speed: {x: -.0299999993, y: .0299999993}
 --- !u!82 &1187281089
 AudioSource:
@@ -2418,7 +2418,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2455,6 +2455,8 @@ GameObject:
   - 114: {fileID: 1216444113}
   - 114: {fileID: 1216444114}
   - 82: {fileID: 1216444115}
+  - 95: {fileID: 1216444117}
+  - 111: {fileID: 1216444116}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -2471,8 +2473,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d587e9d5aba2a2948b8620d3cb5985e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   arrow: {fileID: 1041437756}
   spriteRenderer: {fileID: 1216444109}
   spellIcons: []
@@ -2550,7 +2552,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -2584,8 +2586,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5226231629b166040996aa7a98dbde58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   reticle_distance: 3
   reticle_minimumDistance: 1
   reticle_speed: 3
@@ -2607,8 +2609,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dd08a1be22bd3647938dbc70d054579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   speed: 25
   rotation_factor: 1
 --- !u!114 &1216444113
@@ -2620,8 +2622,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbe2bd0969aa5bf4ba0c949a20b66c72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   health: 100
   maxHealth: 100
   killAt: 50
@@ -2636,10 +2638,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f472b637275c2d24a83f3cfb44d97f7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _active: 1
-  playername: 
+  playername:
 --- !u!82 &1216444115
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2698,6 +2700,35 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!111 &1216444116
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216444105}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 20d21513fe4bd274080d23bb0a602f03, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &1216444117
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216444105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 519c2321cc20a694988fed69155c9cd6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1238165428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2781,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2822,7 +2853,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2847,7 +2878,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2872,7 +2903,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -2897,7 +2928,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -2908,8 +2939,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 1851914456}
     vertices:
@@ -2974,7 +3005,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3137,8 +3168,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0602bba8ec72dd3428b1aace74fbd322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   minSize: 7.5
   maxSize: 17.5
 --- !u!114 &1435105970
@@ -3150,8 +3181,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1845345fdfac4245b58ef668c0edb9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!114 &1435105971
 MonoBehaviour:
@@ -3162,8 +3193,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d29c3055cd5591a40a316a83128634e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   doWindow0: 1
   doWindow1: 1
   doWindow2: 1
@@ -3222,7 +3253,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -3233,8 +3264,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 875955903}
     vertices:
@@ -3298,7 +3329,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -3374,7 +3405,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3399,7 +3430,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3471,7 +3502,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3533,7 +3564,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -3656,7 +3687,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3681,7 +3712,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3742,7 +3773,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -3756,7 +3787,7 @@ Sprite:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_Rect:
     serializedVersion: 2
     x: 1
@@ -3767,8 +3798,8 @@ Sprite:
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
   m_Extrude: 0
-  m_AtlasName: 
-  m_PackingTag: 
+  m_AtlasName:
+  m_PackingTag:
   m_RD:
     texture: {fileID: 1651970760}
     vertices:
@@ -3795,7 +3826,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3820,7 +3851,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3845,7 +3876,7 @@ Texture2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_AlphaIsTransparency: 0
   m_Width: 1
   m_Height: 1
@@ -3953,7 +3984,7 @@ SpriteRenderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
