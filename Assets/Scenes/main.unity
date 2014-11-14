@@ -1569,6 +1569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _active: 1
   playername: 
+  playerInputDefault: {fileID: 11400000, guid: de8919aad6efa73499cd589c3303ad6b, type: 2}
 --- !u!82 &783976503
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2657,6 +2658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _active: 1
   playername: 
+  playerInputDefault: {fileID: 11400000, guid: de8919aad6efa73499cd589c3303ad6b, type: 2}
 --- !u!82 &1216444115
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3186,7 +3188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
   pauseMenuSize: {x: 300, y: 475}
-  controlsMenuSize: {x: 400, y: 300}
+  controlsMenuSize: {x: 400, y: 250}
+  remapMenuSize: {x: 300, y: 200}
 --- !u!114 &1435105971
 MonoBehaviour:
   m_ObjectHideFlags: 0

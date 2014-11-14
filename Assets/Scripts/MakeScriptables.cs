@@ -31,10 +31,13 @@ public class MakeScriptables
         /*asset = ScriptableObject.CreateInstance<LaserSpell>();
         AssetDatabase.CreateAsset(asset, "Assets/Resources/Spells/Laser/LaserSpell.asset");*/
 
-        asset = ScriptableObject.CreateInstance<WallSpell>();
-        AssetDatabase.CreateAsset(asset, "Assets/Resources/Spells/Wall/WallSpell.asset");
+        /*asset = ScriptableObject.CreateInstance<WallSpell>();
+        AssetDatabase.CreateAsset(asset, "Assets/Resources/Spells/Wall/WallSpell.asset");*/
 
-		PlayerControl[] players = ScriptableObject.FindObjectsOfType(typeof(PlayerControl)) as PlayerControl[];
+        asset = ScriptableObject.CreateInstance<PlayerInputDefault>();
+        AssetDatabase.CreateAsset(asset, "Assets/Resources/PlayerInputDefault.asset");
+
+		/*PlayerControl[] players = ScriptableObject.FindObjectsOfType(typeof(PlayerControl)) as PlayerControl[];
 		foreach (PlayerControl player in players)
 		{
 			if (!GameObject.Find(player.player+" Background Mana Bar"))
@@ -206,7 +209,7 @@ public class MakeScriptables
 				Bar.transform.rotation = Quaternion.identity;
 				Bar.SetActive(false);
 			}
-		}
+		}*/
 	}
 }
 #endif

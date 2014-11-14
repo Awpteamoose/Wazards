@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//This is messy as shit, but if someone knows a better way - inform me, please
 public class PauseMenu : MonoBehaviour
 {
     public GUISkin skin;
 
     public Vector2 pauseMenuSize;
     public Vector2 controlsMenuSize;
+    public Vector2 remapMenuSize;
+
     private Vector2 screenCenter;
     private Rect pauseMenuRect;
     private Rect controlsMenuRect;
+    private Rect remapMenuRect;
 
     public static bool paused = false;
     enum Window
     {
         Main,
-        Controls
+        Controls,
+        Remap
     }
     private Window window;
 
@@ -23,13 +28,18 @@ public class PauseMenu : MonoBehaviour
     private string o_height;
     private bool fullscreen;
 
+    private int inputIterator = 0;
+    private string playerToRemap;
+    private bool remapping = false;
+
     void Start ()
     {
-        //Screen.showCursor = false;
+        Screen.showCursor = false;
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
         screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
         pauseMenuRect = new Rect(screenCenter.x - (pauseMenuSize.x / 2f), screenCenter.y - (pauseMenuSize.y / 2f), pauseMenuSize.x, pauseMenuSize.y);
         controlsMenuRect = new Rect(screenCenter.x - (controlsMenuSize.x / 2f), screenCenter.y - (controlsMenuSize.y / 2f), controlsMenuSize.x, controlsMenuSize.y);
+        remapMenuRect = new Rect(screenCenter.x - (remapMenuSize.x / 2f), screenCenter.y - (remapMenuSize.y / 2f), remapMenuSize.x, remapMenuSize.y);
         o_width = Screen.width.ToString();
         o_height = Screen.height.ToString();
         fullscreen = Screen.fullScreen;
@@ -91,6 +101,7 @@ public class PauseMenu : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("Volume", AudioListener.volume);
                 Time.timeScale = 1;
+                Screen.showCursor = false;
                 paused = false;
             }
 
@@ -105,7 +116,64 @@ public class PauseMenu : MonoBehaviour
 
     void controlsWindow (int windowID)
     {
-        //TODO: controls
+        GUILayout.BeginVertical();
+        {
+            GUILayout.Space(40f);
+            GUILayout.BeginHorizontal(GUILayout.Height(1f));
+            {
+                if (GUILayout.Button("Player 1"))
+                {
+                    playerToRemap = "Player 1";
+                    remapping = true;
+                }
+                if (GUILayout.Button("Player 2"))
+                {
+                    playerToRemap = "Player 2";
+                    remapping = true;
+                }
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal(GUILayout.Height(1f));
+            {
+                if (GUILayout.Button("Player 3"))
+                {
+                    playerToRemap = "Player 3";
+                    remapping = true;
+                }
+                if (GUILayout.Button("Player 4"))
+                {
+                    playerToRemap = "Player 4";
+                    remapping = true;
+                }
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.Label("", "Divider");
+
+            if (GUILayout.Button("Return"))
+            {
+                window = Window.Main;
+            }
+        }
+        GUILayout.EndVertical();
+    }
+
+    void remapWindow (int windowID)
+    {
+        GUILayout.BeginVertical();
+        {
+            GUILayout.Space(50f);
+            GUILayout.BeginHorizontal();
+            {
+                GUILayout.FlexibleSpace();
+                GUILayout.Label("Press the key corresponding to", "PlainText");
+                GUILayout.Label(PlayerInputComponent.inputNames[inputIterator], "LegendaryText");
+                GUILayout.FlexibleSpace();
+            }
+            GUILayout.EndHorizontal();
+        }
+        GUILayout.EndVertical();
     }
 
     void Update()
@@ -113,6 +181,7 @@ public class PauseMenu : MonoBehaviour
         if (!paused && Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
+            Screen.showCursor = true;
             paused = true;
             window = Window.Main;
         }
@@ -120,6 +189,7 @@ public class PauseMenu : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Volume", AudioListener.volume);
             Time.timeScale = 1;
+            Screen.showCursor = false;
             paused = false;
         }
     }
@@ -134,6 +204,21 @@ public class PauseMenu : MonoBehaviour
             {
                 controlsMenuRect = GUI.Window((int)Window.Controls, controlsMenuRect, controlsWindow, "");
                 GUI.BringWindowToFront((int)Window.Controls);
+                if (remapping)
+                {
+                    remapMenuRect = GUI.Window((int)Window.Controls + 1, remapMenuRect, remapWindow, "");
+                    GUI.BringWindowToFront((int)Window.Controls+1);
+                    if (Event.current.isKey && Event.current.type == EventType.KeyUp)
+                    {
+
+                        PlayerPrefs.SetInt(playerToRemap + " " + PlayerInputComponent.inputNames[inputIterator], (int)Event.current.keyCode);
+                        PlayerInputComponent.mappings[playerToRemap + " " + PlayerInputComponent.inputNames[inputIterator++]] = Event.current.keyCode;
+                        if (inputIterator >= PlayerInputComponent.inputNames.Length)
+                        {
+                            remapping = false;
+                        }
+                    }
+                }
             }
         }
     }
