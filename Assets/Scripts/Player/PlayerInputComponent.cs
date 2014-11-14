@@ -13,6 +13,7 @@ public class PlayerInputComponent : InputComponent
     {
         if (mappings == null)
         {
+            //PlayerPrefs.DeleteAll();
             inputNames = new string[8];
             inputNames[0] = "Up";
             inputNames[1] = "Left";
@@ -29,15 +30,20 @@ public class PlayerInputComponent : InputComponent
                 for (int j = 0; j < inputNames.Length; j++)
                 {
                     string name = "Player " + i + " " + inputNames[j];
-                    mappings.Add(name, (KeyCode)PlayerPrefs.GetInt(name, (int)KeyCode.None));
+                    KeyCode key = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(name, KeyCode.None.ToString()));
+                    mappings.Add(name, key);
                 }
             }
 
             for (int i = 0; i < playerInputDefault.bindings.Length; i++)
             {
                 if (mappings[playerInputDefault.bindings[i].name] == KeyCode.None)
+                {
+                    PlayerPrefs.SetString(playerInputDefault.bindings[i].name, playerInputDefault.bindings[i].key.ToString());
                     mappings[playerInputDefault.bindings[i].name] = playerInputDefault.bindings[i].key;
+                }
             }
+            PlayerPrefs.Save();
         }
     }
 

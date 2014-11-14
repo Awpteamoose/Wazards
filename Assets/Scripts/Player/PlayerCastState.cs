@@ -49,8 +49,8 @@ public class PlayerCastState: StateMachine.State
 
 		//HACK:
 		canTurn = false;
-		vert = Input.GetAxisRaw(pc.player+" Vertical");
-		hor = Input.GetAxisRaw(pc.player+" Horizontal");
+		vert = pc.inputComponent.getVertical();
+        hor = pc.inputComponent.getHorizontal();
 
 		pc.castComponent.bgBar.SetActive(true);
 		pc.castComponent.fgBar.transform.localScale = new Vector3(0, pc.castComponent.bgBar.transform.localScale.y, 0);
@@ -93,8 +93,8 @@ public class PlayerCastState: StateMachine.State
 	public override void FixedUpdate()
 	{
 		//TODO: move all this shit into a component, make calls to it
-		float newvert = Input.GetAxisRaw(pc.player+" Vertical");
-		float newhor = Input.GetAxisRaw(pc.player+" Horizontal");
+        float newvert = pc.inputComponent.getVertical(); ;
+        float newhor = pc.inputComponent.getHorizontal(); ;
 		if (!canTurn && (newvert != vert || newhor != hor))
 		{
 			canTurn = true;

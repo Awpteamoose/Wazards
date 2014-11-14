@@ -215,6 +215,7 @@ public class PauseMenu : MonoBehaviour
                         PlayerInputComponent.mappings[playerToRemap + " " + PlayerInputComponent.inputNames[inputIterator++]] = Event.current.keyCode;
                         if (inputIterator >= PlayerInputComponent.inputNames.Length)
                         {
+                            inputIterator = 0;
                             remapping = false;
                         }
                     }
