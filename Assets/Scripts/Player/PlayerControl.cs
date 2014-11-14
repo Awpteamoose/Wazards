@@ -108,46 +108,49 @@ public class PlayerControl: MonoBehaviour
 	
 	void Update()
 	{
-		for (int i = 0; i < 3; i++)
-		{
-			if (Input.GetButtonDown (player+" Switch Spell "+(i+1)))
-			{
-				int newSpell = PlayerPrefs.GetInt (player+" Spell "+i)+1;
-				if (newSpell >= SpellList.spells.Count)
-					newSpell = 0;
-				PlayerPrefs.SetInt(player+" Spell "+i, newSpell);
-				castComponent.spellBook.set(SpellList.spells[newSpell], i);
-				spellIcons[i].guiTexture.texture = castComponent.spellBook.get(i).icon;
-			}
-		}
-
-        if ((Input.GetKeyDown(KeyCode.F4) && player == "Player 1") || (Input.GetKeyDown(KeyCode.F9) && player == "Player 2"))
+        if (!PauseMenu.paused)
         {
-            castComponent.aimMode++;
-            if (castComponent.aimMode > 1)
-                castComponent.aimMode = 0;
-            PlayerPrefs.SetInt(player + " Aim Mode", castComponent.aimMode);
-        }
-
-        if (chanting)
-        {
-            if (!audio.isPlaying)
+            for (int i = 0; i < 3; i++)
             {
-                if (stopChant)
+                if (Input.GetButtonDown(player + " Switch Spell " + (i + 1)))
                 {
-                    audio.Stop();
-                }
-                else
-                {
-                    Random.seed = lastRandom;
-                    lastRandom = Random.Range(-214748364, 214748364);
-                    audio.clip = words[Random.Range(0, words.Length)];
-                    Random.seed = Mathf.RoundToInt(Time.time * 100f);
-                    audio.Play();
+                    int newSpell = PlayerPrefs.GetInt(player + " Spell " + i) + 1;
+                    if (newSpell >= SpellList.spells.Count)
+                        newSpell = 0;
+                    PlayerPrefs.SetInt(player + " Spell " + i, newSpell);
+                    castComponent.spellBook.set(SpellList.spells[newSpell], i);
+                    spellIcons[i].guiTexture.texture = castComponent.spellBook.get(i).icon;
                 }
             }
+
+            if ((Input.GetKeyDown(KeyCode.F4) && player == "Player 1") || (Input.GetKeyDown(KeyCode.F9) && player == "Player 2"))
+            {
+                castComponent.aimMode++;
+                if (castComponent.aimMode > 1)
+                    castComponent.aimMode = 0;
+                PlayerPrefs.SetInt(player + " Aim Mode", castComponent.aimMode);
+            }
+
+            if (chanting)
+            {
+                if (!audio.isPlaying)
+                {
+                    if (stopChant)
+                    {
+                        audio.Stop();
+                    }
+                    else
+                    {
+                        Random.seed = lastRandom;
+                        lastRandom = Random.Range(-214748364, 214748364);
+                        audio.clip = words[Random.Range(0, words.Length)];
+                        Random.seed = Mathf.RoundToInt(Time.time * 100f);
+                        audio.Play();
+                    }
+                }
+            }
+            sm.Update();
         }
-		sm.Update ();
 	}
 
     void OnBecameInvisible()

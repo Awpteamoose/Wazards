@@ -35,8 +35,6 @@ public class PlayerMoveState: StateMachine.State
 		{
             pc.animator.SetBool("Moving", true);
 			moveComponent.direction.vector = new Vector3 (pc.inputComponent.getHorizontal(), pc.inputComponent.getVertical());
-			//moveComponent.direction = moveComponent.direction.normalized;
-			//moveComponent.targetAngle = Mathf.Round(Mathf.Atan2(moveComponent.direction.y, moveComponent.direction.x) * Mathf.Rad2Deg - 90.0f);
 			
 			pc.rigidbody2D.AddForce (moveComponent.direction.vector * moveComponent.speed);
 		}
@@ -59,7 +57,6 @@ public class PlayerMoveState: StateMachine.State
 	{
 		pc.rigidbody2D.angularVelocity = 0;
 		moveComponent.direction.angle = pc.rigidbody2D.rotation;
-		//moveComponent.direction = Quaternion.Euler (0, 0, moveComponent.targetAngle) * Vector3.up;
 		#if UNITY_EDITOR
 		//Debug.Log("Move: Exit");
 		#endif
