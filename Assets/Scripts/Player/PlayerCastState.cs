@@ -32,13 +32,13 @@ public class PlayerCastState: StateMachine.State
 		t_charged = 0;
 		pc.castComponent.reticle.SetActive(true);
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
-        if (pc.castComponent.aimMode == 0)
+        if (pc.castComponent.altAimMode)
         {
             mode0_distance = pc.castComponent.reticle_distance;
             world_reticle = pc.transform.position + (pc.moveComponent.direction.vector * mode0_distance);
             pc.castComponent.reticle.transform.position = world_reticle;
         }
-        else if (pc.castComponent.aimMode == 1)
+        else if (!pc.castComponent.altAimMode)
         {
             pc.castComponent.reticle.transform.parent = null;
             pc.castComponent.reticle.transform.position = pc.transform.position + (pc.moveComponent.direction.vector * pc.castComponent.reticle_distance);
@@ -77,14 +77,13 @@ public class PlayerCastState: StateMachine.State
 		}
 
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
-        if (pc.castComponent.aimMode == 0)
+        if (pc.castComponent.altAimMode)
         {
 		    world_reticle = pc.transform.position + (pc.moveComponent.direction.vector * mode0_distance);
 		    pc.castComponent.reticle.transform.position = world_reticle;
         }
-        else if (pc.castComponent.aimMode == 1)
+        else if (!pc.castComponent.altAimMode)
         {
-            //TODO: move the reticle if aimMode is 1
             world_reticle = pc.castComponent.reticle.transform.position;
         }
 		pc.castComponent.fgBar.transform.localScale = new Vector3(((Time.time - t_start)/t_charge*pc.castComponent.bgBar.transform.localScale.x), pc.castComponent.fgBar.transform.localScale.y, 0);
@@ -102,7 +101,7 @@ public class PlayerCastState: StateMachine.State
         else if (canTurn)
 		{
             //Asteroids-like reticle movement
-            if (pc.castComponent.aimMode == 0)
+            if (pc.castComponent.altAimMode)
             {
                 if (newvert != 0)
                 {
@@ -117,15 +116,15 @@ public class PlayerCastState: StateMachine.State
             }
 
             //Orthogonal reticle movement
-            else if (pc.castComponent.aimMode == 1)
+            else if (!pc.castComponent.altAimMode)
             {
-                pc.castComponent.reticle.rigidbody2D.AddForce(new Vector2(newhor * pc.castComponent.reticle_speed * 80f, newvert * pc.castComponent.reticle_speed * 80f));
+                pc.castComponent.reticle.rigidbody2D.AddForce(new Vector2(newhor * pc.castComponent.reticle_speed * 125f, newvert * pc.castComponent.reticle_speed * 125f));
                 pc.moveComponent.direction.vector = pc.castComponent.reticle.transform.position - pc.transform.position;
             }
             pc.rigidbody2D.MoveRotation(pc.moveComponent.direction.angle);
 		}
 
-        if (pc.castComponent.aimMode == 1 && mode1_lastPosition != pc.transform.position)
+        if (!pc.castComponent.altAimMode && mode1_lastPosition != pc.transform.position)
         {
             pc.castComponent.reticle.transform.position = pc.castComponent.reticle.transform.position + pc.transform.position - mode1_lastPosition;
             mode1_lastPosition = pc.transform.position;

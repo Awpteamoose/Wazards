@@ -70,7 +70,8 @@ public class PlayerControl: MonoBehaviour
 				PlayerPrefs.SetInt(player+" Spell "+i, Random.Range (0, SpellList.spells.Count));
 			castComponent.spellBook.set(SpellList.spells[PlayerPrefs.GetInt(player+" Spell "+i)], i);
 		}
-        castComponent.aimMode = PlayerPrefs.GetInt(player + " Aim Mode", 1);
+        castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
+        castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
 		castComponent.spellBook.set (SpellList.normalAttack, 3);
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
@@ -121,14 +122,6 @@ public class PlayerControl: MonoBehaviour
                     castComponent.spellBook.set(SpellList.spells[newSpell], i);
                     spellIcons[i].guiTexture.texture = castComponent.spellBook.get(i).icon;
                 }
-            }
-
-            if ((Input.GetKeyDown(KeyCode.F4) && player == "Player 1") || (Input.GetKeyDown(KeyCode.F9) && player == "Player 2"))
-            {
-                castComponent.aimMode++;
-                if (castComponent.aimMode > 1)
-                    castComponent.aimMode = 0;
-                PlayerPrefs.SetInt(player + " Aim Mode", castComponent.aimMode);
             }
 
             if (chanting)

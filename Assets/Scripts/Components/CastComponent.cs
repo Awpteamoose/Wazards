@@ -12,9 +12,9 @@ public class CastComponent: MonoBehaviour
 	public GameObject pcBar {get; set;}
 	public float reticle_distance = 2f;
 	public float reticle_minimumDistance = 1f;
-	public float reticle_speed = 1f;
+	public float reticle_speed;
 	public float maxMana = 100f;
-    public int aimMode;
+    public bool altAimMode;
 
 	#if UNITY_EDITOR
 	[ReadOnly]

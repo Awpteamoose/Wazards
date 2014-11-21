@@ -1422,7 +1422,7 @@ MonoBehaviour:
   reticle_minimumDistance: 1
   reticle_speed: 3
   maxMana: 100
-  aimMode: 1
+  altAimMode: 0
   mana: 100
   manaRegen: 6.5
   cooldowns:
@@ -2608,7 +2608,7 @@ MonoBehaviour:
   reticle_minimumDistance: 1
   reticle_speed: 3
   maxMana: 100
-  aimMode: 1
+  altAimMode: 0
   mana: 100
   manaRegen: 6.5
   cooldowns:
@@ -3189,6 +3189,7 @@ MonoBehaviour:
   skin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
   pauseMenuSize: {x: 300, y: 475}
   controlsMenuSize: {x: 400, y: 250}
+  mappingsMenuSize: {x: 600, y: 380}
   remapMenuSize: {x: 300, y: 200}
 --- !u!114 &1435105971
 MonoBehaviour:

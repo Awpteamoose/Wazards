@@ -1,50 +1,105 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//This is messy as shit, but if someone knows a better way - inform me, please
+//This is messy, but if someone knows a better way - inform me, please
+//It also probably is a lot more coupled with the rest of the code than it should be
 public class PauseMenu : MonoBehaviour
 {
     public GUISkin skin;
 
     public Vector2 pauseMenuSize;
     public Vector2 controlsMenuSize;
+    public Vector2 mappingsMenuSize;
     public Vector2 remapMenuSize;
 
-    private Vector2 screenCenter;
     private Rect pauseMenuRect;
     private Rect controlsMenuRect;
+    private Rect mappingsMenuRect;
     private Rect remapMenuRect;
 
     public static bool paused = false;
-    enum Window
-    {
-        Main,
-        Controls,
-        Remap
-    }
-    private Window window;
 
     private string o_width;
     private string o_height;
     private bool fullscreen;
+    
+    private int inputIterator;
+    private string player;
+    private PlayerControl playerControl;
+    private float reticleSpeed;
+    private bool aimMode;
 
-    private int inputIterator = 0;
-    private string playerToRemap;
-    private bool remapping = false;
+    private bool drawControls;
+    private bool drawMappings;
+    private bool drawRemap;
+
+    Rect GetMenuRect(Vector2 center, Vector2 size)
+    {
+        return new Rect(center.x - (size.x / 2f), center.y - (size.y / 2f), size.x, size.y);
+    }
+    void getSizePosition()
+    {
+        Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        pauseMenuRect = GetMenuRect(screenCenter, pauseMenuSize);
+        controlsMenuRect = GetMenuRect(screenCenter, controlsMenuSize);
+        mappingsMenuRect = GetMenuRect(screenCenter, mappingsMenuSize);
+        remapMenuRect = GetMenuRect(screenCenter, remapMenuSize);
+    }
+
+    void SetPlayer(string playername)
+    {
+        player = playername;
+        if (GameObject.Find(player) != null)
+            playerControl = GameObject.Find(player).GetComponentInChildren<PlayerControl>();
+        reticleSpeed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
+        aimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
+    }
+
+    void SaveMappings()
+    {
+        PlayerPrefs.SetFloat(player + " Reticle Speed", reticleSpeed);
+        PlayerPrefs.SetInt(player + " Aim Mode", aimMode ? 1 : 0);
+        if (playerControl != null)
+        {
+            playerControl.castComponent.reticle_speed = reticleSpeed;
+            playerControl.castComponent.altAimMode = aimMode;
+        }
+    }
 
     void Start ()
     {
         Screen.showCursor = false;
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
-        screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-        pauseMenuRect = new Rect(screenCenter.x - (pauseMenuSize.x / 2f), screenCenter.y - (pauseMenuSize.y / 2f), pauseMenuSize.x, pauseMenuSize.y);
-        controlsMenuRect = new Rect(screenCenter.x - (controlsMenuSize.x / 2f), screenCenter.y - (controlsMenuSize.y / 2f), controlsMenuSize.x, controlsMenuSize.y);
-        remapMenuRect = new Rect(screenCenter.x - (remapMenuSize.x / 2f), screenCenter.y - (remapMenuSize.y / 2f), remapMenuSize.x, remapMenuSize.y);
         o_width = Screen.width.ToString();
         o_height = Screen.height.ToString();
         fullscreen = Screen.fullScreen;
     }
 
+    void OpenMenu()
+    {
+        Time.timeScale = 0;
+        Screen.showCursor = true;
+        paused = true;
+
+        getSizePosition();
+        inputIterator = 0;
+        drawControls = false;
+        drawMappings = false;
+        drawRemap = false;
+    }
+
+    void CloseMenu()
+    {
+        PlayerPrefs.SetFloat("Volume", AudioListener.volume);
+        if (drawMappings)
+            SaveMappings();
+        PlayerPrefs.Save();
+        Time.timeScale = 1;
+        Screen.showCursor = false;
+        paused = false;
+    }
+
+    #region Windows
     void pauseWindow (int windowID)
     {
         AddSpikes(pauseMenuRect.width);
@@ -63,8 +118,7 @@ public class PauseMenu : MonoBehaviour
                 o_height = GUILayout.TextField(o_height, GUILayout.Width(pauseMenuRect.width/5f));
                 fullscreen = GUILayout.Toggle(fullscreen, "Fullscreen?");
                 GUILayout.FlexibleSpace();
-            }
-            GUILayout.EndHorizontal();
+            } GUILayout.EndHorizontal();
             
             if (GUILayout.Button("Apply"))
             {
@@ -82,36 +136,29 @@ public class PauseMenu : MonoBehaviour
                 GUILayout.BeginVertical();
                 {
                     GUILayout.FlexibleSpace();
-                    GUI.SetNextControlName("Volume");
                     AudioListener.volume = GUILayout.HorizontalSlider(AudioListener.volume, 0, 2f);
                     GUILayout.FlexibleSpace();
-                }
-                GUILayout.EndVertical();
-            }
-            GUILayout.EndHorizontal();
+                } GUILayout.EndVertical();
+            } GUILayout.EndHorizontal();
 
             GUILayout.Label("", "Divider");
 
             if (GUILayout.Button("Controls"))
             {
-                window = Window.Controls;
+                drawControls = true;
             }
 
             if (GUILayout.Button("Resume"))
             {
-                PlayerPrefs.SetFloat("Volume", AudioListener.volume);
-                Time.timeScale = 1;
-                Screen.showCursor = false;
-                paused = false;
+                CloseMenu();
             }
 
             if (GUILayout.Button("Exit"))
             {
-                PlayerPrefs.SetFloat("Volume", AudioListener.volume);
+                CloseMenu();
                 Application.Quit();
             }
-        }
-        GUILayout.EndVertical();
+        } GUILayout.EndVertical();
     }
 
     void controlsWindow (int windowID)
@@ -123,40 +170,103 @@ public class PauseMenu : MonoBehaviour
             {
                 if (GUILayout.Button("Player 1"))
                 {
-                    playerToRemap = "Player 1";
-                    remapping = true;
+                    SetPlayer("Player 1");
+                    drawMappings = true;
                 }
                 if (GUILayout.Button("Player 2"))
                 {
-                    playerToRemap = "Player 2";
-                    remapping = true;
+                    SetPlayer("Player 2");
+                    drawMappings = true;
                 }
-            }
-            GUILayout.EndHorizontal();
+            } GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal(GUILayout.Height(1f));
             {
                 if (GUILayout.Button("Player 3"))
                 {
-                    playerToRemap = "Player 3";
-                    remapping = true;
+                    SetPlayer("Player 3");
+                    drawMappings = true;
                 }
                 if (GUILayout.Button("Player 4"))
                 {
-                    playerToRemap = "Player 4";
-                    remapping = true;
+                    SetPlayer("Player 4");
+                    drawMappings = true;
                 }
-            }
-            GUILayout.EndHorizontal();
+            } GUILayout.EndHorizontal();
 
             GUILayout.Label("", "Divider");
 
             if (GUILayout.Button("Return"))
             {
-                window = Window.Main;
+                drawControls = false;
             }
-        }
-        GUILayout.EndVertical();
+        } GUILayout.EndVertical();
+    }
+
+    void mappingsWindow (int windowID)
+    {
+        GUILayout.BeginVertical();
+        {
+            GUILayout.Space(50f);
+
+            GUILayout.BeginHorizontal(GUILayout.Height(1f));
+            {
+                GUILayout.BeginVertical(GUILayout.Width(mappingsMenuSize.x / 2 - 50f));
+                {
+                    for (int i = 0; i < PlayerInputComponent.inputNames.Length / 2; i++)
+                    {
+                        GUILayout.BeginHorizontal();
+                        {
+                            GUILayout.Label(PlayerInputComponent.inputNames[i], "ShortLabel");
+                            GUILayout.FlexibleSpace();
+                            GUILayout.Label(PlayerInputComponent.mappings[player + " " + PlayerInputComponent.inputNames[i]].ToString(), "LegendaryText");
+                            GUILayout.Space(25f);
+                        } GUILayout.EndHorizontal();
+                    }
+                } GUILayout.EndVertical();
+
+                GUILayout.BeginVertical(GUILayout.Width(mappingsMenuSize.x / 2 - 50f));
+                {
+                    for (int i = PlayerInputComponent.inputNames.Length / 2; i < PlayerInputComponent.inputNames.Length; i++)
+                    {
+                        GUILayout.BeginHorizontal();
+                        {
+                            GUILayout.Label(PlayerInputComponent.inputNames[i], "ShortLabel");
+                            GUILayout.FlexibleSpace();
+                            GUILayout.Label(PlayerInputComponent.mappings[player + " " + PlayerInputComponent.inputNames[i]].ToString(), "LegendaryText");
+                            GUILayout.Space(25f);
+                        } GUILayout.EndHorizontal();
+                    }
+                } GUILayout.EndVertical();
+            } GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal(GUILayout.Height(1f));
+            {
+                GUILayout.Label("Reticle speed", "ShortLabel");
+                GUILayout.BeginVertical();
+                {
+                    GUILayout.FlexibleSpace();
+                    reticleSpeed = GUILayout.HorizontalSlider(reticleSpeed, 1f, 10f);
+                    GUILayout.FlexibleSpace();
+                } GUILayout.EndVertical();
+                float.TryParse(GUILayout.TextField(reticleSpeed.ToString(), GUILayout.Width(60f)), out reticleSpeed);
+                aimMode = GUILayout.Toggle(aimMode, "Alternative aim mode");
+            } GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            {
+                if (GUILayout.Button("Redefine"))
+                {
+                    drawRemap = true;
+                }
+
+                if (GUILayout.Button("Return"))
+                {
+                    SaveMappings();
+                    drawMappings = false;
+                }
+            } GUILayout.EndHorizontal();
+        } GUILayout.EndVertical();
     }
 
     void remapWindow (int windowID)
@@ -170,54 +280,56 @@ public class PauseMenu : MonoBehaviour
                 GUILayout.Label("Press the key corresponding to", "PlainText");
                 GUILayout.Label(PlayerInputComponent.inputNames[inputIterator], "LegendaryText");
                 GUILayout.FlexibleSpace();
-            }
-            GUILayout.EndHorizontal();
-        }
-        GUILayout.EndVertical();
+            } GUILayout.EndHorizontal();
+        } GUILayout.EndVertical();
     }
+    #endregion
 
     void Update()
     {
         if (!paused && Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
-            Screen.showCursor = true;
-            paused = true;
-            window = Window.Main;
+            OpenMenu();
         }
         else if (paused && Input.GetKeyDown(KeyCode.Escape))
         {
-            PlayerPrefs.SetFloat("Volume", AudioListener.volume);
-            Time.timeScale = 1;
-            Screen.showCursor = false;
-            paused = false;
+            CloseMenu();
         }
     }
 
     void OnGUI()
     {
+        getSizePosition();
         if (paused)
         {
             GUI.skin = skin;
-            pauseMenuRect = GUI.Window((int)Window.Main, pauseMenuRect, pauseWindow, "");
-            if (window == Window.Controls)
-            {
-                controlsMenuRect = GUI.Window((int)Window.Controls, controlsMenuRect, controlsWindow, "");
-                GUI.BringWindowToFront((int)Window.Controls);
-                if (remapping)
-                {
-                    remapMenuRect = GUI.Window((int)Window.Controls + 1, remapMenuRect, remapWindow, "");
-                    GUI.BringWindowToFront((int)Window.Controls+1);
-                    if (Event.current.isKey && Event.current.type == EventType.KeyUp)
-                    {
+            pauseMenuRect = GUI.Window(0, pauseMenuRect, pauseWindow, "");
+            GUI.BringWindowToFront(0);
 
-                        PlayerPrefs.SetInt(playerToRemap + " " + PlayerInputComponent.inputNames[inputIterator], (int)Event.current.keyCode);
-                        PlayerInputComponent.mappings[playerToRemap + " " + PlayerInputComponent.inputNames[inputIterator++]] = Event.current.keyCode;
-                        if (inputIterator >= PlayerInputComponent.inputNames.Length)
-                        {
-                            inputIterator = 0;
-                            remapping = false;
-                        }
+            if (drawControls)
+            {
+                controlsMenuRect = GUI.Window(1, controlsMenuRect, controlsWindow, "");
+                GUI.BringWindowToFront(1);
+            }
+
+            if (drawMappings)
+            {
+                mappingsMenuRect = GUI.Window(2, mappingsMenuRect, mappingsWindow, "");
+                GUI.BringWindowToFront(2);
+            }
+
+            if (drawRemap)
+            {
+                remapMenuRect = GUI.Window(3, remapMenuRect, remapWindow, "");
+                GUI.BringWindowToFront(3);
+                if (Event.current.isKey && Event.current.type == EventType.KeyUp && Event.current.keyCode != KeyCode.Escape)
+                {
+                    PlayerPrefs.SetInt(player + " " + PlayerInputComponent.inputNames[inputIterator], (int)Event.current.keyCode);
+                    PlayerInputComponent.mappings[player + " " + PlayerInputComponent.inputNames[inputIterator++]] = Event.current.keyCode;
+                    if (inputIterator >= PlayerInputComponent.inputNames.Length)
+                    {
+                        inputIterator = 0;
+                        drawRemap = false;
                     }
                 }
             }
