@@ -66,13 +66,19 @@ public class PlayerControl: MonoBehaviour
 		for (int i = 0; i<3; i++)
 		{
             //PlayerPrefs.DeleteAll();
-			if (PlayerPrefs.GetInt(player+" Spell "+i, -1) == -1 || PlayerPrefs.GetInt(player+" Spell "+i, -1) >= SpellList.spells.Count)
-				PlayerPrefs.SetInt(player+" Spell "+i, Random.Range (0, SpellList.spells.Count));
-			castComponent.spellBook.set(SpellList.spells[PlayerPrefs.GetInt(player+" Spell "+i)], i);
+            string spellName = player + " SelectedSpell " + i.ToString();
+            int spellNumber = PlayerPrefs.GetInt(spellName, -1);
+            if (spellNumber == -1 || spellNumber >= SpellList.spells.Count)
+            {
+                spellNumber = Random.Range(0, SpellList.spells.Count);
+                PlayerPrefs.SetInt(spellName, spellNumber);
+            }
+            castComponent.spellBook.set(SpellList.spells[spellNumber], i);
 		}
         castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
         castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
 		castComponent.spellBook.set (SpellList.normalAttack, 3);
+        PlayerPrefs.Save();
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
 		sm.states.Add(States.Cast,new PlayerCastState(this));
@@ -115,12 +121,14 @@ public class PlayerControl: MonoBehaviour
             {
                 if (Input.GetButtonDown(player + " Switch Spell " + (i + 1)))
                 {
-                    int newSpell = PlayerPrefs.GetInt(player + " Spell " + i) + 1;
+                    string spellName = player + " SelectedSpell " + i.ToString();
+                    int newSpell = PlayerPrefs.GetInt(spellName) + 1;
                     if (newSpell >= SpellList.spells.Count)
                         newSpell = 0;
-                    PlayerPrefs.SetInt(player + " Spell " + i, newSpell);
+                    PlayerPrefs.SetInt(spellName, newSpell);
                     castComponent.spellBook.set(SpellList.spells[newSpell], i);
                     spellIcons[i].guiTexture.texture = castComponent.spellBook.get(i).icon;
+                    PlayerPrefs.Save();
                 }
             }
 

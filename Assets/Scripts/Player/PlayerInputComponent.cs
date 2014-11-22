@@ -13,7 +13,6 @@ public class PlayerInputComponent : InputComponent
     {
         if (mappings == null)
         {
-            //PlayerPrefs.DeleteAll();
             inputNames = new string[8];
             inputNames[0] = "Up";
             inputNames[1] = "Left";
