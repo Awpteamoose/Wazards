@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Font: {fileID: 11400000, guid: 7ec953ba184eeca41ad5a8975a162d2d, type: 2}
   Text: 0
-  Size: 12.5
+  Size: 7.5
   Leading: 0
   Tracking: 0
   ParagraphSpacing: 0

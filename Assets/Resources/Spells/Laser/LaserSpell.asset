@@ -19,8 +19,8 @@ MonoBehaviour:
   secondsMinCharge: .200000003
   manacost: 30
   secondsCooldown: 3
-  damage: 20
-  chargedDamage: 25
+  damage: 24
+  chargedDamage: 35
   width: .200000003
   chargedWidth: .800000012
   t_delay: .600000024

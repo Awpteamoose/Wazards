@@ -58,12 +58,15 @@ public class PlayerHealthComponent : HealthComponent {
         //TODO: take base knockback as a parameter?
         //http://www.ssbwiki.com/Knockback
         rigidbody2D.AddForce(direction * ( (((damageTaken * 0.1f) + ((damageTaken * damage) * 0.05f)) * 0.75f/*35f*/) + 4f/*250f*/ ) * scale, ForceMode2D.Impulse);
+
 		Transform newIndicator = Instantiate (damageIndicator) as Transform;
 		newIndicator.gameObject.SetActive (true);
 		TypogenicText typo = newIndicator.GetComponent<TypogenicText> ();
 		typo.Text = (Mathf.Round(damage * 100f)/100f).ToString();
-		newIndicator.position = new Vector3 (transform.position.x, transform.position.y, -0.5f);
-		typo.Size = Mathf.Clamp((damage / 10f), 0.35f, 1.65f) * typo.Size;
+        float timesAverage = Mathf.Clamp((damage / 5f), 0.25f, 4f);
+        float sizemod = (timesAverage - 1f) / 2f + 1f;
+        typo.Size = sizemod * typo.Size;
+        newIndicator.position = new Vector3(transform.position.x, transform.position.y + typo.Size / 14.05f, -0.5f);
 		newIndicator.rigidbody2D.AddForce (-direction * 2.5f, ForceMode2D.Impulse);
     }
 }

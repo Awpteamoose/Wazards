@@ -21,7 +21,7 @@ MonoBehaviour:
   secondsCooldown: 1.75
   distance: 6
   speed: .5
-  damageMod: 1.5
+  damageMod: 1.75
   size: 1.25
   minDamage: 5
   maxDamage: 20
