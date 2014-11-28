@@ -62,7 +62,10 @@ public class PlayerHealthComponent : HealthComponent {
 		Transform newIndicator = Instantiate (damageIndicator) as Transform;
 		newIndicator.gameObject.SetActive (true);
 		TypogenicText typo = newIndicator.GetComponent<TypogenicText> ();
-		typo.Text = (Mathf.Round(damage * 100f)/100f).ToString();
+        if (damage % 1 == 0)
+            typo.Text = damage.ToString("F0");
+        else
+            typo.Text = damage.ToString("F2");
         float timesAverage = Mathf.Clamp((damage / 5f), 0.25f, 4f);
         float sizemod = (timesAverage - 1f) / 2f + 1f;
         typo.Size = sizemod * typo.Size;

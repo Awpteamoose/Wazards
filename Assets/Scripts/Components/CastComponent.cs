@@ -30,7 +30,7 @@ public class CastComponent: MonoBehaviour
 
 	public class SpellBook
 	{
-		private Spell[] spells = new Spell[4];
+		public Spell[] spells = new Spell[4];
 		public int active;
 		public void choose(int num)
 		{

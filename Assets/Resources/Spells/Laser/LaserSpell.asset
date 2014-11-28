@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Laser
   description: 
-  icon: {fileID: 2800000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
+  icon: {fileID: 21300000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
   prefab: {fileID: 400000, guid: 1bcfbbf756a62a64eba18001a0911831, type: 2}
   secondsToCharge: .800000012
   secondsMinCharge: .200000003
