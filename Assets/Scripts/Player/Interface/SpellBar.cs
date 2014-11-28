@@ -20,12 +20,17 @@ public class SpellBar : MonoBehaviour {
             else
             {
                 spellIcons[i].cooldownText.text = "";
+                spellIcons[i].cooldownShadow.fillAmount = 0;
             }
 
             float manaNeeded = castComponent.spellBook.get(i).manacost - castComponent.mana;
             if (manaNeeded > 0)
             {
                 spellIcons[i].manaShadow.fillAmount = manaNeeded / castComponent.spellBook.get(i).manacost;
+            }
+            else
+            {
+                spellIcons[i].manaShadow.fillAmount = 0;
             }
         }
     }
