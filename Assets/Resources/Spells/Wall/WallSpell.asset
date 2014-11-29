@@ -22,4 +22,4 @@ MonoBehaviour:
   minDistance: 2
   width: 5
   height: .5
-  t_duration: 3
+  health: 25

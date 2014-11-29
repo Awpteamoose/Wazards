@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LaserEmitter : Projectile {
-
-	public float damage;
+public class LaserEmitter : ProjectileComponent
+{
     public float t_activation;
     public float t_death;
     public float t_tick;
@@ -14,7 +13,7 @@ public class LaserEmitter : Projectile {
 
     public Transform laserBeam;
 
-    private HealthComponent lasthit;
+    private List<HealthComponent> damageList = new List<HealthComponent>();
     private Vector3 startScale;
     private bool hasEndpoint;
     private float t_nextTick;
@@ -54,6 +53,7 @@ public class LaserEmitter : Projectile {
         base.Update();
         transform.position = parent.transform.position + direction.vector * 0.6f;
         hasEndpoint = false;
+        damageList.Clear();
         RaycastHit2D[] hits = Physics2D.BoxCastAll(laserBeam.transform.position, new Vector2(laserBeam.localScale.x, 0.1f), 0f, direction.vector);
         foreach (RaycastHit2D hit in hits)
         {
@@ -62,14 +62,18 @@ public class LaserEmitter : Projectile {
                 HealthComponent hc = hit.collider.gameObject.GetComponent<HealthComponent>();
                 if (hc)
                 {
-                    if (lasthit != hc)
-                        lasthit = hc;
+                    //if (lasthit != hc)
+                    //    lasthit = hc;
+                    damageList.Add(hc);
                     laserBeam.localScale = new Vector2(
                         laserBeam.localScale.x,
                         (hit.point - (Vector2)laserBeam.transform.position).magnitude / height
                     );
-                    hasEndpoint = true;
-                    break;
+                    if (!(hc is ProjectileHealthComponent))
+                    {
+                        hasEndpoint = true;
+                        break;
+                    }
                 }
             }
         }
@@ -89,10 +93,13 @@ public class LaserEmitter : Projectile {
                 audio.clip = fireSound;
                 audio.Play();
             }
-            if (hasEndpoint && Time.time > t_nextTick)
+            if (damageList.Count > 0 && Time.time > t_nextTick)
             {
-                lasthit.TakeDamage(damagePerTick, direction.vector, scale);
-                t_nextTick = Time.time + t_tick;
+                foreach (HealthComponent hc in damageList)
+                {
+                    hc.TakeDamage(damagePerTick, direction.vector, scale);
+                    t_nextTick = Time.time + t_tick;
+                }
             }
         }
 	}

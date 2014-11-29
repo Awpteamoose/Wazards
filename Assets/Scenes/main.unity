@@ -917,7 +917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 281579827}
   cooldownShadow: {fileID: 2087692835}
   cooldownText: {fileID: 1806809688}
   manaShadow: {fileID: 1057521130}
@@ -1980,7 +1979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 650490343}
   cooldownShadow: {fileID: 96758726}
   cooldownText: {fileID: 1749011937}
   manaShadow: {fileID: 1874979735}
@@ -2620,6 +2618,7 @@ MonoBehaviour:
   damageTaken: 0
   lavaDamagePerSec: 10
   damageIndicator: {fileID: 400000, guid: d2d3011c24550e249af60015c4cc99fc, type: 2}
+  playerControl: {fileID: 0}
 --- !u!114 &783976502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,7 +3590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 968266799}
   cooldownShadow: {fileID: 285101291}
   cooldownText: {fileID: 1500087381}
   manaShadow: {fileID: 1932195155}
@@ -4011,7 +4009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 1184833463}
   cooldownShadow: {fileID: 1804847269}
   cooldownText: {fileID: 866594237}
   manaShadow: {fileID: 1216484645}
@@ -4392,6 +4389,7 @@ MonoBehaviour:
   damageTaken: 0
   lavaDamagePerSec: 10
   damageIndicator: {fileID: 400000, guid: d2d3011c24550e249af60015c4cc99fc, type: 2}
+  playerControl: {fileID: 0}
 --- !u!114 &1216444114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,7 +5608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 1519560269}
   cooldownShadow: {fileID: 381906412}
   cooldownText: {fileID: 350387259}
   manaShadow: {fileID: 1917686796}
@@ -6633,7 +6630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 1833231296}
   cooldownShadow: {fileID: 1839303779}
   cooldownText: {fileID: 1967246113}
   manaShadow: {fileID: 1563476689}
@@ -7226,7 +7222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 1949889249}
   cooldownShadow: {fileID: 181255235}
   cooldownText: {fileID: 1496430771}
   manaShadow: {fileID: 1857214805}
@@ -7385,7 +7380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94b17b6963087419979d0a017f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 2036264581}
   cooldownShadow: {fileID: 1402209552}
   cooldownText: {fileID: 289032962}
   manaShadow: {fileID: 1162575806}

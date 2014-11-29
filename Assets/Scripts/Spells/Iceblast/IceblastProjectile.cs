@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IceblastProjectile : Projectile {
-
-	public float damage;
+public class IceblastProjectile : ProjectileComponent
+{
 	public float t_duration;
 
 	private float createdAt;
@@ -48,7 +47,7 @@ public class IceblastProjectile : Projectile {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D collider)
+	/*void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.gameObject != parent)
 		{
@@ -76,5 +75,33 @@ public class IceblastProjectile : Projectile {
                 return;
             }
 		}
-	}
+	}*/
+
+    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    {
+        if (!isParent && !sameParent)
+        {
+            base.Collide(collider, healthComponent, isParent, sameParent);
+
+            healthComponent.TakeDamage(damage, direction.vector);
+            if (healthComponent is PlayerHealthComponent)
+            {
+                PlayerControl pc = ((PlayerHealthComponent)healthComponent).playerControl;
+                collided = true;
+                victim = pc;
+                t_collision = Time.time;
+                victim.inputComponent._active = false;
+                collider2D.enabled = false;
+                transform.rotation = Quaternion.identity;
+                audio.clip = freezeSound;
+                audio.Play();
+                particleSystem.enableEmission = false;
+                transform.localScale = new Vector3(3f, 3f, 0);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

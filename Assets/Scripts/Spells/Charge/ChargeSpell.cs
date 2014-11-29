@@ -10,6 +10,7 @@ public class ChargeSpell : Spell
     public float size;
     public float minDamage;
     public float maxDamage;
+    public float superArmour;
 
 	private float _distance;
 
@@ -34,5 +35,7 @@ public class ChargeSpell : Spell
         projectile.minDamage = minDamage;
         projectile.maxDamage = maxDamage;
 		projectile.size = size;
+
+        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = superArmour;
 	}
 }

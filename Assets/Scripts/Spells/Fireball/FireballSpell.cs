@@ -30,5 +30,7 @@ public class FireballSpell : Spell
 			projectile.speed = speed;
 			projectile.damage = damage;
 		}
+
+        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = projectile.damage;
 	}
 }

@@ -34,5 +34,7 @@ public class IceblastSpell : Spell
 			projectile.damage = damage;
 			projectile.t_duration = t_duration;
 		}
+
+        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = projectile.damage;
 	}
 }

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FireballProjectile : Projectile {
-
-	public float damage;
+public class FireballProjectile : ProjectileComponent
+{
     public AudioClip flySound;
     public AudioClip explodeSound;
 
@@ -37,7 +36,7 @@ public class FireballProjectile : Projectile {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D collider)
+	/*void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.gameObject != parent)
 		{
@@ -53,5 +52,24 @@ public class FireballProjectile : Projectile {
                 audio.Play();
 			}
 		}
-	}
+	}*/
+
+    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    {
+        if (!isParent && !sameParent)
+        {
+            base.Collide(collider, healthComponent, isParent, sameParent);
+
+            healthComponent.TakeDamage(damage, direction.vector);
+            if (healthComponent is PlayerHealthComponent)
+            {
+                speed = 0;
+                collider2D.enabled = false;
+                ps.enableEmission = false;
+                animator.SetTrigger("Destroy");
+                audio.clip = explodeSound;
+                audio.Play();
+            }
+        }
+    }
 }

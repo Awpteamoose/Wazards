@@ -7,9 +7,11 @@ public class Spell : ScriptableObject
 	public string description;
 	public Sprite icon;
 	public Transform prefab;
-	public float secondsToCharge = 1.5f;
-	public float secondsMinCharge = 0.0f;
-	public float manacost = 10f;
-	public float secondsCooldown = 1f;
+	public float secondsToCharge;
+	public float secondsMinCharge;
+	public float manacost;
+	public float secondsCooldown;
+    
+
 	public virtual void cast(bool charged, Vector3 reticle, PlayerControl owner) {}
 }

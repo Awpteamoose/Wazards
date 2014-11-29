@@ -15,6 +15,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 199: {fileID: 19900000}
   - 198: {fileID: 19800000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Iceblast
   m_TagString: Untagged
@@ -130,13 +131,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  damage: 0
   speed: 0
   size: 0
   target: {x: 0, y: 0, z: 0}
-  damage: 0
   t_duration: 0
   flySound: {fileID: 8300000, guid: ce6f0e4f9d8c80842b2d6919c0cf651d, type: 3}
   freezeSound: {fileID: 8300000, guid: 01898a8d81f3692439ee3f9c78618897, type: 3}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164504dc5192b045bd5c091c39594f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  killAt: 50
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

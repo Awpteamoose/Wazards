@@ -15,13 +15,14 @@ MonoBehaviour:
   description: 
   icon: {fileID: 21300000, guid: a3b372abfb0b67b4a9584f24fde7ca79, type: 3}
   prefab: {fileID: 400000, guid: c5478a1968b0d3541b59890d9ccfcea0, type: 2}
-  secondsToCharge: .600000024
+  secondsToCharge: .850000024
   secondsMinCharge: 0
-  manacost: 22
-  secondsCooldown: 1.75
+  manacost: 25
+  secondsCooldown: 2
   distance: 6
-  speed: .5
+  speed: .449999988
   damageMod: 1.75
-  size: 1.25
+  size: 1.10000002
   minDamage: 5
   maxDamage: 20
+  superArmour: 12.5

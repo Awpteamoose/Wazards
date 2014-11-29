@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButterflyProjectile : Projectile {
-
-	public float damage;
-
+public class ButterflyProjectile : ProjectileComponent
+{
 	public float shift {get; set;}
 	public Color color;
     public float t_activation;
@@ -39,7 +37,7 @@ public class ButterflyProjectile : Projectile {
         }
 	}
 
-	void OnTriggerEnter2D (Collider2D collider)
+	/*void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.gameObject != parent)
 		{
@@ -51,5 +49,20 @@ public class ButterflyProjectile : Projectile {
 				Destroy (gameObject);
 			}
 		}
-	}
+	}*/
+
+    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    {
+        if (!isParent && !sameParent)
+        {
+            base.Collide(collider, healthComponent, isParent, sameParent);
+
+            Vector3 knockbackDirection = (healthComponent.transform.position - transform.position).normalized;
+            healthComponent.TakeDamage(damage, knockbackDirection);
+            if (healthComponent is PlayerHealthComponent)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

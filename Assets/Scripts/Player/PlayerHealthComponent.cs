@@ -11,8 +11,11 @@ public class PlayerHealthComponent : HealthComponent {
 
 	public Transform damageIndicator;
 
+    public PlayerControl playerControl;
+
     protected override void Start()
     {
+        playerControl = GetComponent<PlayerControl>();
         groundCollider = GameObject.Find("Ground").collider2D;
     }
 

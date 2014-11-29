@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NormalAttackObject : Projectile
+public class NormalAttackObject : ProjectileComponent
 {
-	public float damage;
 	public float t_activation;
 	public float t_deactivation;
 	public bool destroyProjectiles = false;
-
-	private bool collided = false;
 
 	public override void Start ()
 	{
@@ -16,28 +13,27 @@ public class NormalAttackObject : Projectile
 		base.Start();
 	}
 
-	public override void FixedUpdate ()
+	public override void Update ()
 	{
-		if ( Time.time > t_activation && !collided )
+        if ((Time.time > t_deactivation))
+        {
+            collider2D.enabled = false;
+            if (!audio.isPlaying)
+                Destroy(gameObject);
+        }
+        else if ( Time.time > t_activation )
 		{
 			collider2D.enabled = true;
 		}
-
-		if ( (Time.time > t_deactivation) || collided )
-		{
-			collider2D.enabled = false;
-			if (!audio.isPlaying)
-				Destroy (gameObject);
-		}
 	}
 
-	void OnTriggerEnter2D (Collider2D collider)
+	/*void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.gameObject != parent)
 		{
             if (destroyProjectiles)
             {
-                Projectile proj = collider.gameObject.GetComponent<Projectile>();
+                ProjectileComponent proj = collider.gameObject.GetComponent<ProjectileComponent>();
                 if (proj)
                 {
                     Destroy(proj.gameObject);
@@ -52,5 +48,18 @@ public class NormalAttackObject : Projectile
                 hc.TakeDamage(damage, (hc.transform.position - parent.transform.position).normalized);
             }
 		}
-	}
+	}*/
+
+    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    {
+        if (!isParent && !sameParent)
+        {
+            base.Collide(collider, healthComponent, isParent, sameParent);
+
+            if (destroyProjectiles && (healthComponent is ProjectileHealthComponent))
+                healthComponent.TakeDamage(damage*3f, (healthComponent.transform.position - parent.transform.position).normalized);
+            else
+                healthComponent.TakeDamage(damage, (healthComponent.transform.position - parent.transform.position).normalized);
+        }
+    }
 }

@@ -50,6 +50,7 @@ public class ButterflySpell : Spell
             projectile.size = size;
 			projectile.speed = speed*Random.Range(0.3f, 1.5f);
 			projectile.damage = damage;
+            projectile.GetComponent<ProjectileHealthComponent>().maxHealth = damage;
 
 			if (owner.player == "Player 1")
 				projectile.color = new Color(0.37f, 0.47f, 1f);

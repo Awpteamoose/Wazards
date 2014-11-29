@@ -7,7 +7,7 @@ public class WallSpell : Spell
 	public float minDistance = 2f;
     public float width;
     public float height;
-    public float t_duration;
+    public float health;
 
 	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
@@ -20,6 +20,6 @@ public class WallSpell : Spell
         wall.localScale = new Vector2(width, height);
         wall.renderer.material.mainTextureScale = wall.localScale;
         WallHealthComponent whc = wall.GetComponent<WallHealthComponent>();
-        whc.t_death = Time.time + t_duration;
+        whc.health = health;
 	}
 }

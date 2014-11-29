@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChargeProjectile : Projectile {
+public class ChargeProjectile : ProjectileComponent {
 
 	public float damageMod;
 	public float t_terminate;
@@ -18,6 +18,7 @@ public class ChargeProjectile : Projectile {
 		base.Start();
 		initial_pos = transform.position;
         audioSources = GetComponents<AudioSource>();
+        damage = minDamage;
 	}
 
 	// Update is called once per frame
@@ -30,6 +31,9 @@ public class ChargeProjectile : Projectile {
 			{
 				parent.rigidbody2D.MovePosition(parent.transform.position + direction.vector*speed);
 				rigidbody2D.MovePosition(parent.transform.position+direction.vector*speed);
+
+                float distDamage = (transform.position - initial_pos).magnitude * damageMod;
+                damage = Mathf.Clamp(distDamage, minDamage, maxDamage);
 			}
 			else
 			{
@@ -53,19 +57,36 @@ public class ChargeProjectile : Projectile {
         }
 	}
 
-	void OnTriggerEnter2D (Collider2D collider)
+	/*public override void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.gameObject != parent)
 		{
-            HealthComponent hc = collider.gameObject.GetComponent<HealthComponent>();
-			if (hc)
+            base.OnTriggerEnter2D(collider);
+            if (c_healthComponent)
 			{
                 float damage = (transform.position - initial_pos).magnitude * damageMod;
-                hc.TakeDamage(Mathf.Clamp(damage, minDamage, maxDamage), direction.vector);
+                c_healthComponent.TakeDamage(Mathf.Clamp(damage, minDamage, maxDamage), direction.vector);
 				audio.Play ();
 				collided = true;
                 collider2D.enabled = false;
 			}
 		}
-	}
+	}*/
+
+    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    {
+        if (!isParent && !sameParent)
+        {
+            base.Collide(collider, healthComponent, isParent, sameParent);
+
+            float damage = (transform.position - initial_pos).magnitude * damageMod;
+            c_healthComponent.TakeDamage(Mathf.Clamp(damage, minDamage, maxDamage), direction.vector);
+            if (healthComponent is PlayerHealthComponent)
+            {
+                audio.Play();
+                collided = true;
+                collider2D.enabled = false;
+            }
+        }
+    }
 }
