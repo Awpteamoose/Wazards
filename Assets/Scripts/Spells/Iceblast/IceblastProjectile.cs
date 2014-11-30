@@ -104,7 +104,7 @@ public class IceblastProjectile : ProjectileComponent
                 particleSystem.enableEmission = false;
                 transform.localScale = new Vector3(3f, 3f, 0);
             }
-            else
+            else if (!(healthComponent is ProjectileHealthComponent))
             {
                 Die();
             }
