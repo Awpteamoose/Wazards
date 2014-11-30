@@ -41,6 +41,7 @@ public class ButterflySpell : Spell
 		{
 			Transform butterfly = Instantiate(prefab) as Transform;
 			ButterflyProjectile projectile = butterfly.GetComponent<ButterflyProjectile>();
+            ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 			
 			projectile.shift=i+Random.Range (-10f, 10f);
 			
@@ -50,7 +51,8 @@ public class ButterflySpell : Spell
             projectile.size = size;
 			projectile.speed = speed*Random.Range(0.3f, 1.5f);
 			projectile.damage = damage;
-            projectile.GetComponent<ProjectileHealthComponent>().maxHealth = damage;
+            projectileHealth.maxHealth = damage;
+            projectileHealth.projectileComponent = projectile;
 
 			if (owner.player == "Player 1")
 				projectile.color = new Color(0.37f, 0.47f, 1f);

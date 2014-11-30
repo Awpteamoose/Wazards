@@ -9,6 +9,10 @@ public class HealthComponent : MonoBehaviour {
 	public float health = 100f;
 	public float maxHealth = 100f;
 	public float killAt = 50f;
+    #if UNITY_EDITOR
+    [ReadOnly]
+    #endif
+    public bool dead;
 
     protected virtual void Start() { }
 	

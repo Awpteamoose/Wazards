@@ -54,6 +54,17 @@ public class FireballProjectile : ProjectileComponent
 		}
 	}*/
 
+    public override void Die()
+    {
+        base.Die();
+        speed = 0;
+        collider2D.enabled = false;
+        ps.enableEmission = false;
+        animator.SetTrigger("Destroy");
+        audio.clip = explodeSound;
+        audio.Play();
+    }
+
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
         if (!isParent && !sameParent)
@@ -61,14 +72,9 @@ public class FireballProjectile : ProjectileComponent
             base.Collide(collider, healthComponent, isParent, sameParent);
 
             healthComponent.TakeDamage(damage, direction.vector);
-            if (healthComponent is PlayerHealthComponent)
+            if (!(healthComponent is ProjectileHealthComponent))
             {
-                speed = 0;
-                collider2D.enabled = false;
-                ps.enableEmission = false;
-                animator.SetTrigger("Destroy");
-                audio.clip = explodeSound;
-                audio.Play();
+                Die();
             }
         }
     }

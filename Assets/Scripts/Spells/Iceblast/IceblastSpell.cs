@@ -17,6 +17,7 @@ public class IceblastSpell : Spell
 	{
 		Transform blast = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*1f), Quaternion.identity) as Transform;
 		IceblastProjectile projectile = blast.GetComponent<IceblastProjectile>();
+        ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;
 		
@@ -35,6 +36,7 @@ public class IceblastSpell : Spell
 			projectile.t_duration = t_duration;
 		}
 
-        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = projectile.damage;
+        projectileHealth.maxHealth = damage;
+        projectileHealth.projectileComponent = projectile;
 	}
 }

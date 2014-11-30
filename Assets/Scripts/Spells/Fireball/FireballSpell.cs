@@ -15,6 +15,7 @@ public class FireballSpell : Spell
 	{
 		Transform fireball = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*1f), Quaternion.identity) as Transform;
 		FireballProjectile projectile = fireball.GetComponent<FireballProjectile>();
+        ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;
 		
@@ -31,6 +32,8 @@ public class FireballSpell : Spell
 			projectile.damage = damage;
 		}
 
-        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = projectile.damage;
+
+        projectileHealth.maxHealth = projectile.damage;
+        projectileHealth.projectileComponent = projectile;
 	}
 }

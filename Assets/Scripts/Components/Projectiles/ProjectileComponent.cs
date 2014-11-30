@@ -65,6 +65,14 @@ public class ProjectileComponent : MonoBehaviour
         }
     }
 
+    public virtual void Die()
+    {
+    }
+
+    public virtual void Deactivate()
+    {
+    }
+
     public virtual void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
     }

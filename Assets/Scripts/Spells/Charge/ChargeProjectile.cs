@@ -73,6 +73,14 @@ public class ChargeProjectile : ProjectileComponent {
 		}
 	}*/
 
+    public override void Die()
+    {
+        base.Die();
+        audio.Play();
+        collided = true;
+        collider2D.enabled = false;
+    }
+
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
         if (!isParent && !sameParent)
@@ -81,11 +89,9 @@ public class ChargeProjectile : ProjectileComponent {
 
             float damage = (transform.position - initial_pos).magnitude * damageMod;
             c_healthComponent.TakeDamage(Mathf.Clamp(damage, minDamage, maxDamage), direction.vector);
-            if (healthComponent is PlayerHealthComponent)
+            if (!(healthComponent is ProjectileHealthComponent))
             {
-                audio.Play();
-                collided = true;
-                collider2D.enabled = false;
+                Die();
             }
         }
     }

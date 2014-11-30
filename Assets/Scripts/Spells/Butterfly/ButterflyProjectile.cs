@@ -51,6 +51,12 @@ public class ButterflyProjectile : ProjectileComponent
 		}
 	}*/
 
+    public override void Die()
+    {
+        base.Die();
+        Destroy(gameObject);
+    }
+
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
         if (!isParent && !sameParent)
@@ -59,9 +65,9 @@ public class ButterflyProjectile : ProjectileComponent
 
             Vector3 knockbackDirection = (healthComponent.transform.position - transform.position).normalized;
             healthComponent.TakeDamage(damage, knockbackDirection);
-            if (healthComponent is PlayerHealthComponent)
+            if (!(healthComponent is ProjectileHealthComponent))
             {
-                Destroy(gameObject);
+                Die();
             }
         }
     }

@@ -18,6 +18,7 @@ public class ChargeSpell : Spell
 	{
 		Transform charge = Instantiate(prefab, owner.transform.position, Quaternion.identity) as Transform;
 		ChargeProjectile projectile = charge.GetComponent<ChargeProjectile>();
+        ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		float _distance;
 		if (charged)
 		{
@@ -36,6 +37,7 @@ public class ChargeSpell : Spell
         projectile.maxDamage = maxDamage;
 		projectile.size = size;
 
-        projectile.GetComponent<ProjectileHealthComponent>().maxHealth = superArmour;
+        projectileHealth.maxHealth = superArmour;
+        projectileHealth.projectileComponent = projectile;
 	}
 }

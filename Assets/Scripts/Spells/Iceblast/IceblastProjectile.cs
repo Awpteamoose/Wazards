@@ -77,6 +77,12 @@ public class IceblastProjectile : ProjectileComponent
 		}
 	}*/
 
+    public override void Die()
+    {
+        base.Die();
+        Destroy(gameObject);
+    }
+
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
         if (!isParent && !sameParent)
@@ -100,7 +106,7 @@ public class IceblastProjectile : ProjectileComponent
             }
             else
             {
-                Destroy(gameObject);
+                Die();
             }
         }
     }

@@ -3,19 +3,21 @@ using System.Collections;
 
 public class ProjectileHealthComponent : HealthComponent
 {
-    ProjectileComponent projectileComponent;
+    public ProjectileComponent projectileComponent;
 
 	// Use this for initialization
 	void Start ()
     {
+        dead = false;
         health = maxHealth;
 	}
 
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
-            Destroy(gameObject);
+            dead = true;
+            projectileComponent.Die();
         }
     }
 
