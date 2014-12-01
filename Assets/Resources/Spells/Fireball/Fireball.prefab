@@ -132,7 +132,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 74be5833f36518446b999f06e4bb9c8e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
@@ -167,6 +167,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   killAt: 50
+  dead: 0
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

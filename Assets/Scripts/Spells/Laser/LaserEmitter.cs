@@ -103,8 +103,4 @@ public class LaserEmitter : ProjectileComponent
             }
         }
 	}
-
-	void OnTriggerEnter2D (Collider2D collider)
-	{
-	}
 }

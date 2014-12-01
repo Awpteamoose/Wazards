@@ -3,17 +3,21 @@ using System.Collections;
 
 public class ProjectileHealthComponent : HealthComponent
 {
-    public ProjectileComponent projectileComponent;
+    public ProjectileComponent projectileComponent { get; set; }
 
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
     {
+        base.Start();
+
         dead = false;
         health = maxHealth;
 	}
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (health <= 0 && !dead)
         {
             dead = true;
