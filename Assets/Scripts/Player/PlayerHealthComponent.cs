@@ -13,8 +13,10 @@ public class PlayerHealthComponent : HealthComponent {
 
     public PlayerControl playerControl;
 
-    protected override void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         playerControl = GetComponent<PlayerControl>();
         groundCollider = GameObject.Find("Ground").collider2D;
     }

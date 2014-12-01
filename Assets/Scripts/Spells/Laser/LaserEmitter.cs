@@ -13,25 +13,36 @@ public class LaserEmitter : ProjectileComponent
 
     public Transform laserBeam;
 
-    private List<HealthComponent> damageList = new List<HealthComponent>();
+    private List<HealthComponent> damageList;
     private Vector3 startScale;
     private bool hasEndpoint;
     private float t_nextTick;
     private float height;
     private float damagePerTick;
 
-	// Use this for initialization
-	public override void Start ()
+    private SpriteRenderer beamRenderer;
+    private Animator beamAnimator;
+
+    public override void Awake()
+    {
+        base.Awake();
+        laserBeam = Instantiate(laserBeam) as Transform;
+        laserBeam.parent = transform;
+        laserBeam.localRotation = Quaternion.identity;
+        beamRenderer = laserBeam.GetComponent<SpriteRenderer>();
+        beamAnimator = laserBeam.GetComponent<Animator>();
+
+        damageList = new List<HealthComponent>();
+    }
+
+	public override void Activate ()
 	{
-        base.Start();
+        base.Activate();
         transform.rotation = Quaternion.Euler(0, 0, direction.angle);
-        height = laserBeam.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+        height = beamRenderer.sprite.bounds.size.y;
 
         startScale = new Vector2(laserBeam.transform.localScale.x, 100f);
-        Vector3 position = laserBeam.transform.position;
-        laserBeam.parent = transform;
-        laserBeam.localPosition = position;
-        laserBeam.localRotation = Quaternion.identity;
+        
         t_nextTick = t_activation;
         damagePerTick = damage / ((t_death - t_activation) / t_tick);
 
@@ -39,7 +50,7 @@ public class LaserEmitter : ProjectileComponent
         audio.time = chargeSound.length - (t_activation - Time.time);
         audio.Play();
 
-        laserBeam.GetComponent<Animator>().speed /= t_activation - Time.time;
+        beamAnimator.speed = 1f / (t_activation - Time.time);
 	}
 
 	// Update is called once per frame
@@ -80,7 +91,7 @@ public class LaserEmitter : ProjectileComponent
 
         if (Time.time > t_death)
         {
-            laserBeam.gameObject.Recycle();
+            //laserBeam.gameObject.Recycle();
             gameObject.Recycle();
         }
 

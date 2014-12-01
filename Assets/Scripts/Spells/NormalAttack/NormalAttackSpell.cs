@@ -37,11 +37,14 @@ public class NormalAttackSpell : Spell
 			secondsCooldown = 0.5f;
 		}
 
+        attack.parent = owner.gameObject;
 		attack.transform.parent = owner.transform;
 		attack.transform.localPosition = new Vector3(0, 0.5f, 0);
 		attack.transform.localRotation = Quaternion.identity;
 		attack.t_deactivation = attack.t_activation + duration;
 		attack.target = reticle;
 		attack.size = size;
+
+        attack.Activate();
 	}
 }

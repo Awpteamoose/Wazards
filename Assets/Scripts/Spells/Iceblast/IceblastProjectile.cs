@@ -7,7 +7,6 @@ public class IceblastProjectile : ProjectileComponent
 
 	private float createdAt;
 
-	private bool collided;
 	private float t_collision;
 	private PlayerControl victim;
 	private float reducedBy;
@@ -15,10 +14,14 @@ public class IceblastProjectile : ProjectileComponent
     public AudioClip flySound;
     public AudioClip freezeSound;
 
-	// Use this for initialization
-	public override void Start ()
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+	public override void Activate ()
 	{
-		base.Start();
+		base.Activate();
 		createdAt = Time.time-0.3f;
         audio.clip = flySound;
         audio.Play();
@@ -28,7 +31,7 @@ public class IceblastProjectile : ProjectileComponent
 	public override void FixedUpdate ()
 	{
 		base.FixedUpdate();
-		if (!collided)
+		if (collider.enabled)
 		{
 			transform.rotation = Quaternion.Euler (0, 0, direction.angle);
 			transform.Translate(Vector3.up*speed*Time.fixedDeltaTime*Mathf.Pow((Time.time - createdAt), 2));
@@ -63,11 +66,10 @@ public class IceblastProjectile : ProjectileComponent
             if (healthComponent is PlayerHealthComponent)
             {
                 PlayerControl pc = ((PlayerHealthComponent)healthComponent).playerControl;
-                collided = true;
                 victim = pc;
                 t_collision = Time.time;
                 victim.inputComponent._active = false;
-                collider2D.enabled = false;
+                collider.enabled = false;
                 transform.rotation = Quaternion.identity;
                 audio.clip = freezeSound;
                 audio.Play();

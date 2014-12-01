@@ -151,6 +151,7 @@ MonoBehaviour:
   speed: 0
   size: 0
   target: {x: 0, y: 0, z: 0}
+  healthComponent: {fileID: 0}
   flySound: {fileID: 8300000, guid: 64070ce90eba03c46b4110c65f732c49, type: 3}
   explodeSound: {fileID: 8300000, guid: cdb37c22b11530d4db5ef52a0da8be5e, type: 3}
 --- !u!114 &11400002

@@ -20,7 +20,7 @@ public class ButterflySpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(500);
+        prefab.CreatePool(100);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
@@ -70,6 +70,8 @@ public class ButterflySpell : Spell
             projectile.renderer.enabled = false;
             projectile.collider.enabled = false;
             projectile.t_activation = Time.time + Random.Range(0, t_delayMax);
+
+            projectile.Activate();
 		}
 	}
 }

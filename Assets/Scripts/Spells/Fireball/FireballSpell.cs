@@ -43,5 +43,7 @@ public class FireballSpell : Spell
 
         projectileHealth.maxHealth = projectile.damage;
         projectileHealth.projectileComponent = projectile;
+
+        projectile.Activate();
 	}
 }

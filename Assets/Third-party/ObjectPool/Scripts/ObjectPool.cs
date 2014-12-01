@@ -63,11 +63,13 @@ public sealed class ObjectPool : MonoBehaviour
 			if (initialPoolSize > 0)
 			{
 				bool active = prefab.activeSelf;
-				prefab.SetActive(false);
+				//prefab.SetActive(false);
 				Transform parent = instance.transform;
 				while (list.Count < initialPoolSize)
 				{
 					var obj = (GameObject)Object.Instantiate(prefab);
+                    //I need Awake to execute
+                    obj.SetActive(false);
 					obj.transform.parent = parent;
 					list.Add(obj);
 				}

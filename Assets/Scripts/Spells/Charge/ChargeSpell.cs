@@ -47,5 +47,7 @@ public class ChargeSpell : Spell
 
         projectileHealth.maxHealth = superArmour;
         projectileHealth.projectileComponent = projectile;
+
+        projectile.Activate();
 	}
 }

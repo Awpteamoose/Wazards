@@ -7,14 +7,14 @@ public class ButterflyProjectile : ProjectileComponent
 	public Color color;
     public float t_activation;
 
-    private bool ready = false;
+    private bool ready;
 
-	// Use this for initialization
-	public override void Start ()
-	{
-		base.Start();
+    public override void Activate ()
+    {
+        base.Activate();
 		renderer.color = color;
-	}
+        ready = false;
+    }
 
 	public override void Update ()
 	{
@@ -36,20 +36,6 @@ public class ButterflyProjectile : ProjectileComponent
             ready = true;
         }
 	}
-
-	/*void OnTriggerEnter2D (Collider2D collider)
-	{
-		if (collider.gameObject != parent)
-		{
-            HealthComponent hc = collider.gameObject.GetComponent<HealthComponent>();
-			if (hc)
-			{
-				Vector3 knockbackDirection = (hc.transform.position - transform.position).normalized;
-				hc.TakeDamage(damage, knockbackDirection);
-				Destroy (gameObject);
-			}
-		}
-	}*/
 
     public override void Die()
     {

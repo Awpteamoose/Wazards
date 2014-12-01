@@ -18,6 +18,7 @@ public class ProjectileComponent : MonoBehaviour
     public new SpriteRenderer renderer { get; set; }
     public new Rigidbody2D rigidbody { get; set; }
     public new Collider2D collider { get; set; }
+    public ProjectileHealthComponent healthComponent;
 
     public virtual void Awake ()
     {
@@ -26,24 +27,26 @@ public class ProjectileComponent : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        healthComponent = GetComponent<ProjectileHealthComponent>();
     }
 
-	public virtual void Start ()
+    public virtual void Activate ()
     {
+        healthComponent.Activate();
         transform.localScale = new Vector2(size, size); //TODO: only the projectiles that want spell-controlled sizes should set this
         direction.vector = (target - parent.transform.position);
-	}
+    }
 
     public virtual void FixedUpdate () { }
 
     public virtual void Update ()
     {
         if (transform.position.magnitude > killDistance)
-            Destroy(gameObject);
+            gameObject.Recycle();
     }
 
     protected HealthComponent c_healthComponent;
-    public virtual void OnTriggerEnter2D(Collider2D collider) //TODO: should be public virtual
+    public virtual void OnTriggerEnter2D(Collider2D collider)
     {
         c_healthComponent = collider.gameObject.GetComponent<HealthComponent>();
         if (c_healthComponent)
@@ -73,7 +76,7 @@ public class ProjectileComponent : MonoBehaviour
     {
     }
 
-    public virtual void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    public virtual void Collide(Collider2D collider, HealthComponent c_healthComponent, bool isParent, bool sameParent)
     {
     }
 }

@@ -16,23 +16,20 @@ public class LaserSpell : Spell
     public float knockbackScale;
 
     public LaserEmitter prefab;
-    public Transform laserBeam;
 
     public override void Initialise()
     {
         base.Initialise();
 
         prefab.CreatePool(1);
-        laserBeam.CreatePool(1);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
         LaserEmitter emitter = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 0.6f), Quaternion.identity);
 		emitter.target = reticle;
-		emitter.parent= owner.gameObject;
+		emitter.parent = owner.gameObject;
         emitter.size = 1f;
-        emitter.laserBeam = laserBeam.Spawn();
 		
 		if (charged)
         {
@@ -51,5 +48,7 @@ public class LaserSpell : Spell
 
         emitter.t_tick = t_tick;
         emitter.scale = knockbackScale;
+
+        emitter.Activate();
 	}
 }

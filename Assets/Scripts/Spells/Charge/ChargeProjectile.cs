@@ -9,22 +9,26 @@ public class ChargeProjectile : ProjectileComponent {
     public float minDamage;
 
 	private Vector3 initial_pos;
-	private bool collided = false;
 	private AudioSource[] audioSources;
 
-	// Use this for initialization
-	public override void Start ()
-	{
-		base.Start();
-		initial_pos = transform.position;
+    public override void Awake ()
+    {
+        base.Awake();
         audioSources = GetComponents<AudioSource>();
+    }
+
+	public override void Activate ()
+	{
+		base.Activate();
+		initial_pos = transform.position;
         damage = minDamage;
+        collider.enabled = true;
 	}
 
 	// Update is called once per frame
 	public override void FixedUpdate ()
 	{
-		if (!collided)
+		if (collider.enabled)
 		{
 			base.FixedUpdate();
 			if (Time.time < t_terminate)
@@ -37,8 +41,7 @@ public class ChargeProjectile : ProjectileComponent {
 			}
 			else
 			{
-				collider2D.enabled = false;
-                collided = true;
+                collider.enabled = false;
 			}
 		}
 	}
@@ -46,14 +49,14 @@ public class ChargeProjectile : ProjectileComponent {
 	public override void Update()
 	{
         base.Update();
-        if (collided)
+        if (collider.enabled)
         {
-            if (!audioSources[0].isPlaying && !audioSources[1].isPlaying)
-                gameObject.Recycle();
+            parent.rigidbody2D.velocity = direction.vector * 5f;
         }
         else
         {
-            parent.rigidbody2D.velocity = direction.vector * 5f;
+            if (!audioSources[0].isPlaying && !audioSources[1].isPlaying)
+                gameObject.Recycle();
         }
 	}
 
@@ -61,8 +64,7 @@ public class ChargeProjectile : ProjectileComponent {
     {
         base.Die();
         audio.Play();
-        collided = true;
-        collider2D.enabled = false;
+        collider.enabled = false;
     }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)

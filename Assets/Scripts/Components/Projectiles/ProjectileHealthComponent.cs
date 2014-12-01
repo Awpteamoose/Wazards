@@ -6,19 +6,17 @@ public class ProjectileHealthComponent : HealthComponent
     public ProjectileComponent projectileComponent { get; set; }
 
 	// Use this for initialization
-	protected override void Start ()
+	public override void Activate ()
     {
-        base.Start();
+        base.Activate();
 
-        dead = false;
         health = maxHealth;
+        dead = false;
 	}
 
     protected override void Update()
     {
-        base.Update();
-
-        if (health <= 0 && !dead)
+        if ((health <= 0 || transform.position.magnitude > killAt) && !dead)
         {
             dead = true;
             projectileComponent.Die();

@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  damage: 0
   speed: 0
   size: 0
   target: {x: 0, y: 0, z: 0}
-  damage: 0
+  healthComponent: {fileID: 0}
   t_activation: 0
   t_death: 0
   t_tick: 0

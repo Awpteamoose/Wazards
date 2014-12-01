@@ -22,5 +22,6 @@ public class TeleportSpell : Spell
 		else
 			owner.transform.position =(owner.transform.position + (reticle - owner.transform.position).normalized*minDistance);
         prefab.Spawn();
+        prefab.Activate();
 	}
 }

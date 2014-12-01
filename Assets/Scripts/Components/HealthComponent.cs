@@ -8,18 +8,18 @@ public class HealthComponent : MonoBehaviour {
 	#endif
 	public float health = 100f;
 	public float maxHealth = 100f;
-	public float killAt = 50f;
+    public float killAt = 50f;
     #if UNITY_EDITOR
     [ReadOnly]
     #endif
     public bool dead;
 
-    protected virtual void Start() { }
+    protected virtual void Awake() { }
 	
     protected virtual void Update()
     {
         if (health <= 0f || transform.position.magnitude > killAt)
-            Destroy(gameObject);
+            gameObject.Recycle();
     }
 
     protected virtual void FixedUpdate() { }
@@ -27,6 +27,8 @@ public class HealthComponent : MonoBehaviour {
     protected virtual void OnTriggerEnter2D(Collider2D collider) { }
 
     protected virtual void OnTriggerExit2D(Collider2D collider) { }
+
+    public virtual void Activate() { }
 
     public virtual void TakeDamage(float damage, Vector2 direction, float scale = 1f) { }
 }

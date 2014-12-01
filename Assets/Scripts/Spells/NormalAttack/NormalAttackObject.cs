@@ -5,12 +5,13 @@ public class NormalAttackObject : ProjectileComponent
 {
 	public float t_activation;
 	public float t_deactivation;
-	public bool destroyProjectiles = false;
+	public bool destroyProjectiles;
 
-	public override void Start ()
-	{
+	public override void Activate ()
+    {
+        base.Activate();
 		parent = transform.parent.gameObject;
-		base.Start();
+        destroyProjectiles = false;
 	}
 
 	public override void Update ()

@@ -46,5 +46,7 @@ public class IceblastSpell : Spell
 
         projectileHealth.maxHealth = damage;
         projectileHealth.projectileComponent = projectile;
+
+        projectile.Activate();
 	}
 }

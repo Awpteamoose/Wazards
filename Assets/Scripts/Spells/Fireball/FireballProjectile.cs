@@ -8,13 +8,20 @@ public class FireballProjectile : ProjectileComponent
 
     private ParticleSystem ps;
 
-	// Use this for initialization
-	public override void Start ()
+    public override void Awake()
+    {
+        base.Awake();
+        ps = GetComponent<ParticleSystem>();
+    }
+
+	public override void Activate ()
 	{
-		base.Start();
+		base.Activate();
+        renderer.enabled = true;
+        collider.enabled = true;
+        ps.enableEmission = true;
         audio.clip = flySound;
         audio.Play();
-        ps = GetComponent<ParticleSystem>();
 	}
 
 	// Update is called once per frame
@@ -40,7 +47,7 @@ public class FireballProjectile : ProjectileComponent
     {
         base.Die();
         speed = 0;
-        collider2D.enabled = false;
+        collider.enabled = false;
         ps.enableEmission = false;
         animator.SetTrigger("Destroy");
         audio.clip = explodeSound;
