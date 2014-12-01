@@ -165,6 +165,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   killAt: 50
+  dead: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

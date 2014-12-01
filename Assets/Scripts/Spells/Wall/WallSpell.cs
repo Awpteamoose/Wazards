@@ -9,9 +9,18 @@ public class WallSpell : Spell
     public float height;
     public float health;
 
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+    public Transform prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(10);
+    }
+
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
-        Transform wall = Instantiate(prefab) as Transform;
+        Transform wall = prefab.Spawn();
         if (charged)
             wall.position = reticle;
         else

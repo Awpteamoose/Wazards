@@ -45,6 +45,7 @@ public class CastComponent: MonoBehaviour
 		public Spell set(Spell spell, int number)
 		{
             spells[number] = Object.Instantiate(spell) as Spell;
+            spells[number].Initialise();
 			return spell;
 		}
 	}
@@ -99,6 +100,6 @@ public class CastComponent: MonoBehaviour
 			number=spellBook.active;
 		cooldowns[spellBook.active] = Time.time;
 		mana-=spellBook.get().manacost;
-		spellBook.get().cast(charged, reticle, owner);
+		spellBook.get().Cast(charged, reticle, owner);
 	}
 }

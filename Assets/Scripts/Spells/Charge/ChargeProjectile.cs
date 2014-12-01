@@ -49,29 +49,13 @@ public class ChargeProjectile : ProjectileComponent {
         if (collided)
         {
             if (!audioSources[0].isPlaying && !audioSources[1].isPlaying)
-                Destroy(gameObject);
+                gameObject.Recycle();
         }
         else
         {
             parent.rigidbody2D.velocity = direction.vector * 5f;
         }
 	}
-
-	/*public override void OnTriggerEnter2D (Collider2D collider)
-	{
-		if (collider.gameObject != parent)
-		{
-            base.OnTriggerEnter2D(collider);
-            if (c_healthComponent)
-			{
-                float damage = (transform.position - initial_pos).magnitude * damageMod;
-                c_healthComponent.TakeDamage(Mathf.Clamp(damage, minDamage, maxDamage), direction.vector);
-				audio.Play ();
-				collided = true;
-                collider2D.enabled = false;
-			}
-		}
-	}*/
 
     public override void Die()
     {

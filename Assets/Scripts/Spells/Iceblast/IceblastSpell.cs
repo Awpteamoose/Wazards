@@ -12,11 +12,19 @@ public class IceblastSpell : Spell
     public float sizeCharged;
 	public float t_duration;
     public float t_durationCharged;
+
+    public IceblastProjectile prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(10);
+    }
 	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
-		Transform blast = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*1f), Quaternion.identity) as Transform;
-		IceblastProjectile projectile = blast.GetComponent<IceblastProjectile>();
+        IceblastProjectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;

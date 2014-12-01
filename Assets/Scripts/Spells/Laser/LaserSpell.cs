@@ -14,15 +14,25 @@ public class LaserSpell : Spell
     public float t_chargedActive;
     public float t_tick = 0.2f;
     public float knockbackScale;
+
+    public LaserEmitter prefab;
+    public Transform laserBeam;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(1);
+        laserBeam.CreatePool(1);
+    }
 	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
-		Transform transform = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*0.6f), Quaternion.identity) as Transform;
-		LaserEmitter emitter = transform.GetComponent<LaserEmitter>();
+        LaserEmitter emitter = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 0.6f), Quaternion.identity);
 		emitter.target = reticle;
 		emitter.parent= owner.gameObject;
         emitter.size = 1f;
-        emitter.laserBeam = Instantiate(emitter.laserBeam) as Transform;
+        emitter.laserBeam = laserBeam.Spawn();
 		
 		if (charged)
         {

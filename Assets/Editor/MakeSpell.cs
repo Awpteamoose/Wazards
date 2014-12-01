@@ -71,7 +71,6 @@ public class MakeSpell : EditorWindow
 
             Spell spell = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + "Spell.asset", typeof(Spell)) as Spell;
             spell.icon = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + "_icon.png", typeof(Sprite)) as Sprite;
-            spell.prefab = prefab.transform;
             AssetDatabase.Refresh();
         }
 

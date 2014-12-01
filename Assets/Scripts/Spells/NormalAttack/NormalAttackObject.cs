@@ -19,7 +19,7 @@ public class NormalAttackObject : ProjectileComponent
         {
             collider2D.enabled = false;
             if (!audio.isPlaying)
-                Destroy(gameObject);
+                Die();
         }
         else if ( Time.time > t_activation )
 		{
@@ -27,28 +27,11 @@ public class NormalAttackObject : ProjectileComponent
 		}
 	}
 
-	/*void OnTriggerEnter2D (Collider2D collider)
-	{
-		if (collider.gameObject != parent)
-		{
-            if (destroyProjectiles)
-            {
-                ProjectileComponent proj = collider.gameObject.GetComponent<ProjectileComponent>();
-                if (proj)
-                {
-                    Destroy(proj.gameObject);
-                    return;
-                    //TODO: make it bounce the projectile back?
-                }
-            }
-            HealthComponent hc = collider.gameObject.GetComponent<HealthComponent>();
-            if (hc)
-            {
-                collided = true;
-                hc.TakeDamage(damage, (hc.transform.position - parent.transform.position).normalized);
-            }
-		}
-	}*/
+    public override void Die()
+    {
+        base.Die();
+        gameObject.Recycle();
+    }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
     {

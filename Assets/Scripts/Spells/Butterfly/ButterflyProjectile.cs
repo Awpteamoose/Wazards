@@ -54,7 +54,7 @@ public class ButterflyProjectile : ProjectileComponent
     public override void Die()
     {
         base.Die();
-        Destroy(gameObject);
+        gameObject.Recycle();
     }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)

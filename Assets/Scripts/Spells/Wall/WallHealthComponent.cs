@@ -8,7 +8,7 @@ public class WallHealthComponent : HealthComponent
     {
         base.Update();
         if (health <= 0)
-            Destroy(gameObject);
+            gameObject.Recycle();
     }
 
     public override void TakeDamage(float damage, Vector2 direction, float scale = 1f)

@@ -9,32 +9,39 @@ public class NormalAttackSpell : Spell
 	public float delay = 0.2f;
 	public float duration = 1f;
 	public float size = 1f;
-	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
-	{
-		Transform attack = Instantiate(prefab) as Transform;
-		NormalAttackObject obj = attack.GetComponent<NormalAttackObject>();
 
-		
+    public NormalAttackObject prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(1);
+    }
+	
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	{
+        NormalAttackObject attack = prefab.Spawn();
+
 		if (charged)
 		{
-			obj.destroyProjectiles = true;
-			obj.damage = damageCharged;
-			obj.t_activation = Time.time + delay/2f;
+			attack.destroyProjectiles = true;
+			attack.damage = damageCharged;
+			attack.t_activation = Time.time + delay/2f;
 			secondsCooldown = 0.1f;
 		}
 		else
 		{
-			obj.damage = damage;
-			obj.t_activation = Time.time + delay;
+			attack.damage = damage;
+			attack.t_activation = Time.time + delay;
 			secondsCooldown = 0.5f;
 		}
 
 		attack.transform.parent = owner.transform;
 		attack.transform.localPosition = new Vector3(0, 0.5f, 0);
 		attack.transform.localRotation = Quaternion.identity;
-		obj.t_deactivation = obj.t_activation + duration;
-		obj.target = reticle;
-		obj.size = size;
+		attack.t_deactivation = attack.t_activation + duration;
+		attack.target = reticle;
+		attack.size = size;
 	}
 }

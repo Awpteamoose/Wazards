@@ -14,10 +14,18 @@ public class ChargeSpell : Spell
 
 	private float _distance;
 
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+    public ChargeProjectile prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(3);
+    }
+
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
-		Transform charge = Instantiate(prefab, owner.transform.position, Quaternion.identity) as Transform;
-		ChargeProjectile projectile = charge.GetComponent<ChargeProjectile>();
+        ChargeProjectile projectile = prefab.Spawn(owner.transform.position, Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		float _distance;
 		if (charged)

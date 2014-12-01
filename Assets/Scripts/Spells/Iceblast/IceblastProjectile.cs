@@ -42,45 +42,15 @@ public class IceblastProjectile : ProjectileComponent
 			if (Time.time > t_collision + t_duration)
 			{
 				victim.inputComponent._active = true;
-				Destroy (gameObject);
+                Die();
 			}
 		}
 	}
 
-	/*void OnTriggerEnter2D (Collider2D collider)
-	{
-		if (collider.gameObject != parent)
-		{
-			PlayerControl pc = collider.gameObject.GetComponent<PlayerControl>();
-			if (pc)
-			{
-				pc.healthComponent.TakeDamage(damage, direction.vector);
-				collided = true;
-				victim = pc;
-				t_collision = Time.time;
-				victim.inputComponent._active = false;
-				this.collider2D.enabled = false;
-				transform.rotation = Quaternion.identity;
-                audio.clip = freezeSound;
-				audio.Play ();
-                particleSystem.enableEmission = false;
-                this.transform.localScale = new Vector3(3f, 3f, 0);
-                return;
-			}
-            HealthComponent hc = collider.gameObject.GetComponent<HealthComponent>();
-            if (hc)
-            {
-                hc.TakeDamage(damage, direction.vector);
-                Destroy(gameObject);
-                return;
-            }
-		}
-	}*/
-
     public override void Die()
     {
         base.Die();
-        Destroy(gameObject);
+        gameObject.Recycle();
     }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)

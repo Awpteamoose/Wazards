@@ -10,11 +10,19 @@ public class FireballSpell : Spell
     public float speedCharged;
 	public float size = 1f;
     public float sizeCharged;
+
+    public FireballProjectile prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(10);
+    }
 	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{
-		Transform fireball = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*1f), Quaternion.identity) as Transform;
-		FireballProjectile projectile = fireball.GetComponent<FireballProjectile>();
+        FireballProjectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;

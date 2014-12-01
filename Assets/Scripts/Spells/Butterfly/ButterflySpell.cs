@@ -13,8 +13,17 @@ public class ButterflySpell : Spell
 	public int chargedAmount = 5;
 	public int chargedAngleEdge = 20;
     public float t_delayMax;
+
+    public ButterflyProjectile prefab;
+
+    public override void Initialise ()
+    {
+        base.Initialise();
+
+        prefab.CreatePool(500);
+    }
 	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
 	{	
 		int angle;
 		int amt;
@@ -39,8 +48,7 @@ public class ButterflySpell : Spell
 		}
 		for ( int i = -angle; i <= angle; i+=step )
 		{
-			Transform butterfly = Instantiate(prefab) as Transform;
-			ButterflyProjectile projectile = butterfly.GetComponent<ButterflyProjectile>();
+            ButterflyProjectile projectile = prefab.Spawn();
             ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 			
 			projectile.shift=i+Random.Range (-10f, 10f);

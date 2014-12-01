@@ -14,7 +14,6 @@ MonoBehaviour:
   spellName: Butterfly
   description: 
   icon: {fileID: 21300000, guid: fb51a21d9ff628d4da5e552de25eebf1, type: 3}
-  prefab: {fileID: 400000, guid: 7833d54c0de51294f8bbcea379f90e21, type: 2}
   secondsToCharge: 1.5
   secondsMinCharge: 0
   manacost: 12.5
@@ -27,3 +26,4 @@ MonoBehaviour:
   chargedAmount: 17
   chargedAngleEdge: 40
   t_delayMax: 2
+  prefab: {fileID: 11400000, guid: 7833d54c0de51294f8bbcea379f90e21, type: 2}

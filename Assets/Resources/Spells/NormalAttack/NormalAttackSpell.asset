@@ -14,7 +14,6 @@ MonoBehaviour:
   spellName: Attack
   description: 
   icon: {fileID: 21300000, guid: 772a66a5b0b5e0c4683862d379246d21, type: 3}
-  prefab: {fileID: 400000, guid: 86392abc3157206409fba2602046f8fb, type: 2}
   secondsToCharge: .300000012
   secondsMinCharge: 0
   manacost: 0
@@ -24,3 +23,4 @@ MonoBehaviour:
   delay: .0799999982
   duration: .100000001
   size: 1
+  prefab: {fileID: 11400000, guid: 86392abc3157206409fba2602046f8fb, type: 2}

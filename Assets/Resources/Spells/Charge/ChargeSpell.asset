@@ -14,7 +14,6 @@ MonoBehaviour:
   spellName: Charge
   description: 
   icon: {fileID: 21300000, guid: a3b372abfb0b67b4a9584f24fde7ca79, type: 3}
-  prefab: {fileID: 400000, guid: c5478a1968b0d3541b59890d9ccfcea0, type: 2}
   secondsToCharge: .850000024
   secondsMinCharge: 0
   manacost: 25
@@ -26,3 +25,4 @@ MonoBehaviour:
   minDamage: 5
   maxDamage: 20
   superArmour: 12.5
+  prefab: {fileID: 11400000, guid: c5478a1968b0d3541b59890d9ccfcea0, type: 2}

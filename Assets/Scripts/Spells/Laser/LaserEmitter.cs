@@ -62,8 +62,6 @@ public class LaserEmitter : ProjectileComponent
                 HealthComponent hc = hit.collider.gameObject.GetComponent<HealthComponent>();
                 if (hc)
                 {
-                    //if (lasthit != hc)
-                    //    lasthit = hc;
                     damageList.Add(hc);
                     laserBeam.localScale = new Vector2(
                         laserBeam.localScale.x,
@@ -82,8 +80,8 @@ public class LaserEmitter : ProjectileComponent
 
         if (Time.time > t_death)
         {
-            Destroy(laserBeam.gameObject);
-            Destroy(gameObject);
+            laserBeam.gameObject.Recycle();
+            gameObject.Recycle();
         }
 
         if (Time.time > t_activation)
