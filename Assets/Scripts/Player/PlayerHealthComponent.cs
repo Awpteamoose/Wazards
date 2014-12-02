@@ -79,6 +79,6 @@ public class PlayerHealthComponent : HealthComponent {
         indicator.transform.position = new Vector3(transform.position.x, transform.position.y + indicator.Size / 14.05f, -0.5f);
         indicator.rigidbody2D.AddForce(-direction * 2.5f, ForceMode2D.Impulse);
 
-        Camera.main.Shake(Mathf.Pow((damage / 20f), 1.75f));
+        Camera.main.Shake(damage / 40f);
     }
 }
