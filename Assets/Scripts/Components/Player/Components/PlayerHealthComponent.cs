@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerHealthComponent : HealthComponent {
 
-    public float damageTaken = 0f;
+    public float totalDamage = 0f;
     public float lavaDamagePerSec = 1f;
 
     protected Collider2D groundCollider;
@@ -52,12 +52,12 @@ public class PlayerHealthComponent : HealthComponent {
 
     public override void TakeDamage(float damage, Vector2 direction, float scale = 1f)
     {
-        damageTaken += damage;
+        totalDamage += damage;
         //old knockback formula
         //rigidbody2D.AddForce(direction * (damageTaken * 0.4f + damage * 1.5f));
 
         //http://www.ssbwiki.com/Knockback
-        rigidbody2D.AddForce(direction * ( (((damageTaken * 0.1f) + ((damageTaken * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(direction * ( (((totalDamage * 0.1f) + ((totalDamage * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
 
         TypogenicText indicator = damageIndicator.Spawn();
         if (damage % 1 == 0)
@@ -70,6 +70,6 @@ public class PlayerHealthComponent : HealthComponent {
         indicator.transform.position = new Vector3(transform.position.x, transform.position.y + indicator.Size / 14.05f, -0.5f);
         indicator.rigidbody2D.AddForce(-direction * 2.5f, ForceMode2D.Impulse);
 
-        Camera.main.Shake(damage / 40f);
+        Camera.main.Shake((damage / 40f) * (totalDamage / 100f));
     }
 }

@@ -106,7 +106,6 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   healthComponent: {fileID: 0}
   t_activation: 0
-  t_death: 0
   t_tick: 0
   scale: 0
   chargeSound: {fileID: 8300000, guid: 23bbcd5c3e602b6448a895c8e89c0339, type: 3}

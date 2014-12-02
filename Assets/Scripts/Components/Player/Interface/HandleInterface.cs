@@ -22,7 +22,7 @@ public class HandleInterface : MonoBehaviour
     void OnGUI()
     {
         manaBar.level = player.castComponent.mana;
-        damageBar.level = player.healthComponent.damageTaken;
+        damageBar.level = player.healthComponent.totalDamage;
         int playerTicks = Mathf.CeilToInt(player.healthComponent.health / 10);
         if (healthBar.ticks != playerTicks)
             healthBar.ticks = playerTicks;

@@ -143,7 +143,7 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Exit()
 	{
-		if (t_charged > pc.castComponent.spellBook.get().secondsMinCharge)
+		if (t_charged >= pc.castComponent.spellBook.get().secondsMinCharge)
 			pc.castComponent.Cast(t_charged>=t_charge, world_reticle);
 		pc.rigidbody2D.fixedAngle = false;
 		

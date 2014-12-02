@@ -17,16 +17,15 @@ MonoBehaviour:
   secondsToCharge: .800000012
   secondsMinCharge: .200000003
   manacost: 30
-  secondsCooldown: 3
-  damage: 24
-  chargedDamage: 35
+  secondsCooldown: 4
+  manaPerSec: 12
+  manaPerSecCharged: 15
+  damage: 1.5
+  chargedDamage: 2
   width: .200000003
   chargedWidth: .800000012
   t_delay: .600000024
   t_chargedDelay: .300000012
-  t_active: 1.5
-  t_chargedActive: 2
   t_tick: .100000001
   knockbackScale: .5
   prefab: {fileID: 11400000, guid: 1bcfbbf756a62a64eba18001a0911831, type: 2}
-  laserBeam: {fileID: 400000, guid: 667383dfd3a22df449e4f6c62fd30b06, type: 2}

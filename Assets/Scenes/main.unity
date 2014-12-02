@@ -2486,9 +2486,10 @@ MonoBehaviour:
   reticle_minimumDistance: 1
   reticle_speed: 3
   maxMana: 100
-  altAimMode: 0
   mana: 100
   manaRegen: 6.5
+  currentManaRegen: 0
+  altAimMode: 0
   cooldowns:
   - -1000
   - -1000
@@ -2614,9 +2615,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  killAt: 50
   dead: 0
-  damageTaken: 0
+  totalDamage: 0
   lavaDamagePerSec: 10
   playerControl: {fileID: 0}
 --- !u!114 &783976502
@@ -5437,9 +5437,10 @@ MonoBehaviour:
   reticle_minimumDistance: 1
   reticle_speed: 3
   maxMana: 100
-  altAimMode: 0
   mana: 100
   manaRegen: 6.5
+  currentManaRegen: 0
+  altAimMode: 0
   cooldowns:
   - -1000
   - -1000
@@ -5471,9 +5472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  killAt: 50
   dead: 0
-  damageTaken: 0
+  totalDamage: 0
   lavaDamagePerSec: 10
   playerControl: {fileID: 0}
 --- !u!114 &1216444114
@@ -6142,7 +6142,6 @@ GameObject:
   - 81: {fileID: 1435105964}
   - 114: {fileID: 1435105969}
   - 114: {fileID: 1435105970}
-  - 114: {fileID: 1435105971}
   - 114: {fileID: 1435105972}
   m_Layer: 0
   m_Name: Main Camera
@@ -6245,23 +6244,6 @@ MonoBehaviour:
   controlsMenuSize: {x: 400, y: 250}
   mappingsMenuSize: {x: 600, y: 380}
   remapMenuSize: {x: 300, y: 200}
---- !u!114 &1435105971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435105963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29c3055cd5591a40a316a83128634e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doWindow0: 1
-  doWindow1: 1
-  doWindow2: 1
-  doWindow3: 1
-  doWindow4: 1
-  mySkin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
 --- !u!114 &1435105972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6274,7 +6256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeAmount: 0
-  decreaseFactor: 5
+  shakeFactor: .330000013
+  decrease: .0500000007
 --- !u!213 &1465908626
 Sprite:
   m_ObjectHideFlags: 0

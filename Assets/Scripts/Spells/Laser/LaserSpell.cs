@@ -20,6 +20,7 @@ public class LaserSpell : Spell
     private LaserEmitter emitter;
     private float _manaPerSec;
     private float _secondsToCharge;
+    private float _secondsMinCharge;
     private float _secondsCooldown;
     private float _manacost;
 
@@ -29,6 +30,7 @@ public class LaserSpell : Spell
 
         _secondsToCharge = secondsToCharge;
         _secondsCooldown = secondsCooldown;
+        _secondsMinCharge = secondsMinCharge;
         _manacost = manacost;
         if (prefab.CountPooled() == 0)
             prefab.CreatePool(3);
@@ -41,7 +43,6 @@ public class LaserSpell : Spell
         if (emitter && emitter.gameObject.activeSelf && Time.time > emitter.t_activation)
         {
             float manaSpent = (_manaPerSec + owner.castComponent.manaRegen * 3f) * Time.deltaTime;
-            Debug.Log(_manaPerSec);
             owner.castComponent.mana -= manaSpent;
             if (owner.castComponent.mana <= manaSpent)
                 TurnOff();
@@ -52,6 +53,7 @@ public class LaserSpell : Spell
     {
         emitter.Recycle();
         secondsToCharge = _secondsToCharge;
+        secondsMinCharge = _secondsMinCharge;
         secondsCooldown = _secondsCooldown;
         manacost = _manacost;
     }
@@ -60,6 +62,7 @@ public class LaserSpell : Spell
     {
         emitter.Activate();
         secondsToCharge = 0;
+        secondsMinCharge = 0;
         secondsCooldown = 0;
         manacost = 0;
     }
