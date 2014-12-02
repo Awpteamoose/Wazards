@@ -1,7 +1,4 @@
-﻿// C#
-// Creates a simple wizard that lets you create a Light GameObject
-// or if the user clicks in "Apply", it will set the color of the currently
-// object selected to red
+﻿// TODO: update default scripts, these are outdated
 
 using UnityEditor;
 using UnityEngine;
