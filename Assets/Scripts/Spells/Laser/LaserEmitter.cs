@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class LaserEmitter : ProjectileComponent
 {
     public float t_activation;
-    public float t_death;
     public float t_tick;
     public float scale;
     public AudioClip chargeSound;
@@ -18,7 +17,6 @@ public class LaserEmitter : ProjectileComponent
     private bool hasEndpoint;
     private float t_nextTick;
     private float height;
-    private float damagePerTick;
 
     private SpriteRenderer beamRenderer;
     private Animator beamAnimator;
@@ -44,7 +42,6 @@ public class LaserEmitter : ProjectileComponent
         startScale = new Vector2(laserBeam.transform.localScale.x, 100f);
         
         t_nextTick = t_activation;
-        damagePerTick = damage / ((t_death - t_activation) / t_tick);
 
         audio.clip = chargeSound;
         audio.time = chargeSound.length - (t_activation - Time.time);
@@ -89,24 +86,20 @@ public class LaserEmitter : ProjectileComponent
         if (!hasEndpoint)
             laserBeam.localScale = startScale;
 
-        if (Time.time > t_death)
-        {
-            //laserBeam.gameObject.Recycle();
-            gameObject.Recycle();
-        }
-
         if (Time.time > t_activation)
         {
             if (audio.clip == chargeSound)
             {
                 audio.clip = fireSound;
+                audio.loop = true;
+                audio.time = 0;
                 audio.Play();
             }
             if (damageList.Count > 0 && Time.time > t_nextTick)
             {
                 foreach (HealthComponent hc in damageList)
                 {
-                    hc.TakeDamage(damagePerTick, direction.vector, scale);
+                    hc.TakeDamage(damage, direction.vector, scale);
                     t_nextTick = Time.time + t_tick;
                 }
             }

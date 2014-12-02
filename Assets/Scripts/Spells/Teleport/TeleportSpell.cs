@@ -16,7 +16,7 @@ public class TeleportSpell : Spell
             prefab.CreatePool(2);
     }
 
-	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle)
 	{
 		if (charged) 
 			owner.transform.position = reticle;

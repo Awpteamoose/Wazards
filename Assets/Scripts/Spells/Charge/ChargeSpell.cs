@@ -24,7 +24,7 @@ public class ChargeSpell : Spell
             prefab.CreatePool(3);
     }
 
-	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle)
 	{
         ChargeProjectile projectile = prefab.Spawn(owner.transform.position, Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();

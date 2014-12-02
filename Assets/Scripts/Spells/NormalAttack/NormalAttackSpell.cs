@@ -20,7 +20,7 @@ public class NormalAttackSpell : Spell
             prefab.CreatePool(3);
     }
 	
-	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle)
 	{
         NormalAttackObject attack = prefab.Spawn();
 

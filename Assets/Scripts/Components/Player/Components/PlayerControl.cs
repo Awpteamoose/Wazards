@@ -64,11 +64,11 @@ public class PlayerControl: MonoBehaviour
                 spellNumber = Random.Range(0, SpellList.spells.Count);
                 PlayerPrefs.SetInt(spellName, spellNumber);
             }
-            castComponent.spellBook.set(SpellList.spells[spellNumber], i);
+            castComponent.spellBook.set(this, SpellList.spells[spellNumber], i);
 		}
         castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
         castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-		castComponent.spellBook.set (SpellList.normalAttack, 3);
+		castComponent.spellBook.set (this, SpellList.normalAttack, 3);
         PlayerPrefs.Save();
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
@@ -90,7 +90,7 @@ public class PlayerControl: MonoBehaviour
                     if (newSpell >= SpellList.spells.Count)
                         newSpell = 0;
                     PlayerPrefs.SetInt(spellName, newSpell);
-                    castComponent.spellBook.set(SpellList.spells[newSpell], i);
+                    castComponent.spellBook.set(this, SpellList.spells[newSpell], i);
                     PlayerPrefs.Save();
                 }
             }

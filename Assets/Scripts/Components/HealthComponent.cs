@@ -8,13 +8,16 @@ public class HealthComponent : MonoBehaviour {
 	#endif
 	public float health = 100f;
 	public float maxHealth = 100f;
-    public float killAt = 50f;
+    protected float killAt { get; set; }
     #if UNITY_EDITOR
     [ReadOnly]
     #endif
     public bool dead;
 
-    protected virtual void Awake() { }
+    protected virtual void Awake() 
+    {
+        killAt = 50f;
+    }
 	
     protected virtual void Update()
     {

@@ -26,15 +26,11 @@ public class PlayerHealthComponent : HealthComponent {
 
     protected override void Update()
     {
+        if (!grounded)
+            health -= lavaDamagePerSec * Time.deltaTime;
         if (health <= 0f || transform.position.magnitude > killAt)
 			//HACK:
 			Application.LoadLevel(Application.loadedLevel);
-	}
-
-    protected override void FixedUpdate()
-    {
-		if (!grounded)
-			health-=lavaDamagePerSec * Time.fixedDeltaTime;
 	}
 
     protected override void OnTriggerEnter2D(Collider2D collider)
@@ -60,15 +56,10 @@ public class PlayerHealthComponent : HealthComponent {
         //old knockback formula
         //rigidbody2D.AddForce(direction * (damageTaken * 0.4f + damage * 1.5f));
 
-        //new knockback formula
-        //7.5 - constant
-        //500 - minimal knockback
-        //TODO: take base knockback as a parameter?
         //http://www.ssbwiki.com/Knockback
-        rigidbody2D.AddForce(direction * ( (((damageTaken * 0.1f) + ((damageTaken * damage) * 0.05f)) * 0.75f/*35f*/) + 4f/*250f*/ ) * scale, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(direction * ( (((damageTaken * 0.1f) + ((damageTaken * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
 
         TypogenicText indicator = damageIndicator.Spawn();
-        //indicator.gameObject.SetActive(true);
         if (damage % 1 == 0)
             indicator.Text = damage.ToString("F0");
         else

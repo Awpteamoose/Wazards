@@ -19,7 +19,7 @@ public class WallSpell : Spell
             prefab.CreatePool(10);
     }
 
-	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle)
 	{
         Transform wall = prefab.Spawn();
         if (charged)

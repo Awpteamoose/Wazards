@@ -10,7 +10,9 @@ public class Spell : ScriptableObject
 	public float secondsMinCharge;
 	public float manacost;
 	public float secondsCooldown;
+    public PlayerControl owner { get; set; }
 
-    public virtual void Initialise() {}
-	public virtual void Cast(bool charged, Vector3 reticle, PlayerControl owner) {}
+    public virtual void Initialise() { }
+    public virtual void Update() { }
+	public virtual void Cast(bool charged, Vector3 reticle) { }
 }

@@ -23,7 +23,7 @@ public class IceblastSpell : Spell
             prefab.CreatePool(10);
     }
 	
-	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
+	public override void Cast(bool charged, Vector3 reticle)
 	{
         IceblastProjectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();

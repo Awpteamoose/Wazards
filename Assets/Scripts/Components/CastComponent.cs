@@ -13,14 +13,20 @@ public class CastComponent: MonoBehaviour
 	public float reticle_distance = 2f;
 	public float reticle_minimumDistance = 1f;
 	public float reticle_speed;
-	public float maxMana = 100f;
-    public bool altAimMode;
 
-	#if UNITY_EDITOR
+	public float maxMana;
+    #if UNITY_EDITOR
 	[ReadOnly]
 	#endif
-	public float mana = 100f;
-	public float manaRegen = 5f;
+	public float mana;
+
+    public float manaRegen;
+    #if UNITY_EDITOR
+	[ReadOnly]
+	#endif
+	public float currentManaRegen;
+    public bool altAimMode;
+
 	public SpellBook spellBook = new SpellBook();
 
 	#if UNITY_EDITOR
@@ -42,22 +48,32 @@ public class CastComponent: MonoBehaviour
 				number = active;
 			return spells[number];
 		}
-		public Spell set(Spell spell, int number)
+		public Spell set(PlayerControl owner, Spell spell, int number)
 		{
             spells[number] = Object.Instantiate(spell) as Spell;
+            spells[number].owner = owner;
             spells[number].Initialise();
 			return spell;
 		}
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-		if (rigidbody2D.velocity.magnitude < 3f)
-			mana+=manaRegen/20f;
-		else
-			mana+=manaRegen/60f;
-		if (mana > maxMana)
-			mana = maxMana;
+        for (int i = 0; i < spellBook.spells.Length; i++ )
+        {
+            spellBook.get(i).Update();
+        }
+
+        if (rigidbody2D.velocity.magnitude < 3f)
+        {
+            currentManaRegen = manaRegen * 3f;
+        }
+        else
+        {
+            currentManaRegen = manaRegen;
+        }
+        mana += currentManaRegen * Time.deltaTime;
+        mana = Mathf.Clamp(mana, 0, maxMana);
 	}
 
 	private void Start()
@@ -94,12 +110,12 @@ public class CastComponent: MonoBehaviour
 		else
 			return false;
 	}
-	public void cast(bool charged, Vector3 reticle, PlayerControl owner, int number=-1)
+	public void Cast(bool charged, Vector3 reticle, int number=-1)
 	{
 		if (number == -1)
 			number=spellBook.active;
-		cooldowns[spellBook.active] = Time.time;
-		mana-=spellBook.get().manacost;
-		spellBook.get().Cast(charged, reticle, owner);
+        cooldowns[spellBook.active] = Time.time;
+        mana -= spellBook.get().manacost;
+		spellBook.get().Cast(charged, reticle);
 	}
 }
