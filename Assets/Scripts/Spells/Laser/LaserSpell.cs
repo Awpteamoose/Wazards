@@ -16,11 +16,13 @@ public class LaserSpell : Spell
     public float knockbackScale;
 
     public LaserEmitter prefab;
+    public Sprite iconToOff;
 
     private LaserEmitter emitter;
     private float _manaPerSec;
     private float _t_charge;
     private float _t_minCharge;
+    private Sprite _icon;
 
     public override void Initialise()
     {
@@ -28,6 +30,7 @@ public class LaserSpell : Spell
 
         _t_charge = t_charge;
         _t_minCharge = t_minCharge;
+        _icon = icon;
         if (prefab.CountPooled() == 0)
             prefab.CreatePool(3);
     }
@@ -55,6 +58,7 @@ public class LaserSpell : Spell
         emitter.Recycle();
         t_charge = _t_charge;
         t_minCharge = _t_minCharge;
+        icon = _icon;
     }
 
     void TurnOn ()
@@ -62,6 +66,7 @@ public class LaserSpell : Spell
         emitter.Activate();
         t_charge = 0;
         t_minCharge = 0;
+        icon = iconToOff;
     }
 
     public override bool EnoughMana()
@@ -85,6 +90,7 @@ public class LaserSpell : Spell
         if (emitter && emitter.gameObject.activeSelf)
         {
             TurnOff();
+            base.Cast(charge, reticle);
         }
         else
         {
@@ -112,7 +118,6 @@ public class LaserSpell : Spell
             emitter.scale = knockbackScale;
 
             TurnOn();
-            base.Cast(charge, reticle);
         }
 	}
 }
