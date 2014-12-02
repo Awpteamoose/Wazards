@@ -47,23 +47,23 @@ public class ProjectileComponent : MonoBehaviour
     }
 
     protected HealthComponent c_healthComponent;
-    public virtual void OnTriggerEnter2D(Collider2D collider)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        c_healthComponent = collider.gameObject.GetComponent<HealthComponent>();
+        c_healthComponent = collision.gameObject.GetComponent<HealthComponent>();
         if (c_healthComponent)
         {
-            if (collider.gameObject == parent)
-                Collide(collider, c_healthComponent, true, false);
+            if (collision.gameObject == parent)
+                Collide(collision, c_healthComponent, true, false);
             else
             {
-                ProjectileComponent pc = collider.gameObject.GetComponent<ProjectileComponent>();
+                ProjectileComponent pc = collision.gameObject.GetComponent<ProjectileComponent>();
                 if (pc && pc.parent == parent)
                 {
-                    Collide(collider, c_healthComponent, false, true);
+                    Collide(collision, c_healthComponent, false, true);
                 }
                 else
                 {
-                    Collide(collider, c_healthComponent, false, false);
+                    Collide(collision, c_healthComponent, false, false);
                 }
             }
         }
@@ -77,7 +77,7 @@ public class ProjectileComponent : MonoBehaviour
     {
     }
 
-    public virtual void Collide(Collider2D collider, HealthComponent c_healthComponent, bool isParent, bool sameParent)
+    public virtual void Collide(Collider2D collision, HealthComponent c_healthComponent, bool isParent, bool sameParent)
     {
     }
 }

@@ -40,7 +40,7 @@ public class IceblastProjectile : ProjectileComponent
 		{
 			if (victim.inputComponent._active)
 				victim.inputComponent._active = false;
-			transform.rigidbody2D.MovePosition(victim.transform.position);
+			rigidbody.MovePosition(victim.transform.position);
             audio.volume = ((t_collision + t_duration) - Time.time) / t_duration;
 			if (Time.time > t_collision + t_duration)
 			{
@@ -56,11 +56,11 @@ public class IceblastProjectile : ProjectileComponent
         gameObject.Recycle();
     }
 
-    public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)
+    public override void Collide(Collider2D collision, HealthComponent healthComponent, bool isParent, bool sameParent)
     {
         if (!isParent && !sameParent)
         {
-            base.Collide(collider, healthComponent, isParent, sameParent);
+            base.Collide(collision, healthComponent, isParent, sameParent);
 
             healthComponent.TakeDamage(damage, direction.vector);
             if (healthComponent is PlayerHealthComponent)
