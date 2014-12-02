@@ -16,13 +16,14 @@ public class TeleportSpell : Spell
             prefab.CreatePool(2);
     }
 
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
-		if (charged) 
+		if (charge >= t_charge)
 			owner.transform.position = reticle;
 		else
 			owner.transform.position =(owner.transform.position + (reticle - owner.transform.position).normalized*minDistance);
         prefab.Spawn();
         prefab.Activate();
+        base.Cast(charge, reticle);
 	}
 }

@@ -19,10 +19,10 @@ public class WallSpell : Spell
             prefab.CreatePool(10);
     }
 
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
         Transform wall = prefab.Spawn();
-        if (charged)
+        if (charge >= t_charge)
             wall.position = reticle;
         else
             wall.position = owner.transform.position + (reticle - owner.transform.position).normalized * minDistance;
@@ -31,5 +31,7 @@ public class WallSpell : Spell
         wall.renderer.material.mainTextureScale = wall.localScale;
         WallHealthComponent whc = wall.GetComponent<WallHealthComponent>();
         whc.health = health;
+        whc.gameObject.SetActive(true);
+        base.Cast(charge, reticle);
 	}
 }

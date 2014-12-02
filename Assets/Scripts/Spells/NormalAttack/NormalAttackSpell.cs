@@ -20,22 +20,22 @@ public class NormalAttackSpell : Spell
             prefab.CreatePool(3);
     }
 	
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
         NormalAttackObject attack = prefab.Spawn();
 
-		if (charged)
+		if (charge >= t_charge)
 		{
 			attack.destroyProjectiles = true;
 			attack.damage = damageCharged;
 			attack.t_activation = Time.time + delay/2f;
-			secondsCooldown = 0.1f;
+			t_cooldown = 0.1f;
 		}
 		else
 		{
 			attack.damage = damage;
 			attack.t_activation = Time.time + delay;
-			secondsCooldown = 0.5f;
+			t_cooldown = 0.5f;
 		}
 
         attack.parent = owner.gameObject;
@@ -47,5 +47,6 @@ public class NormalAttackSpell : Spell
 		attack.size = size;
 
         attack.Activate();
+        base.Cast(charge, reticle);
 	}
 }

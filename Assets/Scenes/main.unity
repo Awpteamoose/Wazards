@@ -2490,11 +2490,6 @@ MonoBehaviour:
   manaRegen: 6.5
   currentManaRegen: 0
   altAimMode: 0
-  cooldowns:
-  - -1000
-  - -1000
-  - -1000
-  - -1000
 --- !u!114 &783976496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5441,11 +5436,6 @@ MonoBehaviour:
   manaRegen: 6.5
   currentManaRegen: 0
   altAimMode: 0
-  cooldowns:
-  - -1000
-  - -1000
-  - -1000
-  - -1000
 --- !u!114 &1216444112
 MonoBehaviour:
   m_ObjectHideFlags: 0

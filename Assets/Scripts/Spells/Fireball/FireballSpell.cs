@@ -21,14 +21,14 @@ public class FireballSpell : Spell
             prefab.CreatePool(10);
     }
 	
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
         FireballProjectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;
 		
-		if (charged) 
+		if (charge >= t_charge)
 		{
 			projectile.size = sizeCharged;
             projectile.speed = speedCharged;
@@ -46,5 +46,6 @@ public class FireballSpell : Spell
         projectileHealth.projectileComponent = projectile;
 
         projectile.Activate();
+        base.Cast(charge, reticle);
 	}
 }

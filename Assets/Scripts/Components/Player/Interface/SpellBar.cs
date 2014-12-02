@@ -9,13 +9,12 @@ public class SpellBar : MonoBehaviour {
     {
         for (int i = 0; i < castComponent.spellBook.spells.Length; i++)
         {
-            spellIcons[i].iconSprite.sprite = castComponent.spellBook.get(i).icon;
+            spellIcons[i].iconSprite.sprite = castComponent.spellBook.Get(i).icon;
 
-            float cooldownTime = ((castComponent.cooldowns[i] + castComponent.spellBook.get(i).secondsCooldown) - Time.time);
-            if (cooldownTime > 0)
+            if (castComponent.spellBook.Get(i).cooldown > 0)
             {
-                spellIcons[i].cooldownText.text = cooldownTime.ToString("00.00");
-                spellIcons[i].cooldownShadow.fillAmount = cooldownTime / castComponent.spellBook.get(i).secondsCooldown;
+                spellIcons[i].cooldownText.text = castComponent.spellBook.Get(i).cooldown.ToString("00.00");
+                spellIcons[i].cooldownShadow.fillAmount = castComponent.spellBook.Get(i).cooldown / castComponent.spellBook.Get(i).t_cooldown;
             }
             else
             {
@@ -23,10 +22,10 @@ public class SpellBar : MonoBehaviour {
                 spellIcons[i].cooldownShadow.fillAmount = 0;
             }
 
-            float manaNeeded = castComponent.spellBook.get(i).manacost - castComponent.mana;
+            float manaNeeded = castComponent.spellBook.Get(i).manacost - castComponent.mana;
             if (manaNeeded > 0)
             {
-                spellIcons[i].manaShadow.fillAmount = manaNeeded / castComponent.spellBook.get(i).manacost;
+                spellIcons[i].manaShadow.fillAmount = manaNeeded / castComponent.spellBook.Get(i).manacost;
             }
             else
             {

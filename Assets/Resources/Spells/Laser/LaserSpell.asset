@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Laser
   description: 
   icon: {fileID: 21300000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
-  secondsToCharge: .800000012
-  secondsMinCharge: .200000003
-  manacost: 30
-  secondsCooldown: 4
+  t_charge: .800000012
+  t_minCharge: .200000003
+  manacost: 15
+  t_cooldown: 4
+  cooldown: 0
   manaPerSec: 12
   manaPerSecCharged: 15
   damage: 1.5

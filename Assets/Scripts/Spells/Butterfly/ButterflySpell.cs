@@ -23,11 +23,11 @@ public class ButterflySpell : Spell
             prefab.CreatePool(100);
     }
 	
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{	
 		int angle;
 		int amt;
-		if (charged) 
+		if (charge >= t_charge)
 		{
 			angle = chargedAngleEdge;
 			amt = chargedAmount;
@@ -73,5 +73,6 @@ public class ButterflySpell : Spell
 
             projectile.Activate();
 		}
+        base.Cast(charge, reticle);
 	}
 }

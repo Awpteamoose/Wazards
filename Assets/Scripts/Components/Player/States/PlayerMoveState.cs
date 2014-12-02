@@ -23,8 +23,8 @@ public class PlayerMoveState: StateMachine.State
 		{
 			if (pc.inputComponent.getFire(i+1))
 			{
-				pc.castComponent.spellBook.choose(i);
-				if (pc.castComponent.can_cast())
+				pc.castComponent.spellBook.Choose(i);
+				if (pc.castComponent.spellBook.Get().CanCast())
 					pc.sm.set(pc.sm.states[PlayerControl.States.Cast]);
 			}
 		}

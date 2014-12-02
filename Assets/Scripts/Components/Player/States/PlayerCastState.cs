@@ -27,8 +27,8 @@ public class PlayerCastState: StateMachine.State
 	public override void Start()
 	{
 		t_start = Time.time;
-		t_charge = pc.castComponent.spellBook.get().secondsToCharge;
-		t_mincharge = pc.castComponent.spellBook.get().secondsMinCharge;
+		t_charge = pc.castComponent.spellBook.Get().t_charge;
+		t_mincharge = pc.castComponent.spellBook.Get().t_minCharge;
 		t_charged = 0;
 		pc.castComponent.reticle.SetActive(true);
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
@@ -143,8 +143,9 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Exit()
 	{
-		if (t_charged >= pc.castComponent.spellBook.get().secondsMinCharge)
-			pc.castComponent.Cast(t_charged>=t_charge, world_reticle);
+        Spell s_active = pc.castComponent.spellBook.Get();
+		if (t_charged >= s_active.t_minCharge && s_active.CanCast())
+			s_active.Cast(t_charged, world_reticle);
 		pc.rigidbody2D.fixedAngle = false;
 		
 		pc.castComponent.bgBar.SetActive(false);

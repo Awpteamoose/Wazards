@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Charge
   description: 
   icon: {fileID: 21300000, guid: a3b372abfb0b67b4a9584f24fde7ca79, type: 3}
-  secondsToCharge: .850000024
-  secondsMinCharge: 0
+  t_charge: .850000024
+  t_minCharge: 0
   manacost: 25
-  secondsCooldown: 2
+  t_cooldown: 2
+  cooldown: 0
   distance: 6
   speed: .449999988
   damageMod: 1.75

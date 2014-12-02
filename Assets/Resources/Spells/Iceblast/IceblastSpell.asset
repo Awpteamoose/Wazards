@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Iceblast
   description: 
   icon: {fileID: 21300000, guid: 4406d5ceacd30d0468b4dfa00b4a68cb, type: 3}
-  secondsToCharge: 1.20000005
-  secondsMinCharge: .300000012
+  t_charge: 1
+  t_minCharge: .25
   manacost: 24
-  secondsCooldown: 1.25
+  t_cooldown: 1.35000002
+  cooldown: 0
   damage: 6
   damageCharged: 8
   speed: 10

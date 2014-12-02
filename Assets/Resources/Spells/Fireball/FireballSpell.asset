@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Fireball
   description: 
   icon: {fileID: 21300000, guid: 21dc8c2cb2b7f3e4d874d19ad1b9c7b7, type: 3}
-  secondsToCharge: 1
-  secondsMinCharge: .25
+  t_charge: 1
+  t_minCharge: .25
   manacost: 21
-  secondsCooldown: 1
+  t_cooldown: 1.25
+  cooldown: 0
   damage: 10
   damageCharged: 13
   speed: 10

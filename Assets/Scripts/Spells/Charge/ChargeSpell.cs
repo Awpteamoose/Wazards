@@ -24,12 +24,12 @@ public class ChargeSpell : Spell
             prefab.CreatePool(3);
     }
 
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
         ChargeProjectile projectile = prefab.Spawn(owner.transform.position, Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		float _distance;
-		if (charged)
+		if (charge >= t_charge)
 		{
 			_distance = (reticle - owner.transform.position).magnitude;
 		}
@@ -50,5 +50,6 @@ public class ChargeSpell : Spell
         projectileHealth.projectileComponent = projectile;
 
         projectile.Activate();
+        base.Cast(charge, reticle);
 	}
 }

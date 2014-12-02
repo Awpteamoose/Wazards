@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Butterfly
   description: 
   icon: {fileID: 21300000, guid: fb51a21d9ff628d4da5e552de25eebf1, type: 3}
-  secondsToCharge: 1.5
-  secondsMinCharge: 0
+  t_charge: 1.35000002
+  t_minCharge: 0
   manacost: 12.5
-  secondsCooldown: .200000003
+  t_cooldown: .200000003
+  cooldown: 0
   damage: 3
   speed: 50
   size: .899999976

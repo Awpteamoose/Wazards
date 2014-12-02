@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Attack
   description: 
   icon: {fileID: 21300000, guid: 772a66a5b0b5e0c4683862d379246d21, type: 3}
-  secondsToCharge: .300000012
-  secondsMinCharge: 0
+  t_charge: .300000012
+  t_minCharge: 0
   manacost: 0
-  secondsCooldown: .5
+  t_cooldown: .5
+  cooldown: 0
   damage: 5
   damageCharged: 8
   delay: .0799999982

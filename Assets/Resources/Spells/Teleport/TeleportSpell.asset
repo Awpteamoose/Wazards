@@ -14,9 +14,10 @@ MonoBehaviour:
   spellName: Teleport
   description: 
   icon: {fileID: 21300000, guid: b949ea438815aa94aa53a42a004c16b2, type: 3}
-  secondsToCharge: .850000024
-  secondsMinCharge: 0
+  t_charge: .850000024
+  t_minCharge: 0
   manacost: 25
-  secondsCooldown: .200000003
+  t_cooldown: .349999994
+  cooldown: 0
   minDistance: 6
   prefab: {fileID: 11400000, guid: f8f6eb0060db48541abdbc0e67049efa, type: 2}

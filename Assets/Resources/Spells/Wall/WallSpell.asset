@@ -14,10 +14,11 @@ MonoBehaviour:
   spellName: Wall
   description: 
   icon: {fileID: 21300000, guid: c272317d560f14942831d1e8b22f49da, type: 3}
-  secondsToCharge: .349999994
-  secondsMinCharge: 0
+  t_charge: .349999994
+  t_minCharge: 0
   manacost: 25
-  secondsCooldown: 4
+  t_cooldown: 4
+  cooldown: 0
   minDistance: 2
   width: 5
   height: .5

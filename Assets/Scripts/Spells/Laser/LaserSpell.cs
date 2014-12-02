@@ -19,55 +19,68 @@ public class LaserSpell : Spell
 
     private LaserEmitter emitter;
     private float _manaPerSec;
-    private float _secondsToCharge;
-    private float _secondsMinCharge;
-    private float _secondsCooldown;
-    private float _manacost;
+    private float _t_charge;
+    private float _t_minCharge;
 
     public override void Initialise()
     {
         base.Initialise();
 
-        _secondsToCharge = secondsToCharge;
-        _secondsCooldown = secondsCooldown;
-        _secondsMinCharge = secondsMinCharge;
-        _manacost = manacost;
+        _t_charge = t_charge;
+        _t_minCharge = t_minCharge;
         if (prefab.CountPooled() == 0)
             prefab.CreatePool(3);
     }
 
     public override void Update()
     {
-        base.Update();
-
-        if (emitter && emitter.gameObject.activeSelf && Time.time > emitter.t_activation)
+        if (emitter && emitter.gameObject.activeSelf)
         {
-            float manaSpent = (_manaPerSec + owner.castComponent.manaRegen * 3f) * Time.deltaTime;
-            owner.castComponent.mana -= manaSpent;
-            if (owner.castComponent.mana <= manaSpent)
-                TurnOff();
+            if (Time.time > emitter.t_activation)
+            {
+                float manaSpent = (_manaPerSec + owner.castComponent.manaRegen * 3f) * Time.deltaTime;
+                owner.castComponent.mana -= manaSpent;
+                if (owner.castComponent.mana <= manaSpent)
+                    TurnOff();
+            }
+        }
+        else
+        {
+            base.Update();
         }
     }
 
     void TurnOff ()
     {
         emitter.Recycle();
-        secondsToCharge = _secondsToCharge;
-        secondsMinCharge = _secondsMinCharge;
-        secondsCooldown = _secondsCooldown;
-        manacost = _manacost;
+        t_charge = _t_charge;
+        t_minCharge = _t_minCharge;
     }
 
     void TurnOn ()
     {
         emitter.Activate();
-        secondsToCharge = 0;
-        secondsMinCharge = 0;
-        secondsCooldown = 0;
-        manacost = 0;
+        t_charge = 0;
+        t_minCharge = 0;
+    }
+
+    public override bool EnoughMana()
+    {
+        if (emitter && !emitter.gameObject.activeSelf)
+            return base.EnoughMana();
+        else
+            return true;
+    }
+
+    public override bool IsCooldown()
+    {
+        if (emitter && !emitter.gameObject.activeSelf)
+            return base.IsCooldown();
+        else
+            return true;
     }
 	
-	public override void Cast(bool charged, Vector3 reticle)
+	public override void Cast(float charge, Vector3 reticle)
 	{
         if (emitter && emitter.gameObject.activeSelf)
         {
@@ -80,7 +93,7 @@ public class LaserSpell : Spell
             emitter.parent = owner.gameObject;
             emitter.size = 1f;
 
-            if (charged)
+            if (charge >= t_charge)
             {
                 emitter.damage = chargedDamage;
                 emitter.t_activation = Time.time + t_chargedDelay;
@@ -99,6 +112,7 @@ public class LaserSpell : Spell
             emitter.scale = knockbackScale;
 
             TurnOn();
+            base.Cast(charge, reticle);
         }
 	}
 }
