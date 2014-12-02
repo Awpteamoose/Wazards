@@ -5,13 +5,13 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ButterflySpell : Spell
 {
-	public float damage = 75f;
-	public float speed = 0.3f;
-	public float size = 2f;
-	public int amount = 3;
-	public int angleEdge = 20;
-	public int chargedAmount = 5;
-	public int chargedAngleEdge = 20;
+	public float damage;
+	public float speed;
+	public float size;
+	public int amount;
+	public int angleEdge;
+	public int chargedAmount;
+	public int chargedAngleEdge;
     public float t_delayMax;
 
     public ButterflyProjectile prefab;
@@ -19,8 +19,8 @@ public class ButterflySpell : Spell
     public override void Initialise ()
     {
         base.Initialise();
-
-        prefab.CreatePool(100);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(100);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

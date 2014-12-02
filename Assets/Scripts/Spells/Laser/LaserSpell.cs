@@ -4,15 +4,15 @@ using System.Collections;
 [System.Serializable]
 public class LaserSpell : Spell
 {
-	public float damage = 15f;
+	public float damage;
     public float chargedDamage;
     public float width;
     public float chargedWidth;
-    public float t_delay = 1f;
+    public float t_delay;
     public float t_chargedDelay;
-    public float t_active = 1f;
+    public float t_active;
     public float t_chargedActive;
-    public float t_tick = 0.2f;
+    public float t_tick;
     public float knockbackScale;
 
     public LaserEmitter prefab;
@@ -21,7 +21,8 @@ public class LaserSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(1);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(3);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

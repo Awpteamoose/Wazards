@@ -4,11 +4,11 @@ using System.Collections;
 [System.Serializable]
 public class IceblastSpell : Spell
 {
-    public float damage = 15f;
+    public float damage;
     public float damageCharged;
-    public float speed = 1f;
+    public float speed;
     public float speedCharged;
-    public float size = 1f;
+    public float size;
     public float sizeCharged;
 	public float t_duration;
     public float t_durationCharged;
@@ -19,7 +19,8 @@ public class IceblastSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(10);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(10);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

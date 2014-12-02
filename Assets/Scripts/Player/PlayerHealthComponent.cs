@@ -9,7 +9,7 @@ public class PlayerHealthComponent : HealthComponent {
     protected Collider2D groundCollider;
     protected bool grounded = true;
 
-	public Transform damageIndicator;
+	public static TypogenicText damageIndicator;
 
     public PlayerControl playerControl;
 
@@ -19,6 +19,9 @@ public class PlayerHealthComponent : HealthComponent {
 
         playerControl = GetComponent<PlayerControl>();
         groundCollider = GameObject.Find("Ground").collider2D;
+        if (!damageIndicator)
+            damageIndicator = Resources.Load("Placeholder/Damage Indicator", typeof(TypogenicText)) as TypogenicText;
+        damageIndicator.CreatePool(25);
     }
 
     protected override void Update()
@@ -64,17 +67,18 @@ public class PlayerHealthComponent : HealthComponent {
         //http://www.ssbwiki.com/Knockback
         rigidbody2D.AddForce(direction * ( (((damageTaken * 0.1f) + ((damageTaken * damage) * 0.05f)) * 0.75f/*35f*/) + 4f/*250f*/ ) * scale, ForceMode2D.Impulse);
 
-		Transform newIndicator = Instantiate (damageIndicator) as Transform;
-		newIndicator.gameObject.SetActive (true);
-		TypogenicText typo = newIndicator.GetComponent<TypogenicText> ();
+        TypogenicText indicator = damageIndicator.Spawn();
+        //indicator.gameObject.SetActive(true);
         if (damage % 1 == 0)
-            typo.Text = damage.ToString("F0");
+            indicator.Text = damage.ToString("F0");
         else
-            typo.Text = damage.ToString("F2");
+            indicator.Text = damage.ToString("F2");
         float timesAverage = Mathf.Clamp((damage / 5f), 0.25f, 4f);
         float sizemod = (timesAverage - 1f) / 2f + 1f;
-        typo.Size = sizemod * typo.Size;
-        newIndicator.position = new Vector3(transform.position.x, transform.position.y + typo.Size / 14.05f, -0.5f);
-		newIndicator.rigidbody2D.AddForce (-direction * 2.5f, ForceMode2D.Impulse);
+        indicator.Size = sizemod * indicator.Size;
+        indicator.transform.position = new Vector3(transform.position.x, transform.position.y + indicator.Size / 14.05f, -0.5f);
+        indicator.rigidbody2D.AddForce(-direction * 2.5f, ForceMode2D.Impulse);
+
+        Camera.main.Shake(damage / 40f);
     }
 }

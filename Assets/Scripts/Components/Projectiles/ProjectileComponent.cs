@@ -32,7 +32,8 @@ public class ProjectileComponent : MonoBehaviour
 
     public virtual void Activate ()
     {
-        healthComponent.Activate();
+        if (healthComponent)
+            healthComponent.Activate();
         transform.localScale = new Vector2(size, size); //TODO: only the projectiles that want spell-controlled sizes should set this
         direction.vector = (target - parent.transform.position);
     }

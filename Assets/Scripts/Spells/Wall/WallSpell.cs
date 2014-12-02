@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class WallSpell : Spell
 {
-	public float minDistance = 2f;
+	public float minDistance;
     public float width;
     public float height;
     public float health;
@@ -15,7 +15,8 @@ public class WallSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(10);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(10);
     }
 
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

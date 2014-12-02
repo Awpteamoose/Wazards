@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class TeleportSpell : Spell
 {
-	public float minDistance = 2f;
+	public float minDistance;
 
     public TeleportSoundProjectile prefab;
 
@@ -12,7 +12,8 @@ public class TeleportSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(1);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(2);
     }
 
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

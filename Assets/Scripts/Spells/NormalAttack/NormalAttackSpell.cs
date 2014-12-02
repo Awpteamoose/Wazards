@@ -4,11 +4,11 @@ using System.Collections;
 [System.Serializable]
 public class NormalAttackSpell : Spell
 {
-    public float damage = 200f;
+    public float damage;
     public float damageCharged;
-	public float delay = 0.2f;
-	public float duration = 1f;
-	public float size = 1f;
+	public float delay;
+	public float duration;
+	public float size;
 
     public NormalAttackObject prefab;
 
@@ -16,7 +16,8 @@ public class NormalAttackSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(1);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(3);
     }
 	
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)

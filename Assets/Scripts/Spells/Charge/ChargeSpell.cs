@@ -20,7 +20,8 @@ public class ChargeSpell : Spell
     {
         base.Initialise();
 
-        prefab.CreatePool(3);
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(3);
     }
 
 	public override void Cast(bool charged, Vector3 reticle, PlayerControl owner)
