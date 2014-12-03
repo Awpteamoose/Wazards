@@ -44,6 +44,9 @@ public class IceblastSpell : Spell
 			projectile.damage = damage;
 			projectile.t_duration = t_duration;
 		}
+        projectile.size *= owner.castComponent.mod_size;
+        projectile.speed *= owner.castComponent.mod_speed;
+        projectile.damage *= owner.castComponent.mod_damage;
 
         projectileHealth.maxHealth = damage;
         projectileHealth.projectileComponent = projectile;

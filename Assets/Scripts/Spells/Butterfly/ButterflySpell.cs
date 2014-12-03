@@ -55,10 +55,9 @@ public class ButterflySpell : Spell
 			
 			projectile.target = reticle;
 			projectile.parent = owner.gameObject;
-            //projectile.transform.localScale = new Vector2(size, size);
-            projectile.size = size;
-			projectile.speed = speed*Random.Range(0.3f, 1.5f);
-			projectile.damage = damage;
+            projectile.size = size * owner.castComponent.mod_size;
+			projectile.speed = speed * Random.Range(0.3f, 1.5f) * owner.castComponent.mod_speed;
+			projectile.damage = damage * owner.castComponent.mod_damage;
             projectileHealth.maxHealth = damage;
             projectileHealth.projectileComponent = projectile;
 

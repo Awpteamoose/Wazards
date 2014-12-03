@@ -113,6 +113,7 @@ public class LaserSpell : Spell
                 emitter.laserBeam.localScale = new Vector2(width, emitter.laserBeam.localScale.y);
                 _manaPerSec = manaPerSec;
             }
+            emitter.damage *= owner.castComponent.mod_damage;
 
             emitter.t_tick = t_tick;
             emitter.scale = knockbackScale;

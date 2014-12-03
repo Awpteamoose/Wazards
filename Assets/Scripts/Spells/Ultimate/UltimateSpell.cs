@@ -73,15 +73,15 @@ public class UltimateSpell : Spell
     {
         _duration += duration;
 
-        cast_mod_damage = owner.healthComponent.totalDamage / 100f;
-        cast_mod_size = cast_mod_damage * 0.25f;
-        cast_mod_speed = cast_mod_damage * 0.25f;
+        cast_mod_damage = owner.healthComponent.totalDamage / 200f;
+        cast_mod_size = cast_mod_damage * 0.5f;
+        cast_mod_speed = cast_mod_damage * 0.5f;
         cast_mod_cooldown = -0.5f;
         cast_mod_manacost = 0f;
         cast_mod_regen = 1f;
         move_mod_speed = 1f;
         health_mod_damage = 0f;
-        health_mod_knockback = cast_mod_damage * 0.25f;
+        health_mod_knockback = cast_mod_damage * 0.5f;
 
         Buff(1);
 

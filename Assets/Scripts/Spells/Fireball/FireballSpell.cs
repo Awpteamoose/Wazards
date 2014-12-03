@@ -40,6 +40,8 @@ public class FireballSpell : Spell
 			projectile.speed = speed;
 			projectile.damage = damage;
 		}
+        projectile.size *= owner.castComponent.mod_size;
+        projectile.speed *= owner.castComponent.mod_speed;
         projectile.damage *= owner.castComponent.mod_damage;
 
         projectileHealth.maxHealth = projectile.damage;

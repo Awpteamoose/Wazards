@@ -37,6 +37,7 @@ public class NormalAttackSpell : Spell
 			attack.t_activation = Time.time + delay;
 			t_cooldown = 0.5f;
 		}
+        attack.damage *= owner.castComponent.mod_damage;
 
         attack.parent = owner.gameObject;
 		attack.transform.parent = owner.transform;

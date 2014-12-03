@@ -30,7 +30,7 @@ public class WallSpell : Spell
         wall.localScale = new Vector2(width, height);
         wall.renderer.material.mainTextureScale = wall.localScale;
         WallHealthComponent whc = wall.GetComponent<WallHealthComponent>();
-        whc.health = health;
+        whc.health = health * owner.castComponent.mod_damage;
         whc.gameObject.SetActive(true);
         base.Cast(charge, reticle);
 	}
