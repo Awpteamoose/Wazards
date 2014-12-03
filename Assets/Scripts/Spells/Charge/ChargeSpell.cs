@@ -37,10 +37,10 @@ public class ChargeSpell : Spell
 		{
 			_distance = distance;
 		}
-		projectile.t_terminate = Time.time + _distance/(1f/Time.fixedDeltaTime*speed);
 		projectile.target = reticle;
 		projectile.parent= owner.gameObject;
 		projectile.speed = speed * owner.moveComponent.mod_speed;
+        projectile.t_terminate = Time.time + _distance / (1f / Time.fixedDeltaTime * projectile.speed);
         projectile.damageMod = damageMod * owner.castComponent.mod_damage;
         projectile.minDamage = minDamage * owner.castComponent.mod_damage;
         projectile.maxDamage = maxDamage * owner.castComponent.mod_damage;

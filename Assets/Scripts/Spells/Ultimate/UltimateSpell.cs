@@ -7,8 +7,8 @@ public class UltimateSpell : Spell
     public float duration = 5f;
 
     private float _duration;
-    private bool used;
-    private bool expired;
+    public bool used;
+    public bool expired;
 
     private float cast_mod_damage;
     private float cast_mod_size;
@@ -85,6 +85,7 @@ public class UltimateSpell : Spell
 
         Buff(1);
 
+        Camera.main.Shake(0.4f);
         used = true;
         base.Cast(charge, reticle);
     }

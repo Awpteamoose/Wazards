@@ -13,7 +13,7 @@ public class PlayerControl: MonoBehaviour
     public SpriteRenderer spriteRenderer { get; set; }
 
     public GameObject arrow;
-    public Spell ultimate;
+    public UltimateSpell ultimate;
 	public string player = "Player 1";
     public AudioClip[] words;
     public AudioClip[] ultimateSounds;
@@ -62,7 +62,6 @@ public class PlayerControl: MonoBehaviour
         }
         else
         {
-            audio.Stop();
             chanting = false;
         }
     }
@@ -94,7 +93,9 @@ public class PlayerControl: MonoBehaviour
 		}
         castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
         castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-        castComponent.spellBook.Set (this, ultimate, 4);
+        ultimate.Initialise();
+        ultimate.owner = this;
+        castComponent.spellBook.spells[4] = ultimate;
 		castComponent.spellBook.Set (this, SpellList.normalAttack, 5);
         PlayerPrefs.Save();
 

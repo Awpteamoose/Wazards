@@ -154,6 +154,9 @@ public class PlayerCastState: StateMachine.State
 
         pc.StopChant();
 
+        if (pc.ultimate.used && !pc.ultimate.expired)
+            Camera.main.Shake(0.1f);
+
 		#if UNITY_EDITOR
 		//Debug.Log("Cast: Exit");
 		#endif
