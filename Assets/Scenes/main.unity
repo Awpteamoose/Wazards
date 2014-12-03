@@ -600,6 +600,7 @@ GameObject:
   - 114: {fileID: 235320034}
   - 222: {fileID: 235320033}
   - 114: {fileID: 235320032}
+  - 225: {fileID: 235320036}
   m_Layer: 5
   m_Name: Player 2 interface
   m_TagString: Untagged
@@ -684,6 +685,16 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!225 &235320036
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235320030}
+  m_Alpha: .75
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &248462344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,11 +2501,11 @@ MonoBehaviour:
   reticle_distance: 3
   reticle_minimumDistance: 1
   reticle_speed: 3
-  t_charged: 0
   mod_damage: 1
   mod_size: 1
   mod_speed: 1
   mod_cooldown: 1
+  mod_charge: 1
   mod_manacost: 1
   mod_regen: 1
   maxMana: 100
@@ -2820,6 +2831,7 @@ GameObject:
   - 114: {fileID: 827627683}
   - 222: {fileID: 827627684}
   - 114: {fileID: 827627686}
+  - 225: {fileID: 827627687}
   m_Layer: 5
   m_Name: Player 1 interface
   m_TagString: Untagged
@@ -2904,6 +2916,16 @@ MonoBehaviour:
   manaBar: {fileID: 301663396}
   damageBar: {fileID: 1496070270}
   spellBar: {fileID: 1418736198}
+--- !u!225 &827627687
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827627681}
+  m_Alpha: .75
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &828159795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5556,11 +5578,11 @@ MonoBehaviour:
   reticle_distance: 3
   reticle_minimumDistance: 1
   reticle_speed: 3
-  t_charged: 0
   mod_damage: 1
   mod_size: 1
   mod_speed: 1
   mod_cooldown: 1
+  mod_charge: 1
   mod_manacost: 1
   mod_regen: 1
   maxMana: 100

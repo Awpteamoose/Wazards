@@ -17,6 +17,7 @@ public class UltimateSpell : Spell
     private float cast_mod_cooldown;
     private float cast_mod_manacost;
     private float cast_mod_regen;
+    private float cast_mod_charge;
     private float move_mod_speed;
     private float health_mod_damage;
     private float health_mod_knockback;
@@ -105,6 +106,7 @@ public class UltimateSpell : Spell
         owner.castComponent.mod_cooldown += cast_mod_cooldown * sign;
         owner.castComponent.mod_manacost += cast_mod_manacost * sign;
         owner.castComponent.mod_regen += cast_mod_regen * sign;
+        owner.castComponent.mod_charge += cast_mod_charge * sign;
         owner.moveComponent.mod_speed += move_mod_speed * sign;
         owner.healthComponent.mod_damage += health_mod_damage * sign;
         owner.healthComponent.mod_knockback += health_mod_knockback * sign;
@@ -120,6 +122,7 @@ public class UltimateSpell : Spell
         cast_mod_cooldown = 1f;
         cast_mod_manacost = 0f;
         cast_mod_regen = 1f;
+        cast_mod_charge = 1f;
         move_mod_speed = 1f;
         health_mod_damage = 0f;
         health_mod_knockback = cast_mod_damage;

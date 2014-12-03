@@ -10,12 +10,9 @@ public class Spell : ScriptableObject
 	public float t_minCharge;
 	public float manacost;
 	public float t_cooldown;
-    #if UNITY_EDITOR
-	[ReadOnly]
-	#endif
-    public float cooldown;
     public PlayerControl owner { get; set; }
 
+    public float cooldown { get; set; }
     public float t_startCharge { get; set; }
     public float t_charged { get; set; }
     public bool charged { get; set; }
@@ -46,7 +43,7 @@ public class Spell : ScriptableObject
     public virtual void Chant(Vector3 reticle)
     {
         //TODO: spell is being cast
-        t_charged += Time.deltaTime;
+        t_charged += Time.deltaTime * owner.castComponent.mod_charge;
         if (!owner.audio.isPlaying)
             PlugNextWord();
     }

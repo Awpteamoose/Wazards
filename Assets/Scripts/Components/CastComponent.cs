@@ -18,6 +18,7 @@ public class CastComponent: MonoBehaviour
     public float mod_size = 1f;
     public float mod_speed = 1f;
     public float mod_cooldown = 1f;
+    public float mod_charge = 1f;
     public float mod_manacost = 1f;
     public float mod_regen = 1f;
 
@@ -52,7 +53,7 @@ public class CastComponent: MonoBehaviour
 		}
 		public Spell Set(PlayerControl owner, Spell spell, int number)
 		{
-            spells[number] = Object.Instantiate(spell) as Spell;
+            spells[number] = spell;
             spells[number].owner = owner;
             spells[number].Initialise();
 			return spell;

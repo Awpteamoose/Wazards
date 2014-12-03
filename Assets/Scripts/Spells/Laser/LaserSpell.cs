@@ -35,6 +35,12 @@ public class LaserSpell : Spell
             prefab.CreatePool(3);
     }
 
+    public override void PlugNextWord()
+    {
+        if (!emitter || !emitter.gameObject.activeSelf)
+            base.PlugNextWord();
+    }
+
     public override void Update()
     {
         if (emitter && emitter.gameObject.activeSelf)

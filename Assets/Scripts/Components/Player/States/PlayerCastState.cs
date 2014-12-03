@@ -86,7 +86,7 @@ public class PlayerCastState : StateMachine.State
             world_reticle = pc.castComponent.reticle.transform.position;
         }
         if (spell.t_charge > 0)
-            pc.castComponent.fgBar.transform.localScale = new Vector3(((Time.time - spell.t_startCharge) / spell.t_charge * pc.castComponent.bgBar.transform.localScale.x), pc.castComponent.fgBar.transform.localScale.y, 0);
+            pc.castComponent.fgBar.transform.localScale = new Vector3((spell.t_charged / spell.t_charge * pc.castComponent.bgBar.transform.localScale.x), pc.castComponent.fgBar.transform.localScale.y, 0);
         else
             pc.castComponent.fgBar.transform.localScale = Vector3.zero;
 	}
