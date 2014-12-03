@@ -9,14 +9,14 @@ public class PlayerControl: MonoBehaviour
 	public CastComponent castComponent {get; set;}
 	public PlayerHealthComponent healthComponent {get; set;}
 	public PlayerInputComponent inputComponent {get; set;}
-    public Animator animator {get; set;}
+    public Animator animator { get; set; }
+    public SpriteRenderer spriteRenderer { get; set; }
 
     public GameObject arrow;
-    public SpriteRenderer spriteRenderer;
-
+    public Spell ultimate;
 	public string player = "Player 1";
-
     public AudioClip[] words;
+    public AudioClip[] ultimateSounds;
 	
 	public StateMachine.Machine<States> sm = new StateMachine.Machine<States> ();
 	public enum States
@@ -25,36 +25,62 @@ public class PlayerControl: MonoBehaviour
 		Cast
 	}
 
-    private bool stopChant = false;
-    private bool chanting = false;
+    private bool chanting;
+    private bool ultiChant;
+    private bool ultiCharged;
     private int lastRandom;
     public void StartChant()
     {
-        if (castComponent.spellBook.active != 3)
+        Spell s_active = castComponent.spellBook.Get();
+        if (!(s_active is NormalAttackSpell))
         {
-            Random.seed = castComponent.spellBook.Get().spellName.GetHashCode();
-            lastRandom = Random.Range(-214748364, 214748364);
-            Random.seed = Mathf.RoundToInt(Time.time*100f);
-            chanting = true;
-            stopChant = false;
+            if (s_active is UltimateSpell)
+            {
+                audio.clip = ultimateSounds[0];
+                audio.Play();
+                ultiChant = true;
+                ultiCharged = false;
+            }
+            else
+            {
+                Random.seed = castComponent.spellBook.Get().spellName.GetHashCode();
+                lastRandom = Random.Range(-214748364, 214748364);
+                Random.seed = Mathf.RoundToInt(Time.time * 100f);
+                chanting = true;
+            }
         }
     }
 
     public void StopChant()
     {
-        stopChant = true;
+        if (ultiChant)
+        {
+            audio.clip = ultimateSounds[2];
+            audio.time = 0;
+            audio.Play();
+            ultiChant = false;
+        }
+        else
+        {
+            audio.Stop();
+            chanting = false;
+        }
     }
 
 	// Use this for initialization
 	void Start () {
+        chanting = false;
+        ultiChant = false;
+
 		moveComponent = GetComponent<MoveComponent>();
 		castComponent = GetComponent<CastComponent>();
 		healthComponent = GetComponent<PlayerHealthComponent>();
 		inputComponent = GetComponent<PlayerInputComponent>();
 		inputComponent.playername = player;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-		for (int i = 0; i<3; i++)
+		for (int i = 0; i<4; i++)
 		{
             //PlayerPrefs.DeleteAll();
             string spellName = player + " SelectedSpell " + i.ToString();
@@ -68,7 +94,8 @@ public class PlayerControl: MonoBehaviour
 		}
         castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
         castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-		castComponent.spellBook.Set (this, SpellList.normalAttack, 3);
+        castComponent.spellBook.Set (this, ultimate, 4);
+		castComponent.spellBook.Set (this, SpellList.normalAttack, 5);
         PlayerPrefs.Save();
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
@@ -81,7 +108,7 @@ public class PlayerControl: MonoBehaviour
 	{
         if (!PauseMenu.paused)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (Input.GetButtonDown(player + " Switch Spell " + (i + 1)))
                 {
@@ -99,19 +126,20 @@ public class PlayerControl: MonoBehaviour
             {
                 if (!audio.isPlaying)
                 {
-                    if (stopChant)
-                    {
-                        audio.Stop();
-                    }
-                    else
-                    {
-                        Random.seed = lastRandom;
-                        lastRandom = Random.Range(-214748364, 214748364);
-                        audio.clip = words[Random.Range(0, words.Length)];
-                        Random.seed = Mathf.RoundToInt(Time.time * 100f);
-                        audio.Play();
-                    }
+                    Random.seed = lastRandom;
+                    lastRandom = Random.Range(-214748364, 214748364);
+                    audio.clip = words[Random.Range(0, words.Length)];
+                    Random.seed = Mathf.RoundToInt(Time.time * 100f);
+                    audio.Play();
                 }
+            }
+
+            if (ultiChant && castComponent.t_charged > castComponent.spellBook.Get().t_charge && !ultiCharged)
+            {
+                audio.clip = ultimateSounds[1];
+                audio.time = 0;
+                audio.Play();
+                ultiCharged = true;
             }
             sm.Update();
         }

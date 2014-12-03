@@ -13,7 +13,7 @@ public class PlayerInputComponent : InputComponent
     {
         if (mappings == null)
         {
-            inputNames = new string[8];
+            inputNames = new string[10];
             inputNames[0] = "Up";
             inputNames[1] = "Left";
             inputNames[2] = "Down";
@@ -21,7 +21,9 @@ public class PlayerInputComponent : InputComponent
             inputNames[4] = "Spell 1";
             inputNames[5] = "Spell 2";
             inputNames[6] = "Spell 3";
-            inputNames[7] = "Attack";
+            inputNames[7] = "Spell 4";
+            inputNames[8] = "Ultimate";
+            inputNames[9] = "Attack";
 
             mappings = new Dictionary<string, KeyCode>();
             for (int i = 1; i <= 4; i++)
@@ -80,8 +82,10 @@ public class PlayerInputComponent : InputComponent
 	{
         if (_active)
         {
-            if (num < 4)
+            if (num < 5)
                 return Input.GetKey(mappings[playername + " Spell " + num]);
+            else if (num == 5)
+                return Input.GetKey(mappings[playername + " Ultimate"]);
             else
                 return Input.GetKey(mappings[playername + " Attack"]);
         }
@@ -93,8 +97,10 @@ public class PlayerInputComponent : InputComponent
 	{
         if (_active)
         {
-            if (num < 4)
+            if (num < 5)
                 return Input.GetKeyDown(mappings[playername + " Spell " + num]);
+            else if (num == 5)
+                return Input.GetKeyDown(mappings[playername + " Ultimate"]);
             else
                 return Input.GetKeyDown(mappings[playername + " Attack"]);
         }
@@ -106,8 +112,10 @@ public class PlayerInputComponent : InputComponent
 	{
         if (_active)
         {
-            if (num < 4)
+            if (num < 5)
                 return Input.GetKeyUp(mappings[playername + " Spell " + num]);
+            else if (num == 5)
+                return Input.GetKeyUp(mappings[playername + " Ultimate"]);
             else
                 return Input.GetKeyUp(mappings[playername + " Attack"]);
         }

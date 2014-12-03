@@ -47,7 +47,7 @@ public class Spell : ScriptableObject
     }
 	public virtual void Cast(float charge, Vector3 reticle)
     {
-        cooldown += t_cooldown;
-        owner.castComponent.mana -= manacost;
+        cooldown += t_cooldown * owner.castComponent.mod_cooldown;
+        owner.castComponent.mana -= manacost * owner.castComponent.mod_cooldown;
     }
 }

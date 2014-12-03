@@ -3,6 +3,9 @@ using System.Collections;
 
 public class HealthComponent : MonoBehaviour {
 
+    public float mod_damage = 1f;
+    public float mod_knockback = 1f;
+
 	#if UNITY_EDITOR
 	[ReadOnly]
 	#endif

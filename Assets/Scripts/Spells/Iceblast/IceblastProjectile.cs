@@ -22,6 +22,7 @@ public class IceblastProjectile : ProjectileComponent
 	public override void Activate ()
 	{
 		base.Activate();
+        collider.enabled = true;
 		createdAt = Time.time-0.3f;
         audio.clip = flySound;
         audio.Play();

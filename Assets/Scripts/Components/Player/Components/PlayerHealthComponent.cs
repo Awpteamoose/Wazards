@@ -11,7 +11,7 @@ public class PlayerHealthComponent : HealthComponent {
 
 	public static TypogenicText damageIndicator;
 
-    public PlayerControl playerControl;
+    public PlayerControl playerControl { get; set; }
 
     protected override void Awake()
     {

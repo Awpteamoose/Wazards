@@ -1,6 +1,4 @@
-﻿// TODO: update default scripts, these are outdated
-
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
@@ -61,7 +59,6 @@ public class MakeSpell : EditorWindow
 
             GameObject prefab = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + ".prefab", typeof(GameObject)) as GameObject;
             Sprite sprite = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + ".png", typeof(Sprite)) as Sprite;
-            ///Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width / 2f, texture.height / 2f));
             prefab.GetComponent<SpriteRenderer>().sprite = sprite;
             prefab.AddComponent(name + "Projectile");
             prefab.AddComponent<HealthComponent>();
@@ -92,34 +89,46 @@ public class " + name + @"Spell : Spell
     public float damageCharged;
     public float speed;
     public float speedCharged;
-	public float size;
+    public float size;
     public float sizeCharged;
-	
-	public override void cast(bool charged, Vector3 reticle, PlayerControl owner)
-	{
-		Transform transform = Instantiate(prefab, owner.transform.position+(owner.moveComponent.direction.vector*1f), Quaternion.identity) as Transform;
-		" + name + @"Projectile projectile = transform.GetComponent<" + name + @"Projectile>();
+
+    public " + name + @"Projectile prefab;
+
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        if (prefab.CountPooled() == 0)
+            prefab.CreatePool(10);
+    }
+    
+    public override void Cast(float charge, Vector3 reticle)
+    {
+        " + name + @"Projectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
         ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
-		projectile.target = reticle;
-		projectile.parent= owner.gameObject;
-		
-		if (charged) 
-		{
-			projectile.size = sizeCharged;
+        projectile.target = reticle;
+        projectile.parent= owner.gameObject;
+        
+        if (charge >= t_charge)
+        {
+            projectile.size = sizeCharged;
             projectile.speed = speedCharged;
             projectile.damage = damageCharged;
-		}
-		else
-		{
-			projectile.size = size;
-			projectile.speed = speed;
-			projectile.damage = damage;
-		}
+        }
+        else
+        {
+            projectile.size = size;
+            projectile.speed = speed;
+            projectile.damage = damage;
+        }
 
 
         projectileHealth.maxHealth = projectile.damage;
         projectileHealth.projectileComponent = projectile;
-	}
+
+        projectile.Activate();
+        base.Cast(charge, reticle);
+    }
 }";
         spellProjectileCode
             = @"using UnityEngine;
@@ -127,13 +136,17 @@ using System.Collections;
 
 public class " + name + @"Projectile : ProjectileComponent
 {
-    // Use this for initialization
-    public override void Start ()
+
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
 
-    // Update is called once per frame
+    public override void Activate ()
+    {
+        base.Activate();
+    }
+
     public override void FixedUpdate ()
     {
         base.FixedUpdate();
@@ -141,14 +154,10 @@ public class " + name + @"Projectile : ProjectileComponent
         transform.Translate(Vector3.up * speed * Time.fixedDeltaTime);
     }
 
-    public override void Update()
-    {
-        base.Update();
-    }
-
     public override void Die()
     {
         base.Die();
+        gameObject.Recycle();
     }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)

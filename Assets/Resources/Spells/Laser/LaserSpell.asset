@@ -30,3 +30,4 @@ MonoBehaviour:
   t_tick: .100000001
   knockbackScale: .5
   prefab: {fileID: 11400000, guid: 1bcfbbf756a62a64eba18001a0911831, type: 2}
+  iconToOff: {fileID: 21300000, guid: c11f5949839da624e9afa9332e85048b, type: 3}

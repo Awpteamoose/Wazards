@@ -19,7 +19,7 @@ public class PlayerMoveState: StateMachine.State
 	}
 	public override void Update()
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			if (pc.inputComponent.getFire(i+1))
 			{
@@ -36,7 +36,7 @@ public class PlayerMoveState: StateMachine.State
             pc.animator.SetBool("Moving", true);
 			moveComponent.direction.vector = new Vector3 (pc.inputComponent.getHorizontal(), pc.inputComponent.getVertical());
 			
-			pc.rigidbody2D.AddForce (moveComponent.direction.vector * moveComponent.speed);
+			pc.rigidbody2D.AddForce (moveComponent.direction.vector * moveComponent.speed * moveComponent.mod_speed);
 		}
         else
         {

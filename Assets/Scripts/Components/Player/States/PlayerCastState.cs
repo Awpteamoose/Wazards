@@ -8,7 +8,6 @@ public class PlayerCastState: StateMachine.State
 	private float t_start;
 	private float t_charge;
 	private float t_mincharge;
-	private float t_charged;
 	private Vector3 box_center;
 	private bool canTurn;
 
@@ -29,7 +28,7 @@ public class PlayerCastState: StateMachine.State
 		t_start = Time.time;
 		t_charge = pc.castComponent.spellBook.Get().t_charge;
 		t_mincharge = pc.castComponent.spellBook.Get().t_minCharge;
-		t_charged = 0;
+		pc.castComponent.t_charged = 0;
 		pc.castComponent.reticle.SetActive(true);
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
         if (pc.castComponent.altAimMode)
@@ -71,10 +70,10 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Update()
 	{
-		t_charged = Time.time - t_start;
+        pc.castComponent.t_charged = Time.time - t_start;
 		if (pc.inputComponent.getFireUp(pc.castComponent.spellBook.active+1))
 			pc.sm.set(pc.sm.states[PlayerControl.States.Move]);
-		if (t_charged >= t_charge)
+        if (pc.castComponent.t_charged >= t_charge)
 		{
 			pc.castComponent.bgBar.SetActive(false);
 			pc.castComponent.fgBar.SetActive(false);
@@ -144,8 +143,8 @@ public class PlayerCastState: StateMachine.State
 	public override void Exit()
 	{
         Spell s_active = pc.castComponent.spellBook.Get();
-		if (t_charged >= s_active.t_minCharge && s_active.CanCast())
-			s_active.Cast(t_charged, world_reticle);
+        if (pc.castComponent.t_charged >= s_active.t_minCharge && s_active.CanCast())
+            s_active.Cast(pc.castComponent.t_charged, world_reticle);
 		pc.rigidbody2D.fixedAngle = false;
 		
 		pc.castComponent.bgBar.SetActive(false);

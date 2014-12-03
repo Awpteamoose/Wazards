@@ -10,9 +10,17 @@ public class CastComponent: MonoBehaviour
 	public GameObject bgBar {get; set;}
 	public GameObject fgBar {get; set;}
 	public GameObject pcBar {get; set;}
-	public float reticle_distance = 2f;
-	public float reticle_minimumDistance = 1f;
+	public float reticle_distance;
+	public float reticle_minimumDistance;
 	public float reticle_speed;
+    public float t_charged;
+
+    public float mod_damage = 1f;
+    public float mod_size = 1f;
+    public float mod_speed = 1f;
+    public float mod_cooldown = 1f;
+    public float mod_manacost = 1f;
+    public float mod_regen = 1f;
 
 	public float maxMana;
     #if UNITY_EDITOR
@@ -31,7 +39,7 @@ public class CastComponent: MonoBehaviour
 
 	public class SpellBook
 	{
-		public Spell[] spells = new Spell[4];
+		public Spell[] spells = new Spell[6];
 		public int active;
 		public void Choose(int num)
 		{
@@ -59,15 +67,10 @@ public class CastComponent: MonoBehaviour
             spellBook.Get(i).Update();
         }
 
+        currentManaRegen = manaRegen;
         if (rigidbody2D.velocity.magnitude < 3f)
-        {
-            currentManaRegen = manaRegen * 3f;
-        }
-        else
-        {
-            currentManaRegen = manaRegen;
-        }
-        mana += currentManaRegen * Time.deltaTime;
+            currentManaRegen *= 3f;
+        mana += currentManaRegen * mod_regen * Time.deltaTime;
         mana = Mathf.Clamp(mana, 0, maxMana);
 	}
 
