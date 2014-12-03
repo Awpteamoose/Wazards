@@ -76,7 +76,7 @@ public class UltimateSpell : Spell
         cast_mod_damage = owner.healthComponent.totalDamage / 200f;
         cast_mod_size = cast_mod_damage * 0.5f;
         cast_mod_speed = cast_mod_damage * 0.5f;
-        cast_mod_cooldown = -0.5f;
+        cast_mod_cooldown = 1f;
         cast_mod_manacost = 0f;
         cast_mod_regen = 1f;
         move_mod_speed = 1f;

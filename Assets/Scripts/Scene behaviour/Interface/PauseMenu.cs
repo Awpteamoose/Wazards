@@ -335,6 +335,24 @@ public class PauseMenu : MonoBehaviour
                         drawRemap = false;
                     }
                 }
+                for (int i = 1; i <= 4; i++)
+                {
+                    for (int j = 0; j < 20; j++)
+                    {
+                        KeyCode thisKeyCode = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + i.ToString() + "Button" + j.ToString());
+                        if (Input.GetKey(thisKeyCode))
+                        {
+                            Debug.Log(thisKeyCode.ToString() + " is pressed!");
+                        }
+                    }
+                    for (int j = 1; j <= 2; j++)
+                    {
+                        if (Mathf.Abs(Input.GetAxis("Joystick " + 1 + " Axis " + j)) > 0.5f)
+                        {
+                            Debug.Log("Got axis! " + Input.GetAxis("Joystick " + 1 + " Axis " + j).ToString());
+                        }
+                    }
+                }
             }
         }
     }

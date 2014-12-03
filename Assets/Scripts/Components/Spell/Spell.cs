@@ -20,7 +20,7 @@ public class Spell : ScriptableObject
     public virtual void Update()
     {
         if (cooldown > 0)
-            cooldown -= Time.deltaTime;
+            cooldown -= Time.deltaTime * owner.castComponent.mod_cooldown;
         else
             cooldown = 0;
     }
@@ -47,7 +47,7 @@ public class Spell : ScriptableObject
     }
 	public virtual void Cast(float charge, Vector3 reticle)
     {
-        cooldown += t_cooldown * owner.castComponent.mod_cooldown;
-        owner.castComponent.mana -= manacost * owner.castComponent.mod_cooldown;
+        cooldown += t_cooldown;
+        owner.castComponent.mana -= manacost * owner.castComponent.mod_manacost;
     }
 }

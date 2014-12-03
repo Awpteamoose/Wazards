@@ -21,13 +21,13 @@ MonoBehaviour:
   - name: Player 1 Right
     key: 100
   - name: Player 1 Spell 1
-    key: 117
-  - name: Player 1 Spell 2
-    key: 105
-  - name: Player 1 Spell 3
-    key: 111
-  - name: Player 1 Spell 4
     key: 106
+  - name: Player 1 Spell 2
+    key: 117
+  - name: Player 1 Spell 3
+    key: 105
+  - name: Player 1 Spell 4
+    key: 111
   - name: Player 1 Ultimate
     key: 107
   - name: Player 1 Attack
@@ -41,13 +41,13 @@ MonoBehaviour:
   - name: Player 2 Right
     key: 104
   - name: Player 2 Spell 1
-    key: 263
-  - name: Player 2 Spell 2
-    key: 264
-  - name: Player 2 Spell 3
-    key: 265
-  - name: Player 2 Spell 4
     key: 260
+  - name: Player 2 Spell 2
+    key: 263
+  - name: Player 2 Spell 3
+    key: 264
+  - name: Player 2 Spell 4
+    key: 265
   - name: Player 2 Ultimate
     key: 261
   - name: Player 2 Attack
