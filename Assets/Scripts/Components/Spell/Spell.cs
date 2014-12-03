@@ -22,11 +22,14 @@ public class Spell : ScriptableObject
 
     public virtual void PlugNextWord()
     {
-        Random.seed = nextSeed;
-        nextSeed = Random.Range(-214748364, 214748364);
-        owner.audio.clip = owner.words[Random.Range(0, owner.words.Length)];
-        owner.audio.Play();
-        Random.seed = Mathf.RoundToInt(Time.time * 100f);
+        if (!owner.audio.isPlaying)
+        {
+            Random.seed = nextSeed;
+            nextSeed = Random.Range(-214748364, 214748364);
+            owner.audio.clip = owner.words[Random.Range(0, owner.words.Length)];
+            owner.audio.Play();
+            Random.seed = Mathf.RoundToInt(Time.time * 100f);
+        }
     }
 
     public virtual void Begin(Vector3 reticle)
@@ -44,8 +47,7 @@ public class Spell : ScriptableObject
     {
         //TODO: spell is being cast
         t_charged += Time.deltaTime * owner.castComponent.mod_charge;
-        if (!owner.audio.isPlaying)
-            PlugNextWord();
+        PlugNextWord();
     }
 
     public virtual void Charge(Vector3 reticle)
