@@ -13,7 +13,6 @@ public class CastComponent: MonoBehaviour
 	public float reticle_distance;
 	public float reticle_minimumDistance;
 	public float reticle_speed;
-    public float t_charged;
 
     public float mod_damage = 1f;
     public float mod_size = 1f;

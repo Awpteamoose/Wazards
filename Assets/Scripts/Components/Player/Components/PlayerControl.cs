@@ -27,55 +27,11 @@ public class PlayerControl: MonoBehaviour
 		Cast
 	}
 
-    private bool chanting;
-    private bool ultiChant;
-    private bool ultiCharged;
-    private int lastRandom;
-    public void StartChant()
-    {
-        Spell s_active = castComponent.spellBook.Get();
-        if (!(s_active is NormalAttackSpell))
-        {
-            if (s_active is UltimateSpell)
-            {
-                audio.clip = ultimateSounds[0];
-                audio.Play();
-                ultiChant = true;
-                ultiCharged = false;
-            }
-            else
-            {
-                Random.seed = castComponent.spellBook.Get().spellName.GetHashCode();
-                lastRandom = Random.Range(-214748364, 214748364);
-                Random.seed = Mathf.RoundToInt(Time.time * 100f);
-                chanting = true;
-            }
-        }
-    }
-
-    public void StopChant()
-    {
-        if (ultiChant)
-        {
-            audio.clip = ultimateSounds[2];
-            audio.time = 0;
-            audio.Play();
-            ultiChant = false;
-        }
-        else
-        {
-            chanting = false;
-        }
-    }
-
 	// Use this for initialization
 	void Start () {
         if (PlayerControl.activePlayers == null)
             PlayerControl.activePlayers = new List<PlayerControl>();
         PlayerControl.activePlayers.Add(this);
-
-        chanting = false;
-        ultiChant = false;
 
 		moveComponent = GetComponent<MoveComponent>();
 		castComponent = GetComponent<CastComponent>();
@@ -129,25 +85,6 @@ public class PlayerControl: MonoBehaviour
                 }
             }
 
-            if (chanting)
-            {
-                if (!audio.isPlaying)
-                {
-                    Random.seed = lastRandom;
-                    lastRandom = Random.Range(-214748364, 214748364);
-                    audio.clip = words[Random.Range(0, words.Length)];
-                    Random.seed = Mathf.RoundToInt(Time.time * 100f);
-                    audio.Play();
-                }
-            }
-
-            if (ultiChant && castComponent.t_charged > castComponent.spellBook.Get().t_charge && !ultiCharged)
-            {
-                audio.clip = ultimateSounds[1];
-                audio.time = 0;
-                audio.Play();
-                ultiCharged = true;
-            }
             sm.Update();
         }
 	}

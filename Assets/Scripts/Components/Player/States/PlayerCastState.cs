@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerCastState: StateMachine.State
+public class PlayerCastState : StateMachine.State
 {
 	private PlayerControl pc;
 	private Vector3 world_reticle;
-	private float t_start;
-	private float t_charge;
-	private float t_mincharge;
+    private Spell spell;
 	private Vector3 box_center;
 	private bool canTurn;
 
@@ -25,10 +23,6 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Start()
 	{
-		t_start = Time.time;
-		t_charge = pc.castComponent.spellBook.Get().t_charge;
-		t_mincharge = pc.castComponent.spellBook.Get().t_minCharge;
-		pc.castComponent.t_charged = 0;
 		pc.castComponent.reticle.SetActive(true);
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
         if (pc.castComponent.altAimMode)
@@ -51,18 +45,18 @@ public class PlayerCastState: StateMachine.State
 		vert = pc.inputComponent.getVertical();
         hor = pc.inputComponent.getHorizontal();
 
+        spell = pc.castComponent.spellBook.Get();
+        spell.Begin(world_reticle);
 
-        if (t_charge > 0)
+        if (spell.t_charge > 0)
         {
             pc.castComponent.bgBar.SetActive(true);
             pc.castComponent.fgBar.transform.localScale = new Vector3(0, pc.castComponent.bgBar.transform.localScale.y, 0);
             pc.castComponent.fgBar.SetActive(true);
 
-            pc.castComponent.pcBar.transform.localScale = new Vector3(pc.castComponent.bgBar.transform.localScale.x * (t_mincharge / t_charge), pc.castComponent.bgBar.transform.localScale.y, 0);
+            pc.castComponent.pcBar.transform.localScale = new Vector3(pc.castComponent.bgBar.transform.localScale.x * (spell.t_minCharge / spell.t_charge), pc.castComponent.bgBar.transform.localScale.y, 0);
             pc.castComponent.pcBar.SetActive(true);
         }
-
-        pc.StartChant();
 
 		#if UNITY_EDITOR
 		//Debug.Log("Cast: Enter");
@@ -70,14 +64,15 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Update()
 	{
-        pc.castComponent.t_charged = Time.time - t_start;
+        spell.Chant(world_reticle);
 		if (pc.inputComponent.getFireUp(pc.castComponent.spellBook.active+1))
 			pc.sm.set(pc.sm.states[PlayerControl.States.Move]);
-        if (pc.castComponent.t_charged >= t_charge)
+        if (spell.t_charged >= spell.t_charge && !spell.charged)
 		{
 			pc.castComponent.bgBar.SetActive(false);
 			pc.castComponent.fgBar.SetActive(false);
 			pc.castComponent.pcBar.SetActive(false);
+            spell.Charge(world_reticle);
 		}
 
         pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
@@ -90,8 +85,8 @@ public class PlayerCastState: StateMachine.State
         {
             world_reticle = pc.castComponent.reticle.transform.position;
         }
-        if (t_charge > 0)
-            pc.castComponent.fgBar.transform.localScale = new Vector3(((Time.time - t_start) / t_charge * pc.castComponent.bgBar.transform.localScale.x), pc.castComponent.fgBar.transform.localScale.y, 0);
+        if (spell.t_charge > 0)
+            pc.castComponent.fgBar.transform.localScale = new Vector3(((Time.time - spell.t_startCharge) / spell.t_charge * pc.castComponent.bgBar.transform.localScale.x), pc.castComponent.fgBar.transform.localScale.y, 0);
         else
             pc.castComponent.fgBar.transform.localScale = Vector3.zero;
 	}
@@ -142,9 +137,7 @@ public class PlayerCastState: StateMachine.State
 	}
 	public override void Exit()
 	{
-        Spell s_active = pc.castComponent.spellBook.Get();
-        if (pc.castComponent.t_charged >= s_active.t_minCharge && s_active.CanCast())
-            s_active.Cast(pc.castComponent.t_charged, world_reticle);
+        spell.End(world_reticle);
 		pc.rigidbody2D.fixedAngle = false;
 		
 		pc.castComponent.bgBar.SetActive(false);
@@ -152,9 +145,7 @@ public class PlayerCastState: StateMachine.State
 		pc.castComponent.pcBar.SetActive(false);
 		pc.castComponent.reticle.SetActive(false);
 
-        pc.StopChant();
-
-        if (pc.ultimate.used && !pc.ultimate.expired)
+        if (pc.ultimate.active && !pc.ultimate.expired)
             Camera.main.Shake(0.1f);
 
 		#if UNITY_EDITOR

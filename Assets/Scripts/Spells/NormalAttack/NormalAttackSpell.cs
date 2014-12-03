@@ -19,6 +19,10 @@ public class NormalAttackSpell : Spell
         if (prefab.CountPooled() == 0)
             prefab.CreatePool(3);
     }
+
+    public override void PlugNextWord()
+    {
+    }
 	
 	public override void Cast(float charge, Vector3 reticle)
 	{
