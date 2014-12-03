@@ -6285,7 +6285,7 @@ MonoBehaviour:
   skin: {fileID: 11400000, guid: 7953503d9e83f8d469b84619849edd4e, type: 2}
   pauseMenuSize: {x: 300, y: 475}
   controlsMenuSize: {x: 400, y: 250}
-  mappingsMenuSize: {x: 600, y: 380}
+  mappingsMenuSize: {x: 600, y: 450}
   remapMenuSize: {x: 300, y: 200}
 --- !u!114 &1435105972
 MonoBehaviour:
