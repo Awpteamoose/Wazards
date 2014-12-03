@@ -17,6 +17,8 @@ public class PlayerControl: MonoBehaviour
 	public string player = "Player 1";
     public AudioClip[] words;
     public AudioClip[] ultimateSounds;
+
+    public static List<PlayerControl> activePlayers;
 	
 	public StateMachine.Machine<States> sm = new StateMachine.Machine<States> ();
 	public enum States
@@ -68,6 +70,10 @@ public class PlayerControl: MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
+        if (PlayerControl.activePlayers == null)
+            PlayerControl.activePlayers = new List<PlayerControl>();
+        PlayerControl.activePlayers.Add(this);
+
         chanting = false;
         ultiChant = false;
 

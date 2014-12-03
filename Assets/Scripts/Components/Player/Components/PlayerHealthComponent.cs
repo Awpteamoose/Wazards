@@ -29,8 +29,10 @@ public class PlayerHealthComponent : HealthComponent {
         if (!grounded)
             health -= lavaDamagePerSec * Time.deltaTime;
         if (health <= 0f || transform.position.magnitude > killAt)
-			//HACK:
-			Application.LoadLevel(Application.loadedLevel);
+        {
+            PlayerControl.activePlayers.Remove(this.playerControl);
+            transform.parent.gameObject.SetActive(false);
+        }
 	}
 
     protected override void OnTriggerEnter2D(Collider2D collider)

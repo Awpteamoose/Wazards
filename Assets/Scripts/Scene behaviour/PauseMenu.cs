@@ -49,8 +49,11 @@ public class PauseMenu : MonoBehaviour
     void SetPlayer(string playername)
     {
         player = playername;
-        if (GameObject.Find(player) != null)
-            playerControl = GameObject.Find(player).GetComponentInChildren<PlayerControl>();
+        foreach (PlayerControl pc in PlayerControl.activePlayers)
+        {
+            if (pc.player == player)
+                playerControl = pc;
+        }
         reticleSpeed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
         aimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
     }

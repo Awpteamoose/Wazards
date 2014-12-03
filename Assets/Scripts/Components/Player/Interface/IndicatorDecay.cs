@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class indicator_decay : MonoBehaviour {
+public class IndicatorDecay : MonoBehaviour {
 
 	private TypogenicText typo;
     private float startSize;
