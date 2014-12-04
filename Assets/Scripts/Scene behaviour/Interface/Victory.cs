@@ -30,7 +30,10 @@ public class Victory : MonoBehaviour
     {
         if (PlayerControl.activePlayers.Count <= 1 && !victory)
         {
-            text.text = PlayerControl.activePlayers[0].player + " wins!";
+            if (PlayerControl.activePlayers.Count == 0)
+                text.text = "It's a draw!";
+            else
+                text.text = PlayerControl.activePlayers[0].player + " wins!";
             victory = true;
             StartCoroutine(RestartDelayed(5f));
         }
