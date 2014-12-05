@@ -20,6 +20,8 @@ public class Spell : ScriptableObject
 
     public virtual void Initialise() { }
 
+    public virtual void Activate() { }
+
     public virtual void PlugNextWord()
     {
         if (!owner.audio.isPlaying)
@@ -34,35 +36,37 @@ public class Spell : ScriptableObject
 
     public virtual void Begin(Vector3 reticle)
     {
-        //TODO: spell casting has begun
         t_startCharge = Time.time;
         t_charged = 0;
         charged = false;
 
         nextSeed = spellName.GetHashCode();
         PlugNextWord();
+        if (OnBegin != null)
+            OnBegin(this, reticle);
     }
 
     public virtual void Chant(Vector3 reticle)
     {
-        //TODO: spell is being cast
         t_charged += Time.deltaTime * owner.castComponent.mod_charge;
         PlugNextWord();
     }
 
     public virtual void Charge(Vector3 reticle)
-    { 
-        //TODO: spell is charged
+    {
         charged = true;
+        if (OnCharge != null)
+            OnCharge(this, reticle);
     }
 
     public virtual void End(Vector3 reticle)
     {
-        //TODO: spell casting has ended
         if (CanCast() && t_charged >= t_minCharge)
             Cast(t_charged, reticle);
         t_charged = 0;
         t_startCharge = 0;
+        if (OnEnd != null)
+            OnEnd(this, reticle);
     }
 
     public virtual void Update()
@@ -101,5 +105,18 @@ public class Spell : ScriptableObject
     {
         cooldown += t_cooldown;
         owner.castComponent.mana -= manacost * owner.castComponent.mod_manacost;
+        if (OnCast != null)
+            OnCast(this, reticle);
     }
+
+    public virtual void OnDestroy()
+    {
+
+    }
+
+    public delegate void CastAction(Spell activeSpell, Vector3 target);
+    public event CastAction OnBegin;
+    public event CastAction OnCharge;
+    public event CastAction OnEnd;
+    public event CastAction OnCast;
 }
