@@ -47,7 +47,7 @@ public class FireBuffSpell : Spell
     public override bool CanCast()
     {
         if (active)
-            return true;
+            return false;
         else
             return base.CanCast();
     }
