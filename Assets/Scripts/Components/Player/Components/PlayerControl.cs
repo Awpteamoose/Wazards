@@ -11,6 +11,8 @@ public class PlayerControl: MonoBehaviour
 	public PlayerInputComponent inputComponent {get; set;}
     public Animator animator { get; set; }
     public SpriteRenderer spriteRenderer { get; set; }
+    public new Transform transform { get; set; }
+    public new Rigidbody2D rigidbody { get; set; }
 
     public GameObject arrow;
     public UltimateSpell ultimate;
@@ -40,6 +42,8 @@ public class PlayerControl: MonoBehaviour
 		inputComponent.playername = player;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        transform = GetComponent<Transform>();
+        rigidbody = GetComponent<Rigidbody2D>();
 
 		for (int i = 0; i<4; i++)
 		{

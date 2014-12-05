@@ -16,10 +16,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
   t_charge: .800000012
   t_minCharge: .200000003
-  manacost: 15
+  manacost: 22
   t_cooldown: 4
-  manaPerSec: 12
-  manaPerSecCharged: 15
+  manaPerSec: 18
+  manaPerSecCharged: 24
   damage: 1.5
   chargedDamage: 2
   width: .200000003

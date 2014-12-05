@@ -47,7 +47,7 @@ public class LaserSpell : Spell
         {
             if (Time.time > emitter.t_activation)
             {
-                float manaSpent = (_manaPerSec + owner.castComponent.manaRegen * 3f) * Time.deltaTime;
+                float manaSpent = (_manaPerSec) * Time.deltaTime;
                 owner.castComponent.mana -= manaSpent;
                 if (owner.castComponent.mana <= manaSpent)
                     TurnOff();
@@ -62,17 +62,21 @@ public class LaserSpell : Spell
     void TurnOff ()
     {
         emitter.Recycle();
+        owner.castComponent.mod_regen += 1f;
         t_charge = _t_charge;
         t_minCharge = _t_minCharge;
         icon = _icon;
+        cooldown += t_cooldown;
     }
 
     void TurnOn ()
     {
         emitter.Activate();
+        owner.castComponent.mod_regen -= 1f;
         t_charge = 0;
         t_minCharge = 0;
         icon = iconToOff;
+        cooldown -= t_cooldown;
     }
 
     public override bool EnoughMana()
@@ -96,7 +100,6 @@ public class LaserSpell : Spell
         if (emitter && emitter.gameObject.activeSelf)
         {
             TurnOff();
-            base.Cast(charge, reticle);
         }
         else
         {
@@ -125,6 +128,7 @@ public class LaserSpell : Spell
             emitter.scale = knockbackScale;
 
             TurnOn();
+            base.Cast(charge, reticle);
         }
 	}
 }

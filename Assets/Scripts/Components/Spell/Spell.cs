@@ -43,7 +43,7 @@ public class Spell : ScriptableObject
         nextSeed = spellName.GetHashCode();
         PlugNextWord();
         if (OnBegin != null)
-            OnBegin(this, reticle);
+            OnBegin(reticle);
     }
 
     public virtual void Chant(Vector3 reticle)
@@ -56,7 +56,7 @@ public class Spell : ScriptableObject
     {
         charged = true;
         if (OnCharge != null)
-            OnCharge(this, reticle);
+            OnCharge(reticle);
     }
 
     public virtual void End(Vector3 reticle)
@@ -66,7 +66,7 @@ public class Spell : ScriptableObject
         t_charged = 0;
         t_startCharge = 0;
         if (OnEnd != null)
-            OnEnd(this, reticle);
+            OnEnd(reticle);
     }
 
     public virtual void Update()
@@ -106,7 +106,7 @@ public class Spell : ScriptableObject
         cooldown += t_cooldown;
         owner.castComponent.mana -= manacost * owner.castComponent.mod_manacost;
         if (OnCast != null)
-            OnCast(this, reticle);
+            OnCast(reticle);
     }
 
     public virtual void OnDestroy()
@@ -114,7 +114,7 @@ public class Spell : ScriptableObject
 
     }
 
-    public delegate void CastAction(Spell activeSpell, Vector3 target);
+    public delegate void CastAction(Vector3 target);
     public event CastAction OnBegin;
     public event CastAction OnCharge;
     public event CastAction OnEnd;
