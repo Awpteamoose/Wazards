@@ -62,7 +62,7 @@ public class PlayerHealthComponent : HealthComponent {
         rigidbody2D.AddForce(direction * ( (((totalDamage * 0.1f) + ((totalDamage * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
 
         TypogenicText indicator = damageIndicator.Spawn();
-        if (damage % 1 == 0)
+        if (damage % 1f < 0.01 || damage % 1f > 0.99)
             indicator.Text = damage.ToString("F0");
         else
             indicator.Text = damage.ToString("F2");
