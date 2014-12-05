@@ -32,13 +32,13 @@ public class NormalAttackSpell : Spell
 		{
 			attack.destroyProjectiles = true;
 			attack.damage = damageCharged;
-			attack.t_activation = Time.time + delay/2f;
+			attack.t_activation = Time.time/* + delay/2f */;
 			t_cooldown = 0.1f;
 		}
 		else
 		{
 			attack.damage = damage;
-			attack.t_activation = Time.time + delay;
+			attack.t_activation = Time.time + delay / owner.castComponent.mod_speed;
 			t_cooldown = 0.5f;
 		}
         attack.damage *= owner.castComponent.mod_damage;

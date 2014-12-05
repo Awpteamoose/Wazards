@@ -114,9 +114,9 @@ public class Spell : ScriptableObject
 
     }
 
-    public delegate void CastAction<SpellType>(SpellType spell, Vector3 target);
-    public event CastAction<Spell> OnBegin;
-    public event CastAction<Spell> OnCharge;
-    public event CastAction<Spell> OnEnd;
-    public event CastAction<Spell> OnCast;
+    public delegate void CastAction(object spell, Vector3 target);
+    public event CastAction OnBegin;
+    public event CastAction OnCharge;
+    public event CastAction OnEnd;
+    public event CastAction OnCast;
 }

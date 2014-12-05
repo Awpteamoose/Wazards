@@ -52,7 +52,7 @@ public class FireBuffSpell : Spell
             return base.CanCast();
     }
 
-    public void Hit(Spell spell, Vector3 target)
+    public void Hit(object spell, Vector3 target)
     {
         if (charged)
         {
