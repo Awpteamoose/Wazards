@@ -51,13 +51,34 @@ public class CastComponent: MonoBehaviour
 				number = active;
 			return spells[number];
 		}
-		public Spell Set(PlayerControl owner, Spell spell, int number)
+		public Spell Set(Spell spell, PlayerControl owner, int number)
 		{
+            if (spells[number] != null)
+                Spell.Destroy(spells[number]);
             spells[number] = spell;
             spells[number].owner = owner;
             spells[number].Initialise();
 			return spell;
 		}
+        public Spell Set(int listIndex, PlayerControl owner, int number)
+        {
+            return Set(ScriptableObject.Instantiate(SpellList.spells[listIndex]) as Spell, owner, number);
+        }
+        public void Activate(Spell spell)
+        {
+            spell.Activate();
+        }
+        public void Activate(int number)
+        {
+            spells[number].Activate();
+        }
+        public void ActivateAll()
+        {
+            foreach (Spell spell in spells)
+            {
+                Activate(spell);
+            }
+        }
 	}
 
 	void Update()
