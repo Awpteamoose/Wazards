@@ -109,14 +109,14 @@ public class LaserSpell : Spell
             {
                 emitter.damage = chargedDamage;
                 emitter.t_activation = Time.time + t_chargedDelay;
-                emitter.laserBeam.localScale = new Vector2(chargedWidth, emitter.laserBeam.localScale.y);
+                emitter.width = chargedWidth;
                 _manaPerSec = manaPerSecCharged;
             }
             else
             {
                 emitter.damage = damage;
                 emitter.t_activation = Time.time + t_delay;
-                emitter.laserBeam.localScale = new Vector2(width, emitter.laserBeam.localScale.y);
+                emitter.width = width;
                 _manaPerSec = manaPerSec;
             }
             emitter.damage *= owner.castComponent.mod_damage;

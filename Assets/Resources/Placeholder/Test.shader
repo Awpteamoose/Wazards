@@ -1,4 +1,4 @@
-﻿Shader "Sprites/Default"
+﻿Shader "Custom/OutlineTest"
 {
     Properties
     {
@@ -26,7 +26,7 @@
         ZWrite Off
         Fog { Mode Off }
         Blend One OneMinusSrcAlpha
-        
+
         Pass
         {
         ZTest Always
@@ -78,16 +78,16 @@
 			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( -0.0075f, 0.0f ) ).a;
 			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, 0.0075f ) ).a;
 			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, -0.0075f ) ).a;
-            
+
                 fixed4 c = tex2D(_MainTex, IN.texcoord);
-                
+
 			    fixed4 retcol = _OutlineColor;
 			    retcol.a = alpha;
                 return retcol;
             }
         ENDCG
         }
-        
+
         Pass
         {
         CGPROGRAM

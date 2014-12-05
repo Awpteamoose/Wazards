@@ -7,28 +7,21 @@ public class LaserEmitter : ProjectileComponent
     public float t_activation;
     public float t_tick;
     public float scale;
+    public float width;
     public AudioClip chargeSound;
     public AudioClip fireSound;
-
-    public Transform laserBeam;
+    public LineRenderer laserBeam;
 
     private List<HealthComponent> damageList;
-    private Vector3 startScale;
     private bool hasEndpoint;
     private float t_nextTick;
     private float height;
-
-    private SpriteRenderer beamRenderer;
-    private Animator beamAnimator;
+    private Vector2 infinite;
 
     public override void Awake()
     {
         base.Awake();
-        laserBeam = Instantiate(laserBeam) as Transform;
-        laserBeam.parent = transform;
-        laserBeam.localRotation = Quaternion.identity;
-        beamRenderer = laserBeam.GetComponent<SpriteRenderer>();
-        beamAnimator = laserBeam.GetComponent<Animator>();
+        laserBeam = GetComponent<LineRenderer>();
 
         damageList = new List<HealthComponent>();
     }
@@ -37,9 +30,6 @@ public class LaserEmitter : ProjectileComponent
 	{
         base.Activate();
         transform.rotation = Quaternion.Euler(0, 0, direction.angle);
-        height = beamRenderer.sprite.bounds.size.y;
-
-        startScale = new Vector2(laserBeam.transform.localScale.x, 100f);
         
         t_nextTick = t_activation;
 
@@ -47,22 +37,25 @@ public class LaserEmitter : ProjectileComponent
         audio.time = chargeSound.length - (t_activation - Time.time);
         audio.Play();
 
-        beamAnimator.speed = 1f / (t_activation - Time.time);
+        animator.speed = 1f / (t_activation - Time.time);
+
+        infinite = new Vector2(0, 100f);
+        laserBeam.SetWidth(width, width);
 	}
 
 	// Update is called once per frame
 	public override void FixedUpdate ()
 	{
-		base.FixedUpdate();
+        base.FixedUpdate();
+        transform.position = parent.transform.position + direction.vector * 0.6f;
 	}
 
 	public override void Update()
 	{
         base.Update();
-        transform.position = parent.transform.position + direction.vector * 0.6f;
         hasEndpoint = false;
         damageList.Clear();
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(laserBeam.transform.position, new Vector2(laserBeam.localScale.x, 0.1f), 0f, direction.vector);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(laserBeam.transform.position, new Vector2(width, 0.1f), 0f, direction.vector);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != parent.collider2D)
@@ -71,10 +64,8 @@ public class LaserEmitter : ProjectileComponent
                 if (hc)
                 {
                     damageList.Add(hc);
-                    laserBeam.localScale = new Vector2(
-                        laserBeam.localScale.x,
-                        (hit.point - (Vector2)laserBeam.transform.position).magnitude / height
-                    );
+                    float distance = (hit.point - new Vector2(transform.position.x, transform.position.y)).magnitude;
+                    laserBeam.SetPosition(1, new Vector2(0, distance));
                     if (!(hc is ProjectileHealthComponent))
                     {
                         hasEndpoint = true;
@@ -84,7 +75,7 @@ public class LaserEmitter : ProjectileComponent
             }
         }
         if (!hasEndpoint)
-            laserBeam.localScale = startScale;
+            laserBeam.SetPosition(1, infinite);
 
         if (Time.time > t_activation)
         {
