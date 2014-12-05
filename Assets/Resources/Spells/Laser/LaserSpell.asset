@@ -18,7 +18,6 @@ MonoBehaviour:
   t_minCharge: .200000003
   manacost: 15
   t_cooldown: 4
-  cooldown: 0
   manaPerSec: 12
   manaPerSecCharged: 15
   damage: 1.5
