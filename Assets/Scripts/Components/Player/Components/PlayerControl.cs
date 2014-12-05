@@ -50,9 +50,9 @@ public class PlayerControl: MonoBehaviour
             //PlayerPrefs.DeleteAll();
             string spellName = player + " SelectedSpell " + i.ToString();
             int spellNumber = PlayerPrefs.GetInt(spellName, -1);
-            if (spellNumber == -1 || spellNumber >= SpellList.spells.Count)
+            if (spellNumber == -1 || spellNumber >= SpellList.Count)
             {
-                spellNumber = Random.Range(0, SpellList.spells.Count);
+                spellNumber = Random.Range(0, SpellList.Count);
                 PlayerPrefs.SetInt(spellName, spellNumber);
             }
             castComponent.spellBook.Set(spellNumber, this, i);
@@ -80,7 +80,7 @@ public class PlayerControl: MonoBehaviour
                 {
                     string spellName = player + " SelectedSpell " + i.ToString();
                     int newSpell = PlayerPrefs.GetInt(spellName) + 1;
-                    if (newSpell >= SpellList.spells.Count)
+                    if (newSpell >= SpellList.Count)
                         newSpell = 0;
                     PlayerPrefs.SetInt(spellName, newSpell);
                     castComponent.spellBook.Set(newSpell, this, i);

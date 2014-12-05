@@ -62,7 +62,7 @@ public class CastComponent: MonoBehaviour
 		}
         public Spell Set(int listIndex, PlayerControl owner, int number)
         {
-            return Set(ScriptableObject.Instantiate(SpellList.spells[listIndex]) as Spell, owner, number);
+            return Set(ScriptableObject.Instantiate(SpellList.Get(listIndex)) as Spell, owner, number);
         }
         public void Activate(Spell spell)
         {
