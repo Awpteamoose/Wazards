@@ -85,7 +85,7 @@ WHATSNEW*          text
 *.ai               binary
 *.anim             binary
 *.apk              binary
-*.asset            binary
+*.asset            text
 *.bin              binary
 *.bmp              binary
 *.BMP              binary
@@ -128,7 +128,7 @@ WHATSNEW*          text
 *.physicMaterial   binary
 *.physicmaterial   binary
 *.png              binary
-*.prefab           binary
+*.prefab           text
 *.ps               binary
 *.psd              binary
 *.qt               binary
@@ -139,7 +139,7 @@ WHATSNEW*          text
 *.tiff             binary
 *.ttf              binary
 *.TTF              binary
-*.unity            binary
+*.unity            text
 *.unitypackage     binary
 *.unityPackage     binary
 *.wav              binary
