@@ -77,7 +77,7 @@ public class IceblastProjectile : ProjectileComponent
                 particleSystem.enableEmission = false;
                 transform.localScale = new Vector3(3f, 3f, 0);
             }
-            else if (!(healthComponent is ProjectileHealthComponent))
+            else if (!(healthComponent is ProjectileHealthComponent) && collider.enabled)
             {
                 Die();
             }

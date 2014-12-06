@@ -41,7 +41,11 @@ public class FireBuffSpell : Spell
 
     public override void OnDestroy()
     {
-        Disable();
+        //Disable();
+        if (active)
+            Disable();
+        else
+            normalAttack.OnCast -= Hit;
     }
 
     public override bool CanCast()
