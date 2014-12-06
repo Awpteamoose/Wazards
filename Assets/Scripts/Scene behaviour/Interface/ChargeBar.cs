@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ManaBar : MonoBehaviour {
+public class ChargeBar : MonoBehaviour
+{
 
     public Image image { get; set; }
-    public Text text;
 
     void Awake()
     {
@@ -22,8 +22,7 @@ public class ManaBar : MonoBehaviour {
         set
         {
             _level = value;
-            image.fillAmount = value / 100f;
-            text.text = Mathf.RoundToInt(value).ToString() + "/100";
+            image.fillAmount = value;
         }
     }
 }

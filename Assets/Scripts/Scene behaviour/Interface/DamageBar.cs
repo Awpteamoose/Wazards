@@ -6,6 +6,7 @@ public class DamageBar : MonoBehaviour {
 
     public Image under100;
     public Image over100;
+    public Text text;
 
     private float _level;
     public float level
@@ -27,6 +28,7 @@ public class DamageBar : MonoBehaviour {
                 over100.fillAmount = (value - 100f)/100f;
                 under100.fillAmount = 1f;
             }
+            text.text = Mathf.RoundToInt(value).ToString() + "%";
         }
     }
 }
