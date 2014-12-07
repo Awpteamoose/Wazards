@@ -42,6 +42,7 @@ public class UltimateSpell : Spell
         owner.audio.Stop();
         owner.audio.clip = owner.ultimateSounds[0];
         owner.audio.Play();
+		owner.rigidbody.velocity = Vector2.zero;
     }
 
     public override void Charge(Vector3 reticle)
@@ -74,16 +75,16 @@ public class UltimateSpell : Spell
         {
             if (!expired)
             {
-                Buff(-1.5f);
+                Buff(-2f);
                 owner.audio.clip = owner.ultimateSounds[3];
                 //owner.audio.time = 0;
                 owner.audio.Play();
-                _duration = duration;
+                _duration = duration / 10F;
                 expired = true;
             }
             else
             {
-                Buff(0.5f);
+                Buff(1f);
                 active = false;
                 expired = false;
             }
@@ -116,7 +117,7 @@ public class UltimateSpell : Spell
     {
         _duration += duration;
 
-        cast_mod_damage = owner.healthComponent.totalDamage / 200f;
+        cast_mod_damage = owner.healthComponent.totalDamage / 150f;
         cast_mod_size = cast_mod_damage * 0.5f;
         cast_mod_speed = cast_mod_damage * 0.5f;
         cast_mod_cooldown = 1f;

@@ -3111,7 +3111,7 @@ MonoBehaviour:
   mod_regen: 1
   maxMana: 100
   mana: 100
-  manaRegen: 6.5
+  manaRegen: 8
   currentManaRegen: 0
   altAimMode: 0
 --- !u!114 &783976496
@@ -5132,7 +5132,7 @@ MonoBehaviour:
   mod_regen: 1
   maxMana: 100
   mana: 100
-  manaRegen: 6.5
+  manaRegen: 8
   currentManaRegen: 0
   altAimMode: 0
 --- !u!114 &1216444112

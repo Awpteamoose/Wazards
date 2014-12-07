@@ -18,8 +18,8 @@ MonoBehaviour:
   t_minCharge: .200000003
   manacost: 22
   t_cooldown: 4
-  manaPerSec: 18
-  manaPerSecCharged: 24
+  manaPerSec: 12
+  manaPerSecCharged: 15
   damage: 1.5
   chargedDamage: 2
   width: .200000003
