@@ -43,20 +43,7 @@ public class PlayerMoveState : StateMachine.State
             pc.animator.SetBool("Moving", false);
         }
 
-        float angle = Mathf.Round(pc.rigidbody.rotation);
-        float difference = Mathf.Round(Mathf.Rad2Deg * Mathf.Atan2(Mathf.Sin(Mathf.Deg2Rad * moveComponent.direction.angle - Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * moveComponent.direction.angle - Mathf.Deg2Rad * angle)));
-        pc.rigidbody.angularVelocity = 0;
-        if (Mathf.Abs(difference) > 0.1f)
-        {
-            if (difference > 0)
-                pc.rigidbody.AddTorque(Mathf.Abs(difference) * moveComponent.rotation_factor);
-            else
-                pc.rigidbody.AddTorque(Mathf.Abs(difference) * -moveComponent.rotation_factor);
-        }
-        else
-        {
-            pc.rigidbody.MoveRotation(moveComponent.direction.angle);
-        }
+        
     }
     public override void Exit()
     {

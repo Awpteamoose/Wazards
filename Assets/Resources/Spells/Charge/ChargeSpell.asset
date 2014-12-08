@@ -18,11 +18,10 @@ MonoBehaviour:
   t_minCharge: 0
   manacost: 25
   t_cooldown: 2
-  cooldown: 0
   distance: 6
   speed: .449999988
   damageMod: 1.75
-  size: 1.10000002
+  size: 1
   minDamage: 5
   maxDamage: 20
   superArmour: 12.5

@@ -38,7 +38,7 @@ public class PlayerCastState : StateMachine.State
             world_reticle = pc.castComponent.reticle.transform.position;
             mode1_lastPosition = pc.transform.position;
         }
-		pc.rigidbody2D.fixedAngle = true;
+        pc.moveComponent.rotation_factor += 3f;
 
 		//HACK:
 		canTurn = false;
@@ -123,7 +123,6 @@ public class PlayerCastState : StateMachine.State
                 pc.castComponent.reticle.rigidbody2D.AddForce(new Vector2(newhor * pc.castComponent.reticle_speed * 80f, newvert * pc.castComponent.reticle_speed * 80f));
                 pc.moveComponent.direction.vector = pc.castComponent.reticle.transform.position - pc.transform.position;
             }
-            pc.rigidbody2D.MoveRotation(pc.moveComponent.direction.angle);
 		}
 
         if (!pc.castComponent.altAimMode && mode1_lastPosition != pc.transform.position)
@@ -138,7 +137,7 @@ public class PlayerCastState : StateMachine.State
 	public override void Exit()
 	{
         spell.End(world_reticle);
-		pc.rigidbody2D.fixedAngle = false;
+        pc.moveComponent.rotation_factor -= 3f;
 		
 		pc.castComponent.bgBar.SetActive(false);
 		pc.castComponent.fgBar.SetActive(false);
