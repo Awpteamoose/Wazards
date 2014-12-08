@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HandleInterface : MonoBehaviour
 {
-
     public GameObject playerObject;
     private PlayerControl player;
 

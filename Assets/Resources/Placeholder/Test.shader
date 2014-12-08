@@ -73,16 +73,16 @@
 
             fixed4 frag(v2f IN) : SV_Target
             {
-            	float alpha = 4*tex2D(_MainTex, IN.texcoord).a;
-            	alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0075f, 0.0f ) ).a;
-			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( -0.0075f, 0.0f ) ).a;
-			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, 0.0075f ) ).a;
-			    alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, -0.0075f ) ).a;
+                float alpha = 4*tex2D(_MainTex, IN.texcoord).a;
+                alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0075f, 0.0f ) ).a;
+                alpha -= tex2D( _MainTex, IN.texcoord + vec2( -0.0075f, 0.0f ) ).a;
+                alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, 0.0075f ) ).a;
+                alpha -= tex2D( _MainTex, IN.texcoord + vec2( 0.0f, -0.0075f ) ).a;
 
                 fixed4 c = tex2D(_MainTex, IN.texcoord);
 
-			    fixed4 retcol = _OutlineColor;
-			    retcol.a = alpha;
+                fixed4 retcol = _OutlineColor;
+                retcol.a = alpha;
                 return retcol;
             }
         ENDCG
@@ -133,7 +133,7 @@
 
             fixed4 frag(v2f IN) : SV_Target
             {
-            	fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
+                fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
                 c.rgb *= c.a;
                 return c;
             }

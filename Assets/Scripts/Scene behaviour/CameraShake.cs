@@ -12,12 +12,13 @@ public class CameraShake : MonoBehaviour
     {
         if (shakeAmount > 0)
         {
-            Camera.main.transform.localPosition = new Vector3(Random.insideUnitSphere.x * shakeAmount, Random.insideUnitSphere.y * shakeAmount, -1f);
+            foreach (Camera camera in Camera.allCameras)
+            camera.transform.localPosition = new Vector3(Random.insideUnitSphere.x * shakeAmount, Random.insideUnitSphere.y * shakeAmount, -1f);
             shakeAmount -= Time.deltaTime * (Mathf.Pow(shakeAmount, shakeFactor) + decrease);
             if (shakeAmount <= 0.001f)
             {
                 shakeAmount = 0;
-                Camera.main.transform.localPosition = new Vector3(0, 0, -1f);
+                camera.transform.localPosition = new Vector3(0, 0, -1f);
             }
         }
     }
