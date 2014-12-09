@@ -18,10 +18,9 @@ MonoBehaviour:
   t_minCharge: 0
   manacost: 0
   t_cooldown: .5
-  cooldown: 0
   damage: 5
   damageCharged: 8
   delay: .0799999982
-  duration: .100000001
+  duration: .150000006
   size: 1
-  prefab: {fileID: 11400000, guid: 86392abc3157206409fba2602046f8fb, type: 2}
+  prefab: {fileID: 11480340, guid: fa53565e52e367440909991605e0e25e, type: 2}

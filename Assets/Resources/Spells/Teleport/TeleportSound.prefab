@@ -103,7 +103,6 @@ MonoBehaviour:
   speed: 0
   size: 0
   target: {x: 0, y: 0, z: 0}
-  healthComponent: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

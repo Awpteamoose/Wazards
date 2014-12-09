@@ -135,7 +135,6 @@ MonoBehaviour:
   speed: 0
   size: 0
   target: {x: 0, y: 0, z: 0}
-  healthComponent: {fileID: 0}
   t_duration: 0
   flySound: {fileID: 8300000, guid: ce6f0e4f9d8c80842b2d6919c0cf651d, type: 3}
   freezeSound: {fileID: 8300000, guid: 01898a8d81f3692439ee3f9c78618897, type: 3}
