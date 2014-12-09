@@ -18,7 +18,7 @@ public class ProjectileComponent : MonoBehaviour
     public new SpriteRenderer renderer { get; set; }
     public new Rigidbody2D rigidbody { get; set; }
     public new Collider2D collider { get; set; }
-    public ProjectileHealthComponent healthComponent;
+    public ProjectileHealthComponent healthComponent { get; set; }
 
     public virtual void Awake ()
     {

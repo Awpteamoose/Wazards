@@ -37,6 +37,7 @@ public class NormalAttackSpell : Spell
 		}
 		else
 		{
+            attack.destroyProjectiles = false;
 			attack.damage = damage;
 			attack.t_activation = Time.time + delay / owner.castComponent.mod_speed;
 			t_cooldown = 0.5f;

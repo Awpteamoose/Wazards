@@ -11,7 +11,6 @@ public class NormalAttackObject : ProjectileComponent
     {
         base.Activate();
 		parent = transform.parent.gameObject;
-        destroyProjectiles = false;
 	}
 
 	public override void Update ()
@@ -26,6 +25,8 @@ public class NormalAttackObject : ProjectileComponent
 		{
 			collider2D.enabled = true;
 		}
+        rigidbody.MoveRotation(parent.rigidbody2D.rotation);
+        rigidbody.MovePosition(parent.rigidbody2D.position);
 	}
 
     public override void Die()
