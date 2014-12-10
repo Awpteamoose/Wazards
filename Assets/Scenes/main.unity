@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  rotation_factor: 1
+  rotation_factor: 5
   mod_speed: 1
 --- !u!114 &783976497
 MonoBehaviour:
@@ -5512,7 +5512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  rotation_factor: 1
+  rotation_factor: 5
   mod_speed: 1
 --- !u!114 &1216444113
 MonoBehaviour:

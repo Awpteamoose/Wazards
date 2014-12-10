@@ -38,7 +38,7 @@ public class PlayerCastState : StateMachine.State
             world_reticle = pc.castComponent.reticle.transform.position;
             mode1_lastPosition = pc.transform.position;
         }
-        pc.moveComponent.rotation_factor += 3f;
+        pc.moveComponent.rotation_factor *= 4f;
 
 		//HACK:
 		canTurn = false;
@@ -137,7 +137,7 @@ public class PlayerCastState : StateMachine.State
 	public override void Exit()
 	{
         spell.End(world_reticle);
-        pc.moveComponent.rotation_factor -= 3f;
+        pc.moveComponent.rotation_factor *= 0.25f;
 		
 		pc.castComponent.bgBar.SetActive(false);
 		pc.castComponent.fgBar.SetActive(false);
