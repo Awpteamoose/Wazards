@@ -67,7 +67,7 @@ Shader "Custom/Masked Tint" {
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
-				fixed4 tint = tex2D(_MaskTex, IN.texcoord).a * _Color;
+				fixed4 tint = tex2D(_MaskTex, IN.texcoord) * _Color;
 				tint.rgb *= tint.a;
 
 				fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
