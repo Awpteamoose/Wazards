@@ -37,7 +37,7 @@ public struct Direction
             else
                 _vector = value;
 
-            _angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg - 90f;
+            _angle = Mathf.Atan2(value.y, value.x) * Mathf.Rad2Deg - 90f;
             _rotation = Quaternion.Euler(0, 0, _angle);
         }
     }
@@ -55,8 +55,13 @@ public struct Direction
             else
                 _angle = value;
 
-            _vector = (Quaternion.Euler(0, 0, angle) * Vector3.up).normalized;
-            _rotation = Quaternion.Euler(0, 0, _angle);
+            //_vector = (Quaternion.Euler(0, 0, angle) * Vector3.up).normalized;
+            _vector = new Vector3(
+                Mathf.Cos(Mathf.Deg2Rad * (value + 90f)),
+                Mathf.Sin(Mathf.Deg2Rad * (value + 90f)),
+                0
+            );
+            _rotation = Quaternion.Euler(0, 0, value);
         }
     }
 
