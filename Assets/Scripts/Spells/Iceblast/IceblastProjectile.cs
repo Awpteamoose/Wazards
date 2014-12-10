@@ -24,7 +24,9 @@ public class IceblastProjectile : ProjectileComponent
 		base.Activate();
         collider.enabled = true;
 		createdAt = Time.time-0.3f;
+        particleSystem.enableEmission = true;
         audio.clip = flySound;
+        audio.volume = 1;
         audio.Play();
 	}
 
