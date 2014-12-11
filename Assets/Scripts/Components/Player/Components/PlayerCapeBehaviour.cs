@@ -29,16 +29,16 @@ public class PlayerCapeBehaviour : MonoBehaviour
         for (int i = 1; i < positions.Length; i++)
         {
             Vector3 diff = positions[i - 1] - positions[i];
-            positions[i] += diff.normalized * vert_distance;
-            diff = positions[i - 1] - positions[i];
+            //positions[i] += diff.normalized * vert_distance;
+            //diff = positions[i - 1] - positions[i];
             if (diff.magnitude > vert_distance)
             {
                 positions[i] = positions[i - 1] - diff.normalized * vert_distance;
             }
-            else
-            {
-                positions[i] = positions[i - 1];
-            }
+            //else
+            //{
+            //    positions[i] = positions[i - 1];
+            //}
         }
 
         for (int i = 0; i < positions.Length; i++)
