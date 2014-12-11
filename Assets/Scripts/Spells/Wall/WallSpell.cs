@@ -28,7 +28,7 @@ public class WallSpell : Spell
             wall.position = owner.transform.position + (reticle - owner.transform.position).normalized * minDistance;
         wall.rotation = owner.transform.rotation;
         wall.localScale = new Vector3(width, height, 1f);
-        wall.renderer.material.mainTextureScale = wall.localScale;
+        //wall.renderer.material.mainTextureScale = wall.localScale;
         WallHealthComponent whc = wall.GetComponent<WallHealthComponent>();
         whc.health = health * owner.castComponent.mod_damage;
         whc.gameObject.SetActive(true);
