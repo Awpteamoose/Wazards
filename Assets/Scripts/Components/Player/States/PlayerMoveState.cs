@@ -13,9 +13,6 @@ public class PlayerMoveState : StateMachine.State
     }
     public override void Start()
     {
-#if UNITY_EDITOR
-        //Debug.Log("Move: Enter");
-#endif
     }
     public override void Update()
     {
@@ -33,24 +30,14 @@ public class PlayerMoveState : StateMachine.State
     {
         if (pc.inputComponent.getHorizontal() != 0 || pc.inputComponent.getVertical() != 0)
         {
-            pc.animator.SetBool("Moving", true);
             moveComponent.direction.vector = new Vector3(pc.inputComponent.getHorizontal(), pc.inputComponent.getVertical());
 
             pc.rigidbody.AddForce(moveComponent.direction.vector * moveComponent.speed * moveComponent.mod_speed);
         }
-        else
-        {
-            pc.animator.SetBool("Moving", false);
-        }
-
-        
     }
     public override void Exit()
     {
         pc.rigidbody.angularVelocity = 0;
         moveComponent.direction.angle = pc.rigidbody.rotation;
-#if UNITY_EDITOR
-        //Debug.Log("Move: Exit");
-#endif
     }
 }

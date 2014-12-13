@@ -36,5 +36,14 @@ public class MoveComponent: MonoBehaviour
                 Mathf.Cos(Mathf.Deg2Rad * direction.angle - Mathf.Deg2Rad * owner.rigidbody.rotation)
             );
         owner.rigidbody.angularVelocity = difference * rotation_factor;
+
+        if (owner.rigidbody.velocity.magnitude > 1f)
+        {
+            owner.animator.SetBool("Moving", true);
+        }
+        else
+        {
+            owner.animator.SetBool("Moving", false);
+        }
     }
 }

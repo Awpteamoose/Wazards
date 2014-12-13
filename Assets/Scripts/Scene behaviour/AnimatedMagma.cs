@@ -3,20 +3,23 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
 public class AnimatedMagma : MonoBehaviour
 {
     public Vector2 speed;
 
-    private Vector2 _speed;
+    public new Transform transform;
+    public new Renderer renderer;
 
-    void Start()
+    void Awake()
     {
-        _speed = speed * Time.fixedDeltaTime;
+        transform = GetComponent<Transform>();
+        renderer = GetComponent<Renderer>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        renderer.material.mainTextureOffset = renderer.material.mainTextureOffset + _speed;
+        float size = Camera.main.orthographicSize * 2f;
+        transform.localScale = new Vector3(size * Camera.main.aspect, size, 0);
+        renderer.material.mainTextureOffset = renderer.material.mainTextureOffset + speed * Time.deltaTime;
     }
 }

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: lava
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 372dfa2a11bb0824b8540442f18c9500, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -18,7 +18,7 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: a80b584df46cf0e47a74394dc5bc4a5f, type: 3}
-          m_Scale: {x: 6, y: 3}
+          m_Scale: {x: .100000001, y: .100000001}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:

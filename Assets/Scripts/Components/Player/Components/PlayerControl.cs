@@ -29,22 +29,28 @@ public class PlayerControl: MonoBehaviour
 		Cast
 	}
 
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         if (PlayerControl.activePlayers == null)
             PlayerControl.activePlayers = new List<PlayerControl>();
         PlayerControl.activePlayers.Add(this);
 
-		moveComponent = GetComponent<MoveComponent>();
-		castComponent = GetComponent<CastComponent>();
-		healthComponent = GetComponent<PlayerHealthComponent>();
-		inputComponent = GetComponent<PlayerInputComponent>();
-		inputComponent.playername = player;
+        moveComponent = GetComponent<MoveComponent>();
+        castComponent = GetComponent<CastComponent>();
+        healthComponent = GetComponent<PlayerHealthComponent>();
+        inputComponent = GetComponent<PlayerInputComponent>();
+
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         transform = GetComponent<Transform>();
         rigidbody = GetComponent<Rigidbody2D>();
 
+        inputComponent.playername = player;
+    }
+
+	// Use this for initialization
+	void Start ()
+    {
 		for (int i = 0; i<4; i++)
 		{
             //PlayerPrefs.DeleteAll();
