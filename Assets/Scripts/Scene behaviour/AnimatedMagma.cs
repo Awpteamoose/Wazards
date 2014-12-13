@@ -20,6 +20,6 @@ public class AnimatedMagma : MonoBehaviour
     {
         float size = Camera.main.orthographicSize * 2f;
         transform.localScale = new Vector3(size * Camera.main.aspect, size, 0);
-        renderer.material.mainTextureOffset = renderer.material.mainTextureOffset + speed * Time.deltaTime;
+        //renderer.material.mainTextureOffset = renderer.material.mainTextureOffset + speed * Time.deltaTime;
     }
 }
