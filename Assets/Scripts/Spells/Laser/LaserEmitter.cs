@@ -47,7 +47,7 @@ public class LaserEmitter : ProjectileComponent
 	public override void FixedUpdate ()
 	{
         base.FixedUpdate();
-        transform.position = parent.transform.position + direction.vector * 0.6f;
+        rigidbody.MovePosition(parent.transform.position + direction.vector * 0.6f);
 
         hasEndpoint = false;
         damageList.Clear();

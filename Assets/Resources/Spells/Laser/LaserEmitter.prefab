@@ -13,6 +13,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 120: {fileID: 12000000}
   - 95: {fileID: 9500000}
+  - 50: {fileID: 5086402}
   m_Layer: 0
   m_Name: LaserEmitter
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5086402
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
