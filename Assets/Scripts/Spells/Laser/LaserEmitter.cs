@@ -48,11 +48,7 @@ public class LaserEmitter : ProjectileComponent
 	{
         base.FixedUpdate();
         transform.position = parent.transform.position + direction.vector * 0.6f;
-	}
 
-	public override void Update()
-	{
-        base.Update();
         hasEndpoint = false;
         damageList.Clear();
         RaycastHit2D[] hits = Physics2D.BoxCastAll(laserBeam.transform.position, new Vector2(width, 0.1f), 0f, direction.vector);
@@ -76,7 +72,12 @@ public class LaserEmitter : ProjectileComponent
         }
         if (!hasEndpoint)
             laserBeam.SetPosition(1, infinite);
+	}
 
+	public override void Update()
+	{
+        base.Update();
+        
         if (Time.time > t_activation)
         {
             if (audio.clip == chargeSound)

@@ -30,7 +30,7 @@ public class ArrowBehaviour : MonoBehaviour {
             -Camera.main.orthographicSize,
             Camera.main.orthographicSize
         );
-        Vector3 closestPointInCamera = new Vector3(xInCamera, yInCamera, 0);
+        Vector3 closestPointInCamera = new Vector2(xInCamera, yInCamera);
         transform.position = closestPointInCamera - (parent.transform.position - closestPointInCamera);
         direction.vector = parent.transform.position - transform.position;
         transform.rotation = direction.rotation;
