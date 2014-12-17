@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 8ceb13ec0448ac045bada7dc5c38f1aa
+guid: b42f9379f57a5944f84463ab1a493edc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Sheet2_0
-    21300002: Sheet2_1
-    21300004: Sheet2_2
-    21300006: Sheet2_3
-    21300008: Sheet2_4
+    21300000: skullman-walk_0
+    21300002: skullman-walk_1
+    21300004: skullman-walk_2
+    21300006: skullman-walk_3
+    21300008: skullman-walk_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +26,11 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -48,53 +48,53 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Sheet2_0
+    - name: skullman-walk_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 256
-        height: 256
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sheet2_1
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sheet2_2
+    - name: skullman-walk_1
       rect:
         serializedVersion: 2
         x: 512
-        y: 256
-        width: 256
-        height: 256
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sheet2_3
+    - name: skullman-walk_2
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
-        width: 256
-        height: 256
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sheet2_4
+    - name: skullman-walk_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: skullman-walk_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
