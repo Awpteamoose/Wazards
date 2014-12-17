@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: b42f9379f57a5944f84463ab1a493edc
+guid: e55ef525fc9f367428e9ee49c74ca045
 TextureImporter:
   fileIDToRecycleName:
-    21300000: skullman-walk_0
-    21300002: skullman-walk_1
-    21300004: skullman-walk_2
-    21300006: skullman-walk_3
-    21300008: skullman-walk_4
+    21300000: skullman_spritesheet_0
+    21300002: skullman_spritesheet_1
+    21300004: skullman_spritesheet_2
+    21300006: skullman_spritesheet_3
+    21300008: skullman_spritesheet_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,7 +48,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: skullman-walk_0
+    - name: skullman_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -58,7 +58,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman-walk_1
+    - name: skullman_spritesheet_1
       rect:
         serializedVersion: 2
         x: 512
@@ -68,7 +68,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman-walk_2
+    - name: skullman_spritesheet_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -78,7 +78,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman-walk_3
+    - name: skullman_spritesheet_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -88,7 +88,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman-walk_4
+    - name: skullman_spritesheet_4
       rect:
         serializedVersion: 2
         x: 0
