@@ -17,7 +17,6 @@ MonoBehaviour:
   t_charge: .850000024
   t_minCharge: 0
   manacost: 25
-  t_cooldown: .349999994
-  cooldown: 0
+  t_cooldown: .400000006
   minDistance: 6
   prefab: {fileID: 11400000, guid: f8f6eb0060db48541abdbc0e67049efa, type: 2}

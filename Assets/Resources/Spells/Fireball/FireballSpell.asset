@@ -17,8 +17,7 @@ MonoBehaviour:
   t_charge: 1
   t_minCharge: .25
   manacost: 21
-  t_cooldown: 1.25
-  cooldown: 0
+  t_cooldown: 2.25
   damage: 10
   damageCharged: 13
   speed: 10

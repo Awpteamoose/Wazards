@@ -17,7 +17,7 @@ MonoBehaviour:
   t_charge: .850000024
   t_minCharge: 0
   manacost: 25
-  t_cooldown: 2
+  t_cooldown: 3
   distance: 6
   speed: .449999988
   damageMod: 1.75

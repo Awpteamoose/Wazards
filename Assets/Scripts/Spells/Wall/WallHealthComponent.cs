@@ -9,6 +9,8 @@ public class WallHealthComponent : HealthComponent
         base.Update();
         if (health <= 0)
             gameObject.Recycle();
+        else
+            health -= Time.deltaTime;
     }
 
     public override void TakeDamage(float damage, Vector2 direction, float scale = 1f)

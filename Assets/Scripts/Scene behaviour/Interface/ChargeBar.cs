@@ -5,24 +5,30 @@ using System.Collections;
 public class ChargeBar : MonoBehaviour
 {
 
-    public Image image { get; set; }
+    public Image red;
+    public Image yellow;
+    public Image green;
 
-    void Awake()
+    public void GetCharge(Spell spell)
     {
-        image = GetComponent<Image>();
+        if (spell.t_charged < spell.t_minCharge)
+        {
+            red.fillAmount = spell.t_charged / spell.t_minCharge;
+        }
+        else if (spell.t_charged < spell.t_charge)
+        {
+            red.fillAmount = 1;
+            yellow.fillAmount = (spell.t_charged - spell.t_minCharge) / (spell.t_charge - spell.t_minCharge);
+        }
+        else
+        {
+            green.fillAmount = 1;
+        }
     }
-
-    private float _level;
-    public float level
+    public void Reset()
     {
-        get
-        {
-            return _level;
-        }
-        set
-        {
-            _level = value;
-            image.fillAmount = value;
-        }
+        red.fillAmount = 0;
+        yellow.fillAmount = 0;
+        green.fillAmount = 0;
     }
 }

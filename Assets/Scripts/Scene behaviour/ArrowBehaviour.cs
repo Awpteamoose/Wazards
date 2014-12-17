@@ -20,17 +20,18 @@ public class ArrowBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        float xInCamera = Mathf.Clamp(
-            parent.transform.position.x,
-            -Camera.main.orthographicSize * Camera.main.aspect,
-            Camera.main.orthographicSize * Camera.main.aspect
+        Vector3 closestPointInCamera = new Vector2(
+            Mathf.Clamp(
+                parent.transform.position.x,
+                -Camera.main.orthographicSize * Camera.main.aspect,
+                Camera.main.orthographicSize * Camera.main.aspect
+            ),
+            Mathf.Clamp(
+                parent.transform.position.y,
+                -Camera.main.orthographicSize,
+                Camera.main.orthographicSize
+            )
         );
-        float yInCamera = Mathf.Clamp(
-            parent.transform.position.y,
-            -Camera.main.orthographicSize,
-            Camera.main.orthographicSize
-        );
-        Vector3 closestPointInCamera = new Vector2(xInCamera, yInCamera);
         transform.position = closestPointInCamera - (parent.transform.position - closestPointInCamera);
         direction.vector = parent.transform.position - transform.position;
         transform.rotation = direction.rotation;

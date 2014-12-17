@@ -2,7 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBar : MonoBehaviour
+{
+    private Text text;
+
+    void Awake()
+    {
+        text = GetComponent<Text>();
+    }
 
     private int _ticks;
     public int ticks
@@ -14,13 +21,9 @@ public class HealthBar : MonoBehaviour {
         set
         {
             _ticks = value;
-            if (value < transform.childCount)
-            {
-                for (int i = value; i < transform.childCount; i++)
-                {
-                    transform.GetChild(i).gameObject.SetActive(false);
-                }
-            }
+            text.text = value.ToString();
+            float green = _ticks / 5f;
+            text.color = new Color(2f - green, green, 0);
         }
     }
 }

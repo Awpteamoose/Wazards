@@ -24,14 +24,9 @@ public class HandleInterface : MonoBehaviour
         manaBar.level = player.castComponent.mana;
         damageBar.level = player.healthComponent.totalDamage;
         if (player.sm.get() == player.sm.states[PlayerControl.States.Cast])
-        {
-            Spell activeSpell = player.castComponent.spellBook.Get();
-            chargeBar.level = activeSpell.t_charged / activeSpell.t_charge;
-        }
+            chargeBar.GetCharge(player.castComponent.spellBook.Get());
         else
-        {
-            chargeBar.level = 0;
-        }
+            chargeBar.Reset();
         int playerTicks = Mathf.CeilToInt(player.healthComponent.health / 10);
         if (healthBar.ticks != playerTicks)
             healthBar.ticks = playerTicks;

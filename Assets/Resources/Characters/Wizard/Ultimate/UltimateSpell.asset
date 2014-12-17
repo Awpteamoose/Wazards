@@ -13,10 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: 
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: bb175371e37be8a479ed9cf2240023b4, type: 3}
   t_charge: 1
   t_minCharge: 0
   manacost: 0
-  t_cooldown: 0
-  cooldown: 0
+  t_cooldown: 120
   duration: 5
+  used: 0
+  active: 0
+  expired: 0

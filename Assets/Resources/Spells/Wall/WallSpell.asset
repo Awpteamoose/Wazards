@@ -17,8 +17,7 @@ MonoBehaviour:
   t_charge: .349999994
   t_minCharge: 0
   manacost: 25
-  t_cooldown: 4
-  cooldown: 0
+  t_cooldown: 5
   minDistance: 2
   width: 5
   height: .5

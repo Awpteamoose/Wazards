@@ -65,7 +65,7 @@ public class PlayerControl: MonoBehaviour
 		}
         castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
         castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-        castComponent.spellBook.Set(ultimate, this, 4);
+        castComponent.spellBook.Set(ScriptableObject.Instantiate(ultimate) as Spell, this, 4);
         castComponent.spellBook.Set(ScriptableObject.Instantiate(SpellList.normalAttack) as Spell, this, 5);
         castComponent.spellBook.ActivateAll();
         PlayerPrefs.Save();

@@ -7,7 +7,7 @@ public class SpellBar : MonoBehaviour {
 
 	public void ReadSpells(CastComponent castComponent)
     {
-        for (int i = 0; i < castComponent.spellBook.spells.Length-2; i++)
+        for (int i = 0; i < castComponent.spellBook.spells.Length; i++)
         {
             spellIcons[i].iconSprite.sprite = castComponent.spellBook.Get(i).icon;
 
