@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: e55ef525fc9f367428e9ee49c74ca045
+guid: c30772bad967d9c45935dceab4be246a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: skullman_spritesheet_0
-    21300002: skullman_spritesheet_1
-    21300004: skullman_spritesheet_2
-    21300006: skullman_spritesheet_3
-    21300008: skullman_spritesheet_4
+    21300000: skullman-walk_0
+    21300002: skullman-walk_1
+    21300004: skullman-walk_2
+    21300006: skullman-walk_3
+    21300008: skullman-walk_4
+    21300010: skullman-walk_5
+    21300012: skullman-walk_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,7 +50,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: skullman_spritesheet_0
+    - name: skullman-walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -58,7 +60,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman_spritesheet_1
+    - name: skullman-walk_1
       rect:
         serializedVersion: 2
         x: 512
@@ -68,7 +70,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman_spritesheet_2
+    - name: skullman-walk_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -78,7 +80,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman_spritesheet_3
+    - name: skullman-walk_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -88,10 +90,30 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: skullman_spritesheet_4
+    - name: skullman-walk_4
       rect:
         serializedVersion: 2
         x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: skullman-walk_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: skullman-walk_6
+      rect:
+        serializedVersion: 2
+        x: 1024
         y: 0
         width: 512
         height: 512
