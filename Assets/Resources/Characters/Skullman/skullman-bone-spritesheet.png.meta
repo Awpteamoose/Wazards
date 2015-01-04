@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 601b9054cef855e41a221a0fc5c1064d
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: head
+    21300002: right_shoulder
+    21300004: weapon
+    21300006: left_shoulder
+    21300008: right_arm
+    21300010: left_skull
+    21300012: right_skull
+    21300014: left_arm
+    21300016: right_hand
+    21300018: left_hand
+    21300020: body
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: head
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 117
+        width: 152
+        height: 135
+      alignment: 9
+      pivot: {x: .512745023, y: .399549812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: right_shoulder
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 223
+        width: 41
+        height: 29
+      alignment: 9
+      pivot: {x: .223249108, y: .414111972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapon
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 9
+        width: 76
+        height: 235
+      alignment: 9
+      pivot: {x: .263305277, y: .322173119}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: left_shoulder
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 185
+        width: 40
+        height: 31
+      alignment: 9
+      pivot: {x: .818262875, y: .410725743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: right_arm
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 127
+        width: 29
+        height: 52
+      alignment: 9
+      pivot: {x: .318680346, y: .170028389}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: left_skull
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 69
+        width: 36
+        height: 32
+      alignment: 9
+      pivot: {x: .615312338, y: .551891088}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: right_skull
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 69
+        width: 35
+        height: 32
+      alignment: 9
+      pivot: {x: .381392568, y: .517297029}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: left_arm
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 69
+        width: 25
+        height: 50
+      alignment: 9
+      pivot: {x: .588559568, y: .156829223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: right_hand
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 27
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: .802695632, y: .271379888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: left_hand
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 10
+        width: 31
+        height: 40
+      alignment: 9
+      pivot: {x: .26788649, y: .160980701}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 10
+        width: 110
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
