@@ -70,7 +70,9 @@ public class PlayerHealthComponent : HealthComponent {
         float sizemod = (timesAverage - 1f) / 2f + 1f;
         indicator.Size = sizemod * indicator.Size;
         indicator.transform.position = new Vector3(transform.position.x, transform.position.y + indicator.Size / 14.05f, -0.5f);
-        indicator.rigidbody2D.AddForce(-direction * 2.5f, ForceMode2D.Impulse);
+        Direction adjustedDirection = new Direction(direction);
+        adjustedDirection.angle += Random.Range(-30, 30);
+        indicator.rigidbody2D.AddForce(-adjustedDirection.vector * 2.5f, ForceMode2D.Impulse);
 
         Camera.main.Shake((damage / 40f) * (totalDamage / 100f));
     }

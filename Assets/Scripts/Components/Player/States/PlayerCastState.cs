@@ -67,6 +67,15 @@ public class PlayerCastState : StateMachine.State
         spell.Chant(world_reticle);
 		if (pc.inputComponent.getFireUp(pc.castComponent.spellBook.active+1))
 			pc.sm.set(pc.sm.states[PlayerControl.States.Move]);
+        for (int i = 1; i <= 4; i++)
+        {
+            if ((i != pc.castComponent.spellBook.active + 1) && pc.inputComponent.getFireUp(i))
+            {
+                spell.t_charged = -1;
+                pc.castComponent.mana -= 15 * pc.castComponent.mod_manacost;
+                pc.sm.set(pc.sm.states[PlayerControl.States.Move]);
+            }
+        }
         if (spell.t_charged >= spell.t_charge && !spell.charged)
 		{
 			pc.castComponent.bgBar.SetActive(false);

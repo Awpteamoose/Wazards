@@ -18,7 +18,7 @@ public class PlayerMoveState : StateMachine.State
     {
         for (int i = 0; i < 6; i++)
         {
-            if (pc.inputComponent.getFire(i + 1))
+            if (pc.inputComponent.getFireDown(i + 1))
             {
                 pc.castComponent.spellBook.Choose(i);
                 if (pc.castComponent.spellBook.Get().CanCast())

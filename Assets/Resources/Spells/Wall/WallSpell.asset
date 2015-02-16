@@ -17,9 +17,9 @@ MonoBehaviour:
   t_charge: .349999994
   t_minCharge: 0
   manacost: 25
-  t_cooldown: 5
+  t_cooldown: 2.5
   minDistance: 2
-  width: 5
+  width: 2.5
   height: .5
-  health: 20
+  health: 10
   prefab: {fileID: 400000, guid: a64b544a4127fa94dbc64dd24d33facf, type: 2}

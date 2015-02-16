@@ -20,13 +20,13 @@ MonoBehaviour:
   t_cooldown: 4
   manaPerSec: 12
   manaPerSecCharged: 15
-  damage: 1.5
-  chargedDamage: 2
+  damage: 3
+  chargedDamage: 4
   width: .200000003
   chargedWidth: .800000012
   t_delay: .600000024
   t_chargedDelay: .300000012
-  t_tick: .100000001
-  knockbackScale: .5
+  t_tick: .200000003
+  knockbackScale: .75
   prefab: {fileID: 11400000, guid: 1bcfbbf756a62a64eba18001a0911831, type: 2}
   iconToOff: {fileID: 21300000, guid: c11f5949839da624e9afa9332e85048b, type: 3}
