@@ -22,7 +22,7 @@ public class IndicatorDecay : MonoBehaviour {
 	void Update () {
 
 		typo.ColorTopLeft.a -= 1f * Time.deltaTime;
-		renderer.material.SetColor ("_GlowColor", new Color (1f, 1f, 1f, typo.ColorTopLeft.a));
+		GetComponent<Renderer>().material.SetColor ("_GlowColor", new Color (1f, 1f, 1f, typo.ColorTopLeft.a));
         if (typo.ColorTopLeft.a <= 0f)
             gameObject.Recycle();
 	}

@@ -2,13 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ground
-  m_Shader: {fileID: 4800000, guid: 7786680d81b47f54badc3b06980ed493, type: 3}
-  m_ShaderKeywords: []
+  m_Shader: {fileID: 4800000, guid: 2a26cae8dadb9b74bb9d2e9bbe4ba25a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -20,15 +21,106 @@ Material:
           m_Texture: {fileID: 2800000, guid: 2999ba927efbd8c449229d5998787c75, type: 3}
           m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MaskTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularIBL
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FloorNormal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EdgeNormal
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cubemap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DirtMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AORGBHeightA
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DisplacementR
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_6517
+        second:
+          m_Texture: {fileID: 2800000, guid: 2999ba927efbd8c449229d5998787c75, type: 3}
+          m_Scale: {x: 10, y: 10}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Maintexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 2999ba927efbd8c449229d5998787c75, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
       data:
         first:
           name: PixelSnap
         second: 0
-      data:
-        first:
-          name: _InvFade
-        second: 1
       data:
         first:
           name: _OuterRadius
@@ -41,6 +133,38 @@ Material:
         first:
           name: _Hardness
         second: 9
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _Gloss
+        second: .367521912
+      data:
+        first:
+          name: _Specular
+        second: 0
+      data:
+        first:
+          name: _EdgeNormalScale
+        second: 4
+      data:
+        first:
+          name: _Depth
+        second: .25
+      data:
+        first:
+          name: _Cutoffdistance
+        second: .460000008
+      data:
+        first:
+          name: _node_6051
+        second: 1
+      data:
+        first:
+          name: _node_2501
+        second: 0
     m_Colors:
       data:
         first:
@@ -48,9 +172,13 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
+          name: _Distort
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
           name: _TintColor
         second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
-          name: _Distort
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _DirtColor
+        second: {r: .5, g: .5, b: .5, a: 1}

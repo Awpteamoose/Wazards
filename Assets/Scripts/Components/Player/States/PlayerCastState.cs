@@ -129,7 +129,7 @@ public class PlayerCastState : StateMachine.State
             //Orthogonal reticle movement
             else if (!pc.castComponent.altAimMode)
             {
-                pc.castComponent.reticle.rigidbody2D.AddForce(new Vector2(newhor * pc.castComponent.reticle_speed * 80f, newvert * pc.castComponent.reticle_speed * 80f));
+                pc.castComponent.reticle.GetComponent<Rigidbody2D>().AddForce(new Vector2(newhor * pc.castComponent.reticle_speed * 80f, newvert * pc.castComponent.reticle_speed * 80f));
                 pc.moveComponent.direction.vector = pc.castComponent.reticle.transform.position - pc.transform.position;
             }
 		}

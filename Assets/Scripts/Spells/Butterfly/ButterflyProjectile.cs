@@ -30,9 +30,9 @@ public class ButterflyProjectile : ProjectileComponent
             animator.Play("butterfly_opacity", -1, 0);
             renderer.enabled = true;
             collider.enabled = true;
-            audio.enabled = true;
-            audio.time = Random.Range(0f, audio.clip.length);
-            audio.Play();
+            GetComponent<AudioSource>().enabled = true;
+            GetComponent<AudioSource>().time = Random.Range(0f, GetComponent<AudioSource>().clip.length);
+            GetComponent<AudioSource>().Play();
             ready = true;
         }
 	}

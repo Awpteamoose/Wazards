@@ -71,7 +71,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start ()
     {
-        Screen.showCursor = false;
+        Cursor.visible = false;
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
         o_width = Screen.width.ToString();
         o_height = Screen.height.ToString();
@@ -81,7 +81,7 @@ public class PauseMenu : MonoBehaviour
     void OpenMenu()
     {
         Time.timeScale = 0;
-        Screen.showCursor = true;
+        Cursor.visible = true;
         paused = true;
 
         getSizePosition();
@@ -98,7 +98,7 @@ public class PauseMenu : MonoBehaviour
             SaveMappings();
         PlayerPrefs.Save();
         Time.timeScale = 1;
-        Screen.showCursor = false;
+        Cursor.visible = false;
         paused = false;
     }
 

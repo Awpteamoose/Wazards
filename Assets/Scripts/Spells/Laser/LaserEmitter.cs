@@ -33,9 +33,9 @@ public class LaserEmitter : ProjectileComponent
         
         t_nextTick = t_activation;
 
-        audio.clip = chargeSound;
-        audio.time = chargeSound.length - (t_activation - Time.time);
-        audio.Play();
+        GetComponent<AudioSource>().clip = chargeSound;
+        GetComponent<AudioSource>().time = chargeSound.length - (t_activation - Time.time);
+        GetComponent<AudioSource>().Play();
 
         animator.speed = 1f / (t_activation - Time.time);
 
@@ -54,7 +54,7 @@ public class LaserEmitter : ProjectileComponent
         RaycastHit2D[] hits = Physics2D.BoxCastAll(laserBeam.transform.position, new Vector2(width, 0.1f), 0f, direction.vector);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider != parent.collider2D)
+            if (hit.collider != parent.GetComponent<Collider2D>())
             {
                 HealthComponent hc = hit.collider.gameObject.GetComponent<HealthComponent>();
                 if (hc)
@@ -80,12 +80,12 @@ public class LaserEmitter : ProjectileComponent
         
         if (Time.time > t_activation)
         {
-            if (audio.clip == chargeSound)
+            if (GetComponent<AudioSource>().clip == chargeSound)
             {
-                audio.clip = fireSound;
-                audio.loop = true;
-                audio.time = 0;
-                audio.Play();
+                GetComponent<AudioSource>().clip = fireSound;
+                GetComponent<AudioSource>().loop = true;
+                GetComponent<AudioSource>().time = 0;
+                GetComponent<AudioSource>().Play();
             }
             if (damageList.Count > 0 && Time.time > t_nextTick)
             {

@@ -39,9 +39,9 @@ public class UltimateSpell : Spell
     {
         base.Begin(reticle);
 
-        owner.audio.Stop();
-        owner.audio.clip = owner.ultimateSounds[0];
-        owner.audio.Play();
+        owner.GetComponent<AudioSource>().Stop();
+        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[0];
+        owner.GetComponent<AudioSource>().Play();
 		owner.rigidbody.velocity = Vector2.zero;
     }
 
@@ -49,18 +49,18 @@ public class UltimateSpell : Spell
     {
         base.Charge(reticle);
 
-        owner.audio.Stop();
-        owner.audio.clip = owner.ultimateSounds[1];
-        owner.audio.Play();
+        owner.GetComponent<AudioSource>().Stop();
+        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[1];
+        owner.GetComponent<AudioSource>().Play();
     }
 
     public override void End(Vector3 reticle)
     {
         base.End(reticle);
 
-        owner.audio.Stop();
-        owner.audio.clip = owner.ultimateSounds[2];
-        owner.audio.Play();
+        owner.GetComponent<AudioSource>().Stop();
+        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[2];
+        owner.GetComponent<AudioSource>().Play();
     }
 
 
@@ -76,9 +76,9 @@ public class UltimateSpell : Spell
             if (!expired)
             {
                 Buff(-2f);
-                owner.audio.clip = owner.ultimateSounds[3];
+                owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[3];
                 //owner.audio.time = 0;
-                owner.audio.Play();
+                owner.GetComponent<AudioSource>().Play();
                 _duration = duration / 10F;
                 expired = true;
             }

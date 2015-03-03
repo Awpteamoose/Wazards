@@ -20,8 +20,8 @@ public class FireballProjectile : ProjectileComponent
         renderer.enabled = true;
         collider.enabled = true;
         ps.enableEmission = true;
-        audio.clip = flySound;
-        audio.Play();
+        GetComponent<AudioSource>().clip = flySound;
+        GetComponent<AudioSource>().Play();
 	}
 
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class FireballProjectile : ProjectileComponent
 		if (animator.GetCurrentAnimatorStateInfo(0).IsName("fireball_destroy") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
 		{
 			renderer.enabled = false;
-            if (!audio.isPlaying)
+            if (!GetComponent<AudioSource>().isPlaying)
                 gameObject.Recycle();
 		}
 	}
@@ -50,8 +50,8 @@ public class FireballProjectile : ProjectileComponent
         collider.enabled = false;
         ps.enableEmission = false;
         animator.SetTrigger("Destroy");
-        audio.clip = explodeSound;
-        audio.Play();
+        GetComponent<AudioSource>().clip = explodeSound;
+        GetComponent<AudioSource>().Play();
     }
 
     public override void Collide(Collider2D collider, HealthComponent healthComponent, bool isParent, bool sameParent)

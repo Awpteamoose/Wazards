@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class MakeSpell : EditorWindow
 {
@@ -60,7 +61,8 @@ public class MakeSpell : EditorWindow
             GameObject prefab = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + ".prefab", typeof(GameObject)) as GameObject;
             Sprite sprite = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + ".png", typeof(Sprite)) as Sprite;
             prefab.GetComponent<SpriteRenderer>().sprite = sprite;
-            prefab.AddComponent(name + "Projectile");
+            //UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(prefab, "Assets/Editor/MakeSpell.cs (63,13)", name + "Projectile");
+            prefab.AddComponent(Type.GetType(name + "Projectile"));
             prefab.AddComponent<HealthComponent>();
 
             Spell spell = AssetDatabase.LoadAssetAtPath(resPath + "/" + name + "Spell.asset", typeof(Spell)) as Spell;

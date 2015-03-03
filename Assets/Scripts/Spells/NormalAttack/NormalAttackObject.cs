@@ -17,16 +17,16 @@ public class NormalAttackObject : ProjectileComponent
 	{
         if ((Time.time > t_deactivation))
         {
-            collider2D.enabled = false;
-            if (!audio.isPlaying)
+            GetComponent<Collider2D>().enabled = false;
+            if (!GetComponent<AudioSource>().isPlaying)
                 Die();
         }
         else if ( Time.time > t_activation )
 		{
-			collider2D.enabled = true;
+			GetComponent<Collider2D>().enabled = true;
 		}
-        rigidbody.MoveRotation(parent.rigidbody2D.rotation);
-        rigidbody.MovePosition(parent.rigidbody2D.position);
+        rigidbody.MoveRotation(parent.GetComponent<Rigidbody2D>().rotation);
+        rigidbody.MovePosition(parent.GetComponent<Rigidbody2D>().position);
 	}
 
     public override void Die()

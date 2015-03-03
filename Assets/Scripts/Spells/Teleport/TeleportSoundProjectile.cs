@@ -10,7 +10,7 @@ public class TeleportSoundProjectile : ProjectileComponent
 	// Update is called once per frame
 	public override void Update ()
 	{
-        if (!audio.isPlaying)
+        if (!GetComponent<AudioSource>().isPlaying)
             gameObject.Recycle();
 	}
 }

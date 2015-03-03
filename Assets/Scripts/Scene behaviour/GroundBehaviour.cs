@@ -11,7 +11,7 @@ public class GroundBehaviour : MonoBehaviour
 	void Start()
 	{
 		maxScale = transform.localScale.x;
-		maxTextureScale = renderer.material.mainTextureScale.x;
+		maxTextureScale = GetComponent<Renderer>().material.mainTextureScale.x;
 	}
 
 	void FixedUpdate()
@@ -20,15 +20,13 @@ public class GroundBehaviour : MonoBehaviour
 		if (newScale > minScaleFactor*maxScale)
 		{
             float percent_newScale = newScale / transform.localScale.x;
-            float shaderNewScale = renderer.material.GetVector("_Distort").z / percent_newScale;
-			float textureSize = renderer.material.mainTexture.width;
-            float textureScale = percent_newScale * renderer.material.mainTextureScale.x;
+			float textureSize = GetComponent<Renderer>().material.mainTexture.width;
+            float textureScale = percent_newScale * GetComponent<Renderer>().material.mainTextureScale.x;
 			float shrinkby = (textureSize-(textureScale/maxTextureScale*textureSize))/textureSize;
 
-            renderer.material.SetVector("_Distort", new Vector4(1, 1, shaderNewScale, shaderNewScale));
             transform.localScale = new Vector3(newScale, newScale, 0);
-			renderer.material.mainTextureScale = new Vector2(textureScale, textureScale);
-			renderer.material.mainTextureOffset = new Vector2(shrinkby, shrinkby);
+			GetComponent<Renderer>().material.mainTextureScale = new Vector2(textureScale, textureScale);
+			GetComponent<Renderer>().material.mainTextureOffset = new Vector2(shrinkby, shrinkby);
 		}
 	}
 }

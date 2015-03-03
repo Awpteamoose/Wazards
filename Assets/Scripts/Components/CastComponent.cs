@@ -89,7 +89,7 @@ public class CastComponent: MonoBehaviour
         }
 
         currentManaRegen = manaRegen;
-        if (rigidbody2D.velocity.magnitude < 3f)
+        if (GetComponent<Rigidbody2D>().velocity.magnitude < 3f)
             currentManaRegen *= 3f;
         mana += currentManaRegen * mod_regen * Time.deltaTime;
         mana = Mathf.Clamp(mana, 0, maxMana);

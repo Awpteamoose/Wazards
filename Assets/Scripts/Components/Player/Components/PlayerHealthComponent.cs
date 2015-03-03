@@ -18,7 +18,7 @@ public class PlayerHealthComponent : HealthComponent {
         base.Awake();
 
         playerControl = GetComponent<PlayerControl>();
-        groundCollider = GameObject.Find("Ground").collider2D;
+        groundCollider = GameObject.Find("Ground").GetComponent<Collider2D>();
         if (!damageIndicator)
             damageIndicator = Resources.Load("Placeholder/Damage Indicator", typeof(TypogenicText)) as TypogenicText;
         damageIndicator.CreatePool(25);
@@ -59,7 +59,7 @@ public class PlayerHealthComponent : HealthComponent {
         //rigidbody2D.AddForce(direction * (damageTaken * 0.4f + damage * 1.5f));
 
         //http://www.ssbwiki.com/Knockback
-        rigidbody2D.AddForce(direction * ( (((totalDamage * 0.1f) + ((totalDamage * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(direction * ( (((totalDamage * 0.1f) + ((totalDamage * damage) * 0.05f)) * 0.75f) + 4f ) * scale, ForceMode2D.Impulse);
 
         TypogenicText indicator = damageIndicator.Spawn();
         if (damage % 1f < 0.01 || damage % 1f > 0.99)
@@ -72,7 +72,7 @@ public class PlayerHealthComponent : HealthComponent {
         indicator.transform.position = new Vector3(transform.position.x, transform.position.y + indicator.Size / 14.05f, -0.5f);
         Direction adjustedDirection = new Direction(direction);
         adjustedDirection.angle += Random.Range(-30, 30);
-        indicator.rigidbody2D.AddForce(-adjustedDirection.vector * 2.5f, ForceMode2D.Impulse);
+        indicator.GetComponent<Rigidbody2D>().AddForce(-adjustedDirection.vector * 2.5f, ForceMode2D.Impulse);
 
         Camera.main.Shake((damage / 40f) * (totalDamage / 100f));
     }

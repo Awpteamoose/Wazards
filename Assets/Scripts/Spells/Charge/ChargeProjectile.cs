@@ -33,8 +33,8 @@ public class ChargeProjectile : ProjectileComponent {
 			base.FixedUpdate();
 			if (Time.time < t_terminate)
 			{
-				parent.rigidbody2D.MovePosition(parent.transform.position + direction.vector*speed);
-				rigidbody2D.MovePosition(parent.transform.position+direction.vector*speed);
+				parent.GetComponent<Rigidbody2D>().MovePosition(parent.transform.position + direction.vector*speed);
+				GetComponent<Rigidbody2D>().MovePosition(parent.transform.position+direction.vector*speed);
 
                 float distDamage = (transform.position - initial_pos).magnitude * damageMod;
                 damage = Mathf.Clamp(distDamage, minDamage, maxDamage);
@@ -51,7 +51,7 @@ public class ChargeProjectile : ProjectileComponent {
         base.Update();
         if (collider.enabled)
         {
-            parent.rigidbody2D.velocity = direction.vector * 5f;
+            parent.GetComponent<Rigidbody2D>().velocity = direction.vector * 5f;
         }
         else
         {
@@ -63,7 +63,7 @@ public class ChargeProjectile : ProjectileComponent {
     public override void Die()
     {
         base.Die();
-        audio.Play();
+        GetComponent<AudioSource>().Play();
         collider.enabled = false;
     }
 

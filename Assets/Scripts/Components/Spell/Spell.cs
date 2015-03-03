@@ -24,12 +24,12 @@ public class Spell : ScriptableObject
 
     public virtual void PlugNextWord()
     {
-        if (!owner.audio.isPlaying)
+        if (!owner.GetComponent<AudioSource>().isPlaying)
         {
             Random.seed = nextSeed;
             nextSeed = Random.Range(-214748364, 214748364);
-            owner.audio.clip = owner.words[Random.Range(0, owner.words.Length)];
-            owner.audio.Play();
+            owner.GetComponent<AudioSource>().clip = owner.words[Random.Range(0, owner.words.Length)];
+            owner.GetComponent<AudioSource>().Play();
             Random.seed = Mathf.RoundToInt(Time.time * 100f);
         }
     }

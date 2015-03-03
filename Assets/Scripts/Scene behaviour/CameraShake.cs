@@ -18,7 +18,7 @@ public class CameraShake : MonoBehaviour
             if (shakeAmount <= 0.001f)
             {
                 shakeAmount = 0;
-                camera.transform.localPosition = new Vector3(0, 0, -1f);
+                GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -1f);
             }
         }
     }

@@ -13,7 +13,7 @@ public class MoveComponent: MonoBehaviour
 
 	void Awake()
     {
-        direction.angle = rigidbody2D.rotation;
+        direction.angle = GetComponent<Rigidbody2D>().rotation;
         owner = GetComponent<PlayerControl>();
 	}
 

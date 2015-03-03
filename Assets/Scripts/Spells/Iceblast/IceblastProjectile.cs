@@ -24,10 +24,10 @@ public class IceblastProjectile : ProjectileComponent
 		base.Activate();
         collider.enabled = true;
 		createdAt = Time.time-0.3f;
-        particleSystem.enableEmission = true;
-        audio.clip = flySound;
-        audio.volume = 1;
-        audio.Play();
+        GetComponent<ParticleSystem>().enableEmission = true;
+        GetComponent<AudioSource>().clip = flySound;
+        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().Play();
 	}
 
 	// Update is called once per frame
@@ -44,7 +44,7 @@ public class IceblastProjectile : ProjectileComponent
 			if (victim.inputComponent._active)
 				victim.inputComponent._active = false;
 			rigidbody.MovePosition(victim.transform.position);
-            audio.volume = ((t_collision + t_duration) - Time.time) / t_duration;
+            GetComponent<AudioSource>().volume = ((t_collision + t_duration) - Time.time) / t_duration;
 			if (Time.time > t_collision + t_duration)
 			{
 				victim.inputComponent._active = true;
@@ -74,9 +74,9 @@ public class IceblastProjectile : ProjectileComponent
                 victim.inputComponent._active = false;
                 collider.enabled = false;
                 transform.rotation = Quaternion.identity;
-                audio.clip = freezeSound;
-                audio.Play();
-                particleSystem.enableEmission = false;
+                GetComponent<AudioSource>().clip = freezeSound;
+                GetComponent<AudioSource>().Play();
+                GetComponent<ParticleSystem>().enableEmission = false;
                 transform.localScale = new Vector3(3f, 3f, 0);
             }
             else if (!(healthComponent is ProjectileHealthComponent) && collider.enabled)
