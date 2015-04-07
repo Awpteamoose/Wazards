@@ -138,7 +138,7 @@ public class TypogenicTextEditor : Editor
 	{
 		GameObject gameObject = new GameObject("New Typogenic Text");
 		gameObject.AddComponent<TypogenicText>();
-		gameObject.GetComponent<MeshRenderer>().castShadows = false;
+        gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		gameObject.GetComponent<MeshRenderer>().receiveShadows = false;
 		Selection.objects = new GameObject[1] { gameObject };
 		EditorApplication.ExecuteMenuItem("GameObject/Move To View");
