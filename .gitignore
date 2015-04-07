@@ -15,4 +15,4 @@
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
-Assets/Third-party/UnityVS/*
+*UnityVS*
