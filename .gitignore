@@ -15,5 +15,4 @@
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
-Assets/Third-party/UnityVS/Editor/UnityVS.VersionSpecific.dll
-Assets/Third-party/UnityVS/Editor/UnityVS.VersionSpecific.dll.meta
+Assets/Third-party/UnityVS/*
