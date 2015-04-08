@@ -14,26 +14,26 @@ public class CastComponent: MonoBehaviour
 	public float reticle_minimumDistance;
 	public float reticle_speed;
 
-    public float mod_damage = 1f;
-    public float mod_size = 1f;
-    public float mod_speed = 1f;
-    public float mod_cooldown = 1f;
-    public float mod_charge = 1f;
-    public float mod_manacost = 1f;
-    public float mod_regen = 1f;
+	public float mod_damage = 1f;
+	public float mod_size = 1f;
+	public float mod_speed = 1f;
+	public float mod_cooldown = 1f;
+	public float mod_charge = 1f;
+	public float mod_manacost = 1f;
+	public float mod_regen = 1f;
 
 	public float maxMana;
-    #if UNITY_EDITOR
+	#if UNITY_EDITOR
 	[ReadOnly]
 	#endif
 	public float mana;
 
-    public float manaRegen;
-    #if UNITY_EDITOR
+	public float manaRegen;
+	#if UNITY_EDITOR
 	[ReadOnly]
 	#endif
 	public float currentManaRegen;
-    public bool altAimMode;
+	public bool altAimMode;
 
 	public SpellBook spellBook = new SpellBook();
 
@@ -53,46 +53,46 @@ public class CastComponent: MonoBehaviour
 		}
 		public Spell Set(Spell spell, PlayerControl owner, int number)
 		{
-            if (spells[number] != null)
-                Spell.Destroy(spells[number]);
-            spells[number] = spell;
-            spells[number].owner = owner;
-            spells[number].Initialise();
+			if (spells[number] != null)
+				Spell.Destroy(spells[number]);
+			spells[number] = spell;
+			spells[number].owner = owner;
+			spells[number].Initialise();
 			return spell;
 		}
-        public Spell Set(int listIndex, PlayerControl owner, int number)
-        {
-            return Set(ScriptableObject.Instantiate(SpellList.Get(listIndex)) as Spell, owner, number);
-        }
-        public void Activate(Spell spell)
-        {
-            spell.Activate();
-        }
-        public void Activate(int number)
-        {
-            spells[number].Activate();
-        }
-        public void ActivateAll()
-        {
-            foreach (Spell spell in spells)
-            {
-                Activate(spell);
-            }
-        }
+		public Spell Set(int listIndex, PlayerControl owner, int number)
+		{
+			return Set(ScriptableObject.Instantiate(SpellList.Get(listIndex)) as Spell, owner, number);
+		}
+		public void Activate(Spell spell)
+		{
+			spell.Activate();
+		}
+		public void Activate(int number)
+		{
+			spells[number].Activate();
+		}
+		public void ActivateAll()
+		{
+			foreach (Spell spell in spells)
+			{
+				Activate(spell);
+			}
+		}
 	}
 
 	void Update()
 	{
-        for (int i = 0; i < spellBook.spells.Length; i++ )
-        {
-            spellBook.Get(i).Update();
-        }
+		for (int i = 0; i < spellBook.spells.Length; i++ )
+		{
+			spellBook.Get(i).Update();
+		}
 
-        currentManaRegen = manaRegen;
-        if (GetComponent<Rigidbody2D>().velocity.magnitude < 3f)
-            currentManaRegen *= 3f;
-        mana += currentManaRegen * mod_regen * Time.deltaTime;
-        mana = Mathf.Clamp(mana, 0, maxMana);
+		currentManaRegen = manaRegen;
+		if (GetComponent<Rigidbody2D>().velocity.magnitude < 3f)
+			currentManaRegen *= 3f;
+		mana += currentManaRegen * mod_regen * Time.deltaTime;
+		mana = Mathf.Clamp(mana, 0, maxMana);
 	}
 
 	private void Start()
