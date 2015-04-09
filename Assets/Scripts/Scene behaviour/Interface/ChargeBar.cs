@@ -11,14 +11,14 @@ public class ChargeBar : MonoBehaviour
 
     public void GetCharge(Spell spell)
     {
-        if (spell.t_charged < spell.t_minCharge)
+        if (spell.charge < spell.min_chargeDuration)
         {
-            red.fillAmount = spell.t_charged / spell.t_minCharge;
+            red.fillAmount = spell.charge / spell.min_chargeDuration;
         }
-        else if (spell.t_charged < spell.t_charge)
+        else if (spell.charge < spell.chargeDuration)
         {
             red.fillAmount = 1;
-            yellow.fillAmount = (spell.t_charged - spell.t_minCharge) / (spell.t_charge - spell.t_minCharge);
+            yellow.fillAmount = (spell.charge - spell.min_chargeDuration) / (spell.chargeDuration - spell.min_chargeDuration);
         }
         else
         {

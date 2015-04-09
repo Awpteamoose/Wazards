@@ -6,10 +6,11 @@ using System.Linq;
 [System.Serializable]
 public class CastComponent: MonoBehaviour
 {
-	public GameObject reticle {get; set;}
-	public GameObject bgBar {get; set;}
-	public GameObject fgBar {get; set;}
-	public GameObject pcBar {get; set;}
+	public GameObject reticle { get; set; }
+	public GameObject bgBar { get; set; }
+	public GameObject fgBar { get; set; }
+	public GameObject pcBar { get; set; }
+	public PlayerControl owner { get; set; }
 	public float reticle_distance;
 	public float reticle_minimumDistance;
 	public float reticle_speed;
@@ -37,53 +38,14 @@ public class CastComponent: MonoBehaviour
 
 	public SpellBook spellBook = new SpellBook();
 
-	public class SpellBook
+	public void SetSpell(Spell spell, int index)
 	{
-		public Spell[] spells = new Spell[6];
-		public int active;
-		public void Choose(int num)
-		{
-			active = num;
-		}
-		public Spell Get(int number=-1)
-		{
-			if (number == -1)
-				number = active;
-			return spells[number];
-		}
-		public Spell Set(Spell spell, PlayerControl owner, int number)
-		{
-			if (spells[number] != null)
-				Spell.Destroy(spells[number]);
-			spells[number] = spell;
-			spells[number].owner = owner;
-			spells[number].Initialise();
-			return spell;
-		}
-		public Spell Set(int listIndex, PlayerControl owner, int number)
-		{
-			return Set(ScriptableObject.Instantiate(SpellList.Get(listIndex)) as Spell, owner, number);
-		}
-		public void Activate(Spell spell)
-		{
-			spell.Activate();
-		}
-		public void Activate(int number)
-		{
-			spells[number].Activate();
-		}
-		public void ActivateAll()
-		{
-			foreach (Spell spell in spells)
-			{
-				Activate(spell);
-			}
-		}
+		spellBook.Set(spell, this, index);
 	}
 
-	void Update()
+	private void Update()
 	{
-		for (int i = 0; i < spellBook.spells.Length; i++ )
+		for (int i = 0; i < spellBook.spells.Count; i++ )
 		{
 			spellBook.Get(i).Update();
 		}

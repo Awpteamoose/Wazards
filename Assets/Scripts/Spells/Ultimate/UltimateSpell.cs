@@ -4,135 +4,135 @@ using System.Collections;
 [System.Serializable]
 public class UltimateSpell : Spell
 {
-    public float duration = 5f;
+	public float duration = 5f;
 
-    private float _duration;
-    public bool used;
-    public bool active;
-    public bool expired;
+	private float _duration;
+	public bool used;
+	public bool active;
+	public bool expired;
 
-    private float cast_mod_damage;
-    private float cast_mod_size;
-    private float cast_mod_speed;
-    private float cast_mod_cooldown;
-    private float cast_mod_manacost;
-    private float cast_mod_regen;
-    private float cast_mod_charge;
-    private float move_mod_speed;
-    private float health_mod_damage;
-    private float health_mod_knockback;
+	private float cast_mod_damage;
+	private float cast_mod_size;
+	private float cast_mod_speed;
+	private float cast_mod_cooldown;
+	private float cast_mod_manacost;
+	private float cast_mod_regen;
+	private float cast_mod_charge;
+	private float move_mod_speed;
+	private float health_mod_damage;
+	private float health_mod_knockback;
 
-    public override void Initialise()
-    {
-        base.Initialise();
+	public override void Initialise()
+	{
+		base.Initialise();
 
-        used = false;
-        active = false;
-        expired = false;
-    }
+		used = false;
+		active = false;
+		expired = false;
+	}
 
-    public override void PlugNextWord()
-    {
-    }
+	public override void PlugNextWord()
+	{
+	}
 
-    public override void Begin(Vector3 reticle)
-    {
-        base.Begin(reticle);
+	public override void Begin(Vector3 reticle)
+	{
+		base.Begin(reticle);
 
-        owner.GetComponent<AudioSource>().Stop();
-        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[0];
-        owner.GetComponent<AudioSource>().Play();
-		owner.rigidbody.velocity = Vector2.zero;
-    }
+		castComponent.GetComponent<AudioSource>().Stop();
+		castComponent.GetComponent<AudioSource>().clip = castComponent.owner.ultimateSounds[0];
+		castComponent.GetComponent<AudioSource>().Play();
+		castComponent.GetComponent<Rigidbody>().velocity = Vector2.zero;
+	}
 
-    public override void Charge(Vector3 reticle)
-    {
-        base.Charge(reticle);
+	public override void Charge(Vector3 reticle)
+	{
+		base.Charge(reticle);
 
-        owner.GetComponent<AudioSource>().Stop();
-        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[1];
-        owner.GetComponent<AudioSource>().Play();
-    }
+		castComponent.GetComponent<AudioSource>().Stop();
+		castComponent.GetComponent<AudioSource>().clip = castComponent.owner.ultimateSounds[1];
+		castComponent.GetComponent<AudioSource>().Play();
+	}
 
-    public override void End(Vector3 reticle)
-    {
-        base.End(reticle);
+	public override void End(Vector3 reticle)
+	{
+		base.End(reticle);
 
-        owner.GetComponent<AudioSource>().Stop();
-        owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[2];
-        owner.GetComponent<AudioSource>().Play();
-    }
+		castComponent.GetComponent<AudioSource>().Stop();
+		castComponent.GetComponent<AudioSource>().clip = castComponent.owner.ultimateSounds[2];
+		castComponent.GetComponent<AudioSource>().Play();
+	}
 
 
-    public override void Update()
-    {
-        base.Update();
-        if (_duration > 0)
-        {
-            _duration -= Time.deltaTime;
-        }
-        else if (active)
-        {
-            if (!expired)
-            {
-                Buff(-2f);
-                owner.GetComponent<AudioSource>().clip = owner.ultimateSounds[3];
-                //owner.audio.time = 0;
-                owner.GetComponent<AudioSource>().Play();
-                _duration = duration / 10F;
-                expired = true;
-            }
-            else
-            {
-                Buff(1f);
-                active = false;
-                expired = false;
-            }
-        }
-    }
+	public override void Update()
+	{
+		base.Update();
+		if (_duration > 0)
+		{
+			_duration -= Time.deltaTime;
+		}
+		else if (active)
+		{
+			if (!expired)
+			{
+				Buff(-2f);
+				castComponent.GetComponent<AudioSource>().clip = castComponent.owner.ultimateSounds[3];
+				//owner.audio.time = 0;
+				castComponent.GetComponent<AudioSource>().Play();
+				_duration = duration / 10F;
+				expired = true;
+			}
+			else
+			{
+				Buff(1f);
+				active = false;
+				expired = false;
+			}
+		}
+	}
 
-    public override bool CanCast()
-    {
-        if (used)
-            return false;
-        else
-            return base.CanCast();
-    }
+	public override bool CanCast()
+	{
+		if (used)
+			return false;
+		else
+			return base.CanCast();
+	}
 
-    public void Buff(float sign)
-    {
-        owner.castComponent.mod_damage += cast_mod_damage * sign;
-        owner.castComponent.mod_size += cast_mod_size * sign;
-        owner.castComponent.mod_speed += cast_mod_speed * sign;
-        owner.castComponent.mod_cooldown += cast_mod_cooldown * sign;
-        owner.castComponent.mod_manacost += cast_mod_manacost * sign;
-        owner.castComponent.mod_regen += cast_mod_regen * sign;
-        owner.castComponent.mod_charge += cast_mod_charge * sign;
-        owner.moveComponent.mod_speed += move_mod_speed * sign;
-        owner.healthComponent.mod_damage += health_mod_damage * sign;
-        owner.healthComponent.mod_knockback += health_mod_knockback * sign;
-    }
-    
-    public override void Cast(float charge, Vector3 reticle)
-    {
-        _duration += duration;
+	public void Buff(float sign)
+	{
+		castComponent.mod_damage += cast_mod_damage * sign;
+		castComponent.mod_size += cast_mod_size * sign;
+		castComponent.mod_speed += cast_mod_speed * sign;
+		castComponent.mod_cooldown += cast_mod_cooldown * sign;
+		castComponent.mod_manacost += cast_mod_manacost * sign;
+		castComponent.mod_regen += cast_mod_regen * sign;
+		castComponent.mod_charge += cast_mod_charge * sign;
+		castComponent.mod_speed += move_mod_speed * sign;
+		castComponent.mod_damage += health_mod_damage * sign;
+		castComponent.owner.healthComponent.mod_knockback += health_mod_knockback * sign;
+	}
+	
+	public override void Cast(float charge, Vector3 reticle)
+	{
+		_duration += duration;
 
-        cast_mod_damage = owner.healthComponent.totalDamage / 150f;
-        cast_mod_size = cast_mod_damage * 0.5f;
-        cast_mod_speed = cast_mod_damage * 0.5f;
-        cast_mod_cooldown = 1f;
-        cast_mod_manacost = 0f;
-        cast_mod_regen = 1f;
-        cast_mod_charge = 1f;
-        move_mod_speed = 1f;
-        health_mod_damage = 0f;
-        health_mod_knockback = cast_mod_damage;
+		cast_mod_damage = castComponent.owner.healthComponent.totalDamage / 150f;
+		cast_mod_size = cast_mod_damage * 0.5f;
+		cast_mod_speed = cast_mod_damage * 0.5f;
+		cast_mod_cooldown = 1f;
+		cast_mod_manacost = 0f;
+		cast_mod_regen = 1f;
+		cast_mod_charge = 1f;
+		move_mod_speed = 1f;
+		health_mod_damage = 0f;
+		health_mod_knockback = cast_mod_damage;
 
-        Buff(1);
-        used = true;
+		Buff(1);
+		used = true;
 
-        Camera.main.Shake(0.4f);
-        active = true;
-        base.Cast(charge, reticle);
-    }
+		Camera.main.Shake(0.4f);
+		active = true;
+		base.Cast(charge, reticle);
+	}
 }

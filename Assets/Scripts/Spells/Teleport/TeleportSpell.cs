@@ -18,10 +18,10 @@ public class TeleportSpell : Spell
 
 	public override void Cast(float charge, Vector3 reticle)
 	{
-		if (charge >= t_charge)
-			owner.transform.position = reticle;
+		if (charge >= chargeDuration)
+			castComponent.transform.position = reticle;
 		else
-			owner.transform.position =(owner.transform.position + (reticle - owner.transform.position).normalized*minDistance);
+			castComponent.transform.position =(castComponent.transform.position + (reticle - castComponent.transform.position).normalized*minDistance);
         prefab.Spawn();
         prefab.Activate();
         base.Cast(charge, reticle);

@@ -56,7 +56,7 @@ public static class Beholder
 	///			Debug.Log(i - 50);
 	///		}
 	///	};
-	///	Beholder.Observe("event_name", cb);
+	///	Beholder.Subscription sub = Beholder.Observe("event_name", cb);
 	/// </summary>
 	/// <param name="key">Plain string event name</param>
 	/// <param name="cb">Callback function which will be called</param>

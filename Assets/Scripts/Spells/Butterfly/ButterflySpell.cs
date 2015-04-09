@@ -12,22 +12,22 @@ public class ButterflySpell : Spell
 	public int angleEdge;
 	public int chargedAmount;
 	public int chargedAngleEdge;
-    public float t_delayMax;
+	public float t_delayMax;
 
-    public ButterflyProjectile prefab;
+	public ButterflyProjectile prefab;
 
-    public override void Initialise ()
-    {
-        base.Initialise();
-        if (prefab.CountPooled() == 0)
-            prefab.CreatePool(100);
-    }
+	public override void Initialise ()
+	{
+		base.Initialise();
+		if (prefab.CountPooled() == 0)
+			prefab.CreatePool(100);
+	}
 	
 	public override void Cast(float charge, Vector3 reticle)
 	{	
 		int angle;
 		int amt;
-		if (charge >= t_charge)
+		if (charge >= chargeDuration)
 		{
 			angle = chargedAngleEdge;
 			amt = chargedAmount;
@@ -48,30 +48,30 @@ public class ButterflySpell : Spell
 		}
 		for ( int i = -angle; i <= angle; i+=step )
 		{
-            ButterflyProjectile projectile = prefab.Spawn();
-            ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
+			ButterflyProjectile projectile = prefab.Spawn();
+			ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 			
 			projectile.shift=i+Random.Range (-10f, 10f);
 			
 			projectile.target = reticle;
-			projectile.parent = owner.gameObject;
-            projectile.size = size * owner.castComponent.mod_size;
-			projectile.speed = speed * Random.Range(0.3f, 1.5f) * owner.castComponent.mod_speed;
-			projectile.damage = damage * owner.castComponent.mod_damage;
-            projectileHealth.maxHealth = damage;
-            projectileHealth.projectileComponent = projectile;
+			projectile.parent = castComponent.gameObject;
+			projectile.size = size * castComponent.mod_size;
+			projectile.speed = speed * Random.Range(0.3f, 1.5f) * castComponent.mod_speed;
+			projectile.damage = damage * castComponent.mod_damage;
+			projectileHealth.maxHealth = damage;
+			projectileHealth.projectileComponent = projectile;
 
-			if (owner.player == "Player 1")
+			if (castComponent.owner.player == "Player 1")
 				projectile.color = new Color(0.37f, 0.47f, 1f);
 			else
 				projectile.color = new Color(1f, 0.97f, 0.3f);
 
-            projectile.renderer.enabled = false;
-            projectile.collider.enabled = false;
-            projectile.t_activation = Time.time + Random.Range(0, t_delayMax);
+			projectile.renderer.enabled = false;
+			projectile.collider.enabled = false;
+			projectile.t_activation = Time.time + Random.Range(0, t_delayMax);
 
-            projectile.Activate();
+			projectile.Activate();
 		}
-        base.Cast(charge, reticle);
+		base.Cast(charge, reticle);
 	}
 }

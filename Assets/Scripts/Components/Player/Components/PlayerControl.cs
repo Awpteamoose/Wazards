@@ -37,6 +37,7 @@ public class PlayerControl: MonoBehaviour
 
 		moveComponent = GetComponent<MoveComponent>();
 		castComponent = GetComponent<CastComponent>();
+		castComponent.owner = this;
 		healthComponent = GetComponent<PlayerHealthComponent>();
 		inputComponent = GetComponent<PlayerInputComponent>();
 
@@ -61,13 +62,12 @@ public class PlayerControl: MonoBehaviour
 				spellNumber = Random.Range(0, SpellList.Count);
 				PlayerPrefs.SetInt(spellName, spellNumber);
 			}
-			castComponent.spellBook.Set(spellNumber, this, i);
+			castComponent.SetSpell(SpellList.Get(spellNumber), i);
 		}
 		castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
 		castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-		castComponent.spellBook.Set(ScriptableObject.Instantiate(ultimate) as Spell, this, 4);
-		castComponent.spellBook.Set(ScriptableObject.Instantiate(SpellList.normalAttack) as Spell, this, 5);
-		castComponent.spellBook.ActivateAll();
+		castComponent.SetSpell(ScriptableObject.Instantiate(ultimate) as Spell, 4);
+		castComponent.SetSpell(ScriptableObject.Instantiate(SpellList.normalAttack) as Spell, 5);
 		PlayerPrefs.Save();
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
@@ -89,8 +89,7 @@ public class PlayerControl: MonoBehaviour
 					if (newSpell >= SpellList.Count)
 						newSpell = 0;
 					PlayerPrefs.SetInt(spellName, newSpell);
-					castComponent.spellBook.Set(newSpell, this, i);
-					castComponent.spellBook.Activate(i);
+					castComponent.SetSpell(SpellList.Get(newSpell), i);
 					PlayerPrefs.Save();
 				}
 			}

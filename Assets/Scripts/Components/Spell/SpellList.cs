@@ -22,25 +22,26 @@ public class SpellList : MonoBehaviour {
 		}
 	}
 
-    public static int Count
-    {
-        get
-        {
-            return spells.Count;
-        }
-    }
+	public static int Count
+	{
+		get
+		{
+			return spells.Count;
+		}
+	}
 
-    public static Spell Get(int i)
-    {
-        return spells[i];
-    }
-    public static Spell Get(string name)
-    {
-        foreach (Spell spell in spells)
-        {
-            if (spell.name == name)
-                return spell;
-        }
-        return null;
-    }
+	public static Spell Get(int i)
+	{
+		return spells[i];
+	}
+
+	public static Spell Get(string name)
+	{
+		foreach (Spell spell in spells)
+		{
+			if (spell.name == name)
+				return spell;
+		}
+		return null;
+	}
 }

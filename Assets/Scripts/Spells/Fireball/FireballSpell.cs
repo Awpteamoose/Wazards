@@ -4,35 +4,35 @@ using System.Collections;
 [System.Serializable]
 public class FireballSpell : Spell
 {
-    public float damage;
-    public float damageCharged;
-    public float speed;
-    public float speedCharged;
+	public float damage;
+	public float damageCharged;
+	public float speed;
+	public float speedCharged;
 	public float size;
-    public float sizeCharged;
+	public float sizeCharged;
 
-    public FireballProjectile prefab;
+	public FireballProjectile prefab;
 
-    public override void Initialise()
-    {
-        base.Initialise();
+	public override void Initialise()
+	{
+		base.Initialise();
 
-        if (prefab.CountPooled() == 0)
-            prefab.CreatePool(10);
-    }
+		if (prefab.CountPooled() == 0)
+			prefab.CreatePool(10);
+	}
 	
 	public override void Cast(float charge, Vector3 reticle)
 	{
-        FireballProjectile projectile = prefab.Spawn(owner.transform.position + (owner.moveComponent.direction.vector * 1f), Quaternion.identity);
-        ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
+		FireballProjectile projectile = prefab.Spawn(castComponent.transform.position + (castComponent.owner.moveComponent.direction.vector * 1f), Quaternion.identity);
+		ProjectileHealthComponent projectileHealth = projectile.GetComponent<ProjectileHealthComponent>();
 		projectile.target = reticle;
-		projectile.parent= owner.gameObject;
+		projectile.parent= castComponent.gameObject;
 		
-		if (charge >= t_charge)
+		if (charge >= chargeDuration)
 		{
 			projectile.size = sizeCharged;
-            projectile.speed = speedCharged;
-            projectile.damage = damageCharged;
+			projectile.speed = speedCharged;
+			projectile.damage = damageCharged;
 		}
 		else
 		{
@@ -40,14 +40,14 @@ public class FireballSpell : Spell
 			projectile.speed = speed;
 			projectile.damage = damage;
 		}
-        projectile.size *= owner.castComponent.mod_size;
-        projectile.speed *= owner.castComponent.mod_speed;
-        projectile.damage *= owner.castComponent.mod_damage;
+		projectile.size *= castComponent.mod_size;
+		projectile.speed *= castComponent.mod_speed;
+		projectile.damage *= castComponent.mod_damage;
 
-        projectileHealth.maxHealth = projectile.damage;
-        projectileHealth.projectileComponent = projectile;
+		projectileHealth.maxHealth = projectile.damage;
+		projectileHealth.projectileComponent = projectile;
 
-        projectile.Activate();
-        base.Cast(charge, reticle);
+		projectile.Activate();
+		base.Cast(charge, reticle);
 	}
 }
