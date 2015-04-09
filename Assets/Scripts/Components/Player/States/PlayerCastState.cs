@@ -20,12 +20,12 @@ public class PlayerCastState : StateMachine.State
 	{
 		pc = parent;
 		
-		pc.castComponent.reticle = pc.transform.Find("reticle").gameObject;
-		pc.castComponent.reticle.SetActive(true);
+		pc.castComponent.reticle = pc.transform.FindChild("reticle").gameObject;
 	}
 	public override void Start()
 	{
-		pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 0);
+		pc.castComponent.reticle.SetActive(true);
+		pc.castComponent.reticle.transform.localScale = new Vector3(Camera.main.orthographicSize / 5f, Camera.main.orthographicSize / 5f, 1);
 		if (pc.castComponent.altAimMode)
 		{
 			mode0_distance = pc.castComponent.reticle_distance;
