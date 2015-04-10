@@ -74,6 +74,7 @@ public class TypogenicText : MonoBehaviour
 	bool _generateNormals;
 	bool _stationary;
 	bool _enableClickSupport;
+	bool _drawGlyphBoundsGizmos;
 	int _materialCount;
 	int _currentMaterial;
 
