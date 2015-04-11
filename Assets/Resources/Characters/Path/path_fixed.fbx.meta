@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 06a6ca50e0c120d44918ca55b023c6ff
+timeCreated: 1428794453
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: arm_L
+    100002: arm_R
+    100004: clavicle_L
+    100006: clavicle_R
+    100008: forfinger1_L
+    100010: forfinger1_R
+    100012: forfinger2_L
+    100014: forfinger2_L_end
+    100016: forfinger2_R
+    100018: forfinger2_R_end
+    100020: forfinger_L
+    100022: forfinger_R
+    100024: hand_L
+    100026: hand_R
+    100028: Hat
+    100030: head
+    100032: head_end
+    100034: LEG1_L
+    100036: LEG1_L_end
+    100038: LEG1_R
+    100040: LEG1_R_end
+    100042: LEG_L
+    100044: LEG_R
+    100046: midfin1_L
+    100048: midfin1_R
+    100050: midfin2_L
+    100052: midfin2_L_end
+    100054: midfin2_R
+    100056: midfin2_R_end
+    100058: midfin_L
+    100060: midfin_R
+    100062: model
+    100064: neck
+    100066: //RootNode
+    100068: rig
+    100070: shoulder_L
+    100072: shoulder_R
+    100074: spine1
+    100076: spine1_L
+    100078: spine1_R
+    100080: spine2
+    100082: spine3
+    100084: spine4
+    100086: spine5
+    100088: staff
+    100090: thumb1_L
+    100092: thumb1_L_end
+    100094: thumb1_R
+    100096: thumb1_R_end
+    100098: thumb_L
+    100100: thumb_R
+    400000: arm_L
+    400002: arm_R
+    400004: clavicle_L
+    400006: clavicle_R
+    400008: forfinger1_L
+    400010: forfinger1_R
+    400012: forfinger2_L
+    400014: forfinger2_L_end
+    400016: forfinger2_R
+    400018: forfinger2_R_end
+    400020: forfinger_L
+    400022: forfinger_R
+    400024: hand_L
+    400026: hand_R
+    400028: Hat
+    400030: head
+    400032: head_end
+    400034: LEG1_L
+    400036: LEG1_L_end
+    400038: LEG1_R
+    400040: LEG1_R_end
+    400042: LEG_L
+    400044: LEG_R
+    400046: midfin1_L
+    400048: midfin1_R
+    400050: midfin2_L
+    400052: midfin2_L_end
+    400054: midfin2_R
+    400056: midfin2_R_end
+    400058: midfin_L
+    400060: midfin_R
+    400062: model
+    400064: neck
+    400066: //RootNode
+    400068: rig
+    400070: shoulder_L
+    400072: shoulder_R
+    400074: spine1
+    400076: spine1_L
+    400078: spine1_R
+    400080: spine2
+    400082: spine3
+    400084: spine4
+    400086: spine5
+    400088: staff
+    400090: thumb1_L
+    400092: thumb1_L_end
+    400094: thumb1_R
+    400096: thumb1_R_end
+    400098: thumb_L
+    400100: thumb_R
+    2300000: Hat
+    2300002: staff
+    3300000: Hat
+    3300002: staff
+    4300000: model
+    4300002: Hat
+    4300004: staff
+    9500000: //RootNode
+    13700000: model
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 3
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
