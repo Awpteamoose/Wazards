@@ -38,9 +38,9 @@ public class CastComponent: MonoBehaviour
 
 	public SpellBook spellBook = new SpellBook();
 
-	public void SetSpell(Spell spell, int index)
+	public void RecordSpell(Spell spell, int index)
 	{
-		spellBook.Set(spell, this, index);
+		spellBook.Set(ScriptableObject.Instantiate(spell) as Spell, this, index);
 	}
 
 	private void Update()

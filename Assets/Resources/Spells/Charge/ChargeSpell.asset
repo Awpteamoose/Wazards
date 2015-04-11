@@ -11,13 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a486707b3f5aa40a588e4e86ac9142, type: 3}
   m_Name: ChargeSpell
   m_EditorClassIdentifier: 
-  spellName: Charge
+  displayName: Charge
+  realName: 
   description: 
   icon: {fileID: 21300000, guid: a3b372abfb0b67b4a9584f24fde7ca79, type: 3}
-  t_charge: .850000024
-  t_minCharge: 0
+  chargeDuration: 0
+  min_chargeDuration: 0
   manacost: 25
-  t_cooldown: 3
+  cooldownDuration: 0
   distance: 6
   speed: .449999988
   damageMod: 1.75

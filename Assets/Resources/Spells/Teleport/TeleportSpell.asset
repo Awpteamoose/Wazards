@@ -11,12 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072e0ad1675286c4a81c4953b9e552b0, type: 3}
   m_Name: TeleportSpell
   m_EditorClassIdentifier: 
-  spellName: Teleport
+  displayName: Teleport
+  realName: 
   description: 
   icon: {fileID: 21300000, guid: b949ea438815aa94aa53a42a004c16b2, type: 3}
-  t_charge: .850000024
-  t_minCharge: 0
+  chargeDuration: 0
+  min_chargeDuration: 0
   manacost: 25
-  t_cooldown: .400000006
+  cooldownDuration: 0
   minDistance: 6
   prefab: {fileID: 11400000, guid: f8f6eb0060db48541abdbc0e67049efa, type: 2}

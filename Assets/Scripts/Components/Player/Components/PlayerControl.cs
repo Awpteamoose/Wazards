@@ -42,7 +42,6 @@ public class PlayerControl: MonoBehaviour
 		inputComponent = GetComponent<PlayerInputComponent>();
 
 		animator = GetComponent<Animator>();
-		spriteRenderer = GetComponent<SpriteRenderer>();
 		transform = GetComponent<Transform>();
 		rigidbody = GetComponent<Rigidbody2D>();
 
@@ -62,12 +61,12 @@ public class PlayerControl: MonoBehaviour
 				spellNumber = Random.Range(0, SpellList.Count);
 				PlayerPrefs.SetInt(spellName, spellNumber);
 			}
-			castComponent.SetSpell(SpellList.Get(spellNumber), i);
+			castComponent.RecordSpell(SpellList.Get(spellNumber), i);
 		}
 		castComponent.altAimMode = (PlayerPrefs.GetInt(player + " Aim Mode", 0) == 0)?false:true;
 		castComponent.reticle_speed = PlayerPrefs.GetFloat(player + " Reticle Speed", 3f);
-		castComponent.SetSpell(ScriptableObject.Instantiate(ultimate) as Spell, 4);
-		castComponent.SetSpell(ScriptableObject.Instantiate(SpellList.normalAttack) as Spell, 5);
+		castComponent.RecordSpell(ultimate, 4);
+		castComponent.RecordSpell(SpellList.normalAttack, 5);
 		PlayerPrefs.Save();
 
 		sm.states.Add(States.Move,new PlayerMoveState(this));
@@ -89,7 +88,7 @@ public class PlayerControl: MonoBehaviour
 					if (newSpell >= SpellList.Count)
 						newSpell = 0;
 					PlayerPrefs.SetInt(spellName, newSpell);
-					castComponent.SetSpell(SpellList.Get(newSpell), i);
+					castComponent.RecordSpell(SpellList.Get(newSpell), i);
 					PlayerPrefs.Save();
 				}
 			}

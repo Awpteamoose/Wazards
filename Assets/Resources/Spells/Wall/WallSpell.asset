@@ -11,13 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74c67411d8f5d046b3ae13142de6e51, type: 3}
   m_Name: WallSpell
   m_EditorClassIdentifier: 
-  spellName: Wall
+  displayName: Wall
+  realName: 
   description: 
   icon: {fileID: 21300000, guid: c272317d560f14942831d1e8b22f49da, type: 3}
-  t_charge: .349999994
-  t_minCharge: 0
+  chargeDuration: 0
+  min_chargeDuration: 0
   manacost: 25
-  t_cooldown: 2.5
+  cooldownDuration: 0
   minDistance: 2
   width: 2.5
   height: .5

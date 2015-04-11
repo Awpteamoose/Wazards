@@ -39,7 +39,6 @@ public class Spell : ScriptableObject
 
 		nextSeed = displayName.GetHashCode();
 		PlugNextWord();
-		//Beholder.Trigger(realName + "_begun", this, reticle);
 	}
 
 	public virtual void Chant(Vector3 reticle)
@@ -51,7 +50,6 @@ public class Spell : ScriptableObject
 	public virtual void Charge(Vector3 reticle)
 	{
 		charged = true;
-		//Beholder.Trigger(realName + "_charged", this, reticle);
 	}
 
 	public virtual void End(Vector3 reticle)
@@ -59,12 +57,11 @@ public class Spell : ScriptableObject
 		if (CanCast() && charge >= min_chargeDuration)
 			Cast(charge, reticle);
 		charge = 0;
-		//Beholder.Trigger(realName + "_ended", this, reticle);
 	}
 
 	public virtual void Update()
 	{
-		Mathf.Clamp(cooldown, 0, cooldown - Time.deltaTime * castComponent.mod_cooldown);
+		cooldown = Mathf.Clamp(cooldown, 0, cooldown - Time.deltaTime * castComponent.mod_cooldown);
 	}
 
 	public virtual bool EnoughMana()

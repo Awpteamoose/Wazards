@@ -11,13 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddf5945d2b599b448fbae9f14d91b2a, type: 3}
   m_Name: LaserSpell
   m_EditorClassIdentifier: 
-  spellName: Laser
+  displayName: Laser
+  realName: 
   description: 
   icon: {fileID: 21300000, guid: 0f02c63d6bd33c04e888bf5a41b7f7b9, type: 3}
-  t_charge: .800000012
-  t_minCharge: .200000003
+  chargeDuration: 0
+  min_chargeDuration: 0
   manacost: 22
-  t_cooldown: 4
+  cooldownDuration: 0
   manaPerSec: 12
   manaPerSecCharged: 15
   damage: 3
