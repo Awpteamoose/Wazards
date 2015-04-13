@@ -7,7 +7,8 @@ using System.Collections.Generic;
 public static class Beholder
 {
 	/// <summary>
-	/// Example usage: Beholder.Trigger("event_name", 50, true);
+	/// Example usage:<para />
+	/// Beholder.Trigger("event_name", ...);
 	/// </summary>
 	/// <param name="key">Plain string event name</param>
 	/// <param name="...">Up to 5 arguments to be passed to all subscribers</param>
@@ -47,80 +48,78 @@ public static class Beholder
 	}
 
 	/// <summary>
-	/// Example usage:
-	/// Beholder.Callback<int, bool> cb = (i, b) =>
-	///	{	
-	///		if (b) {
-	///			Debug.Log(i + 50);
-	///		} else {
-	///			Debug.Log(i - 50);
-	///		}
-	///	};
-	///	Beholder.Subscription sub = Beholder.Observe("event_name", cb);
+	/// Example usage:<para />
+	/// Beholder.Callback&lt;int, bool&gt; cb = (i, b) =&gt; { if (b) Debug.Log(i); };<para />
+	///	Beholder.Observe("event_name", cb);
 	/// </summary>
 	/// <param name="key">Plain string event name</param>
 	/// <param name="cb">Callback function which will be called</param>
-	public static Subscription Observe(string key, Callback cb)
+	/// <param name="sub">An optional subscription, that can be used to cancel any number of observations</param>
+	public static void Observe(string key, Callback cb, Subscription sub = null)
 	{
 		Callback<object, object, object, object, object> _cb = (arg1, arg2, arg3, arg4, arg5) => cb();
-		return _Observe<object, object, object, object, object>(key, _cb);
+		_Observe<object, object, object, object, object>(key, _cb, sub);
 	}
-	public static Subscription Observe<T1>(string key, Callback<T1> cb)
+	public static void Observe<T1>(string key, Callback<T1> cb, Subscription sub = null)
 	{
 		Callback<T1, object, object, object, object> _cb = (arg1, arg2, arg3, arg4, arg5) => cb(arg1);
-		return _Observe<T1, object, object, object, object>(key, _cb);
+		_Observe<T1, object, object, object, object>(key, _cb, sub);
 	}
-	public static Subscription Observe<T1, T2>(string key, Callback<T1, T2> cb)
+	public static void Observe<T1, T2>(string key, Callback<T1, T2> cb, Subscription sub = null)
 	{
 		Callback<T1, T2, object, object, object> _cb = (arg1, arg2, arg3, arg4, arg5) => cb(arg1, arg2);
-		return _Observe<T1, T2, object, object, object>(key, _cb);
+		_Observe<T1, T2, object, object, object>(key, _cb, sub);
 	}
-	public static Subscription Observe<T1, T2, T3>(string key, Callback<T1, T2, T3> cb)
+	public static void Observe<T1, T2, T3>(string key, Callback<T1, T2, T3> cb, Subscription sub = null)
 	{
 		Callback<T1, T2, T3, object, object> _cb = (arg1, arg2, arg3, arg4, arg5) => cb(arg1, arg2, arg3);
-		return _Observe<T1, T2, T3, object, object>(key, _cb);
+		_Observe<T1, T2, T3, object, object>(key, _cb, sub);
 	}
-	public static Subscription Observe<T1, T2, T3, T4>(string key, Callback<T1, T2, T3, T4> cb)
+	public static void Observe<T1, T2, T3, T4>(string key, Callback<T1, T2, T3, T4> cb, Subscription sub = null)
 	{
 		Callback<T1, T2, T3, T4, object> _cb = (arg1, arg2, arg3, arg4, arg5) => cb(arg1, arg2, arg3, arg4);
-		return _Observe<T1, T2, T3, T4, object>(key, _cb);
+		_Observe<T1, T2, T3, T4, object>(key, _cb, sub);
 	}
-	public static Subscription Observe<T1, T2, T3, T4, T5>(string key, Callback<T1, T2, T3, T4, T5> cb)
+	public static void Observe<T1, T2, T3, T4, T5>(string key, Callback<T1, T2, T3, T4, T5> cb, Subscription sub = null)
 	{
 		Callback<T1, T2, T3, T4, T5> _cb = (arg1, arg2, arg3, arg4, arg5) => cb(arg1, arg2, arg3, arg4, arg5);
-		return _Observe<T1, T2, T3, T4, T5>(key, _cb);
+		_Observe<T1, T2, T3, T4, T5>(key, _cb, sub);
 	}
-	private static Subscription _Observe<T1, T2, T3, T4, T5>(string key, Callback<T1, T2, T3, T4, T5> cb)
+	private static void _Observe<T1, T2, T3, T4, T5>(string key, Callback<T1, T2, T3, T4, T5> cb, Subscription sub)
 	{
 		if (!_subscriptions.ContainsKey(key))
 		{
 			_subscriptions.Add(key, new List<object>());
 		}
 		_subscriptions[key].Add(cb);
-		return new Subscription(key, cb);
+		if (sub != null) sub._subscriptions.Add(key, cb);
 	}
 	
 	/// <summary>
-	/// Example usage:
-	/// Beholder.Subscription sub = Beholder.Observe("event_name", cb);
+	/// Example usage:<para />
+	/// Beholder.Subscription sub = new Beholder.Subscription();<para />
+	/// Beholder.Observe("event_name", cb, sub);<para />
 	/// Beholder.Cancel(sub);
 	/// </summary>
-	/// <param name="sub"></param>
+	/// <param name="sub">The subscription to be cancelled</param>
 	public static void Cancel(Subscription sub)
 	{
-		int i;
-		for (i = 0; i < _subscriptions[sub.key].Count; i++)
+		foreach (var item in sub._subscriptions)
 		{
-			if (_subscriptions[sub.key][i] == sub.value) break;
-		}
+			int i;
+			for (i = 0; i < _subscriptions[item.Key].Count; i++)
+			{
+				if (_subscriptions[item.Key][i] == item.Value) break;
+			}
 
-		if (i == 0)
-		{
-			_subscriptions.Remove(sub.key);
-		}
-		else
-		{
-			_subscriptions[sub.key].RemoveAt(i);
+			if (i == 0)
+			{
+				_subscriptions.Remove(item.Key);
+			}
+			else
+			{
+				_subscriptions[item.Key].RemoveAt(i);
+			}
 		}
 	}
 
@@ -131,14 +130,12 @@ public static class Beholder
 	public delegate void Callback<T1, T2, T3, T4>(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 	public delegate void Callback<T1, T2, T3, T4, T5>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
 
-	public struct Subscription
+	public class Subscription
 	{
-		public string key;
-		public object value;
-		public Subscription(string _key, object _value)
+		public Dictionary<string, object> _subscriptions;
+		public Subscription()
 		{
-			key = _key;
-			value = _value;
+			_subscriptions = new Dictionary<string, object>();
 		}
 	}
 

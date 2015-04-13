@@ -17,7 +17,7 @@ public class FireBuffSpell : Spell
 
 	private Sprite _icon;
 
-	Beholder.Subscription sub;
+	Beholder.Subscription sub = new Beholder.Subscription();
 
 	public override void Initialise()
 	{
@@ -69,7 +69,7 @@ public class FireBuffSpell : Spell
 			}
 			Disable();
 		};
-		sub = Beholder.Observe("attack_cast", hit);
+		Beholder.Observe("attack_cast", hit, sub);
 		if (charged)
 			icon = iconActiveCharged;
 		else
