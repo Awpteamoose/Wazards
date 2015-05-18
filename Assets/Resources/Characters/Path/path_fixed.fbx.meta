@@ -56,6 +56,9 @@ ModelImporter:
     100096: thumb1_R_end
     100098: thumb_L
     100100: thumb_R
+    100102: Camera
+    100104: Lamp
+    100106: Plane
     400000: arm_L
     400002: arm_R
     400004: clavicle_L
@@ -107,13 +110,19 @@ ModelImporter:
     400096: thumb1_R_end
     400098: thumb_L
     400100: thumb_R
+    400102: Camera
+    400104: Lamp
+    400106: Plane
     2300000: Hat
     2300002: staff
+    2300004: Plane
     3300000: Hat
     3300002: staff
+    3300004: Plane
     4300000: model
     4300002: Hat
     4300004: staff
+    4300006: Plane
     9500000: //RootNode
     13700000: model
   materials:
