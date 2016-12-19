@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // Unlit shader. Simplest possible textured shader.
 // - no lighting
 // - no lightmap support
@@ -34,7 +36,7 @@ SubShader {
 
 			v2f vert (appdata_t v)
 			{
-				float3 worldPos = mul (_Object2World, v.vertex).xyz;
+				float3 worldPos = mul (unity_ObjectToWorld, v.vertex).xyz;
 				v2f o;
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.texcoord = TRANSFORM_TEX(worldPos, _MainTex);

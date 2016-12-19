@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/RadialTransparencyFixed" {
     Properties {
         _Maintexture ("Main texture", 2D) = "bump" {}
@@ -50,8 +52,8 @@ Shader "Custom/RadialTransparencyFixed" {
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
                 o.uv0 = v.texcoord0;
-                o.normalDir = mul(_Object2World, float4(v.normal,0)).xyz;
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.normalDir = mul(unity_ObjectToWorld, float4(v.normal,0)).xyz;
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
                 UNITY_TRANSFER_FOG(o,o.pos);
@@ -125,8 +127,8 @@ Shader "Custom/RadialTransparencyFixed" {
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
                 o.uv0 = v.texcoord0;
-                o.normalDir = mul(_Object2World, float4(v.normal,0)).xyz;
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.normalDir = mul(unity_ObjectToWorld, float4(v.normal,0)).xyz;
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
                 TRANSFER_VERTEX_TO_FRAGMENT(o)

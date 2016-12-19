@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Lava" {
     Properties {
         _MainTex ("MainTex", 2D) = "white" {}
@@ -33,7 +35,7 @@ Shader "Custom/Lava" {
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o;
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
                 return o;
             }
